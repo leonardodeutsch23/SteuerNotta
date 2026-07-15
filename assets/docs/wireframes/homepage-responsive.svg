@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title description">
+  <title id="title">SteuerNotta responsive homepage wireframe</title>
+  <desc id="description">Low-fidelity mobile, tablet and desktop layouts with identical navbar, hero, problem, four benefits, five How It Works steps, three language cards and footer.</desc>
+  <style>
+    .canvas{fill:#f5f7fa}.panel{fill:#fff;stroke:#243447;stroke-width:2}.section{fill:#f8fafc;stroke:#64748b;stroke-width:1.2}.strong{fill:#dbeafe;stroke:#1d4ed8;stroke-width:1.3}.future{fill:#fff7ed;stroke:#c2410c;stroke-width:1.2}.footer{fill:#dbe4ee;stroke:#475569;stroke-width:1.2}.title{font:700 25px Arial,sans-serif;fill:#0f172a}.heading{font:700 16px Arial,sans-serif;fill:#0f172a}.label{font:700 12px Arial,sans-serif;fill:#0f172a}.text{font:11px Arial,sans-serif;fill:#334155}.tiny{font:9px Arial,sans-serif;fill:#475569}.line{stroke:#64748b;stroke-width:1.2}.dot{fill:#fff;stroke:#1d4ed8;stroke-width:1.3}.n{font:700 10px Arial,sans-serif;fill:#1d4ed8;text-anchor:middle}.center{text-anchor:middle}
+  </style>
+
+  <rect class="canvas" width="1600" height="1100"/>
+  <text class="title" x="30" y="38">SteuerNotta — canonical responsive homepage wireframe</text>
+  <text class="text" x="30" y="60">Same content and order at every reference width. Only layout changes. No Login, Pricing, FAQ, Contact or Resources.</text>
+
+  <!-- Desktop -->
+  <text class="heading" x="30" y="92">Desktop — approximately 1440px</text>
+  <rect class="panel" x="25" y="105" width="720" height="965" rx="8"/>
+  <rect class="section" x="40" y="120" width="690" height="50" rx="5"/>
+  <text class="label" x="55" y="150">LOGO + SteuerNotta</text>
+  <text class="text" x="395" y="150">Home · Benefits · How It Works · Languages</text>
+
+  <rect class="strong" x="40" y="185" width="690" height="185" rx="6"/>
+  <rect class="section" x="58" y="204" width="315" height="145" rx="5"/>
+  <text class="heading" x="76" y="232">Qualified hero headline</text>
+  <text class="text" x="76" y="253">Educational explanation · no refund promise</text>
+  <rect class="strong" x="76" y="278" width="104" height="34" rx="4"/>
+  <rect class="section" x="190" y="278" width="112" height="34" rx="4"/>
+  <text class="text center" x="128" y="299">Start Now</text>
+  <text class="text center" x="246" y="299">How It Works</text>
+  <rect class="section" x="395" y="204" width="315" height="145" rx="5"/>
+  <text class="label center" x="552" y="267">3-image Bootstrap carousel</text>
+  <text class="tiny center" x="552" y="287">controls · indicators · pause/resume · reduced motion</text>
+
+  <rect class="section" x="40" y="385" width="690" height="92" rx="5"/>
+  <text class="label" x="58" y="412">Problem</text>
+  <text class="text" x="58" y="434">Approved non-promissory copy</text>
+  <rect class="strong" x="480" y="399" width="230" height="62" rx="4"/>
+  <text class="tiny center" x="595" y="433">supporting illustration</text>
+
+  <text class="label" x="40" y="505">Benefits — four cards</text>
+  <rect class="section" x="40" y="518" width="160" height="88" rx="5"/>
+  <rect class="section" x="215" y="518" width="160" height="88" rx="5"/>
+  <rect class="section" x="390" y="518" width="160" height="88" rx="5"/>
+  <rect class="section" x="565" y="518" width="165" height="88" rx="5"/>
+  <text class="tiny center" x="120" y="563">Simple explanations</text>
+  <text class="tiny center" x="295" y="563">German + translation</text>
+  <text class="tiny center" x="470" y="563">Relevant categories</text>
+  <text class="tiny center" x="647" y="563">Accessible process</text>
+
+  <rect class="section" x="40" y="625" width="690" height="125" rx="5"/>
+  <text class="label" x="58" y="650">How It Works — five steps</text>
+  <line class="line" x1="105" y1="691" x2="665" y2="691"/>
+  <circle class="dot" cx="105" cy="691" r="18"/><circle class="dot" cx="245" cy="691" r="18"/>
+  <circle class="dot" cx="385" cy="691" r="18"/><circle class="dot" cx="525" cy="691" r="18"/>
+  <circle class="future" cx="665" cy="691" r="18"/>
+  <text class="n" x="105" y="695">1</text><text class="n" x="245" y="695">2</text><text class="n" x="385" y="695">3</text><text class="n" x="525" y="695">4</text><text class="n" x="665" y="695">5</text>
+  <text class="tiny center" x="105" y="725">Language</text><text class="tiny center" x="245" y="725">Demo form</text><text class="tiny center" x="385" y="725">Terms</text><text class="tiny center" x="525" y="725">Organise</text><text class="tiny center" x="665" y="725">FUTURE</text>
+
+  <text class="label" x="40" y="780">Languages — three equal cards</text>
+  <rect class="section" x="40" y="795" width="215" height="76" rx="5"/>
+  <rect class="section" x="278" y="795" width="215" height="76" rx="5"/>
+  <rect class="section" x="515" y="795" width="215" height="76" rx="5"/>
+  <text class="label center" x="147" y="818">flag · Español · ES</text><text class="tiny center" x="147" y="837">approved description</text><text class="tiny center" x="147" y="856">Empezar en español</text>
+  <text class="label center" x="385" y="818">flag · English · EN</text><text class="tiny center" x="385" y="837">approved description</text><text class="tiny center" x="385" y="856">Start in English</text>
+  <text class="label center" x="622" y="818">flag · Deutsch · DE</text><text class="tiny center" x="622" y="837">approved description</text><text class="tiny center" x="622" y="856">Auf Deutsch starten</text>
+  <rect class="footer" x="40" y="890" width="690" height="160" rx="5"/>
+  <text class="label center" x="385" y="925">© SteuerNotta · Educational demo</text>
+  <text class="text center" x="385" y="951">No tax advice · No ELSTER connection · Fictitious data only</text>
+  <text class="text center" x="385" y="977">How It Works · Languages</text>
+  <text class="tiny center" x="385" y="1010">Footer content remains present at all widths.</text>
+
+  <!-- Tablet -->
+  <text class="heading" x="785" y="92">Tablet — approximately 768px</text>
+  <rect class="panel" x="780" y="105" width="400" height="965" rx="8"/>
+  <rect class="section" x="795" y="120" width="370" height="44" rx="5"/>
+  <text class="label" x="810" y="147">Logo</text><text class="text" x="970" y="147">compact approved nav</text>
+  <rect class="strong" x="795" y="178" width="370" height="165" rx="6"/>
+  <rect class="section" x="810" y="195" width="165" height="130" rx="4"/>
+  <text class="label center" x="892" y="229">Hero copy</text><text class="tiny center" x="892" y="251">two CTAs</text>
+  <rect class="section" x="990" y="195" width="160" height="130" rx="4"/>
+  <text class="label center" x="1070" y="244">Carousel</text><text class="tiny center" x="1070" y="266">controls · pause/resume</text>
+  <rect class="section" x="795" y="357" width="370" height="78" rx="5"/>
+  <text class="label" x="810" y="383">Problem</text><text class="tiny" x="810" y="405">copy + illustration</text>
+  <text class="label" x="795" y="462">Benefits — 2 × 2</text>
+  <rect class="section" x="795" y="475" width="178" height="60" rx="4"/><rect class="section" x="987" y="475" width="178" height="60" rx="4"/>
+  <rect class="section" x="795" y="545" width="178" height="60" rx="4"/><rect class="section" x="987" y="545" width="178" height="60" rx="4"/>
+  <rect class="section" x="795" y="620" width="370" height="118" rx="5"/>
+  <text class="label" x="810" y="646">How It Works — 3 + 2</text>
+  <text class="text center" x="980" y="683">1 · 2 · 3</text><text class="text center" x="980" y="713">4 · 5 FUTURE</text>
+  <text class="label" x="795" y="765">Languages — 2 + 1</text>
+  <rect class="section" x="795" y="778" width="178" height="48" rx="4"/><rect class="section" x="987" y="778" width="178" height="48" rx="4"/>
+  <rect class="section" x="891" y="836" width="178" height="48" rx="4"/>
+  <text class="tiny center" x="884" y="797">flag · Español · ES</text><text class="tiny center" x="884" y="812">description + CTA</text>
+  <text class="tiny center" x="1076" y="797">flag · English · EN</text><text class="tiny center" x="1076" y="812">description + CTA</text>
+  <text class="tiny center" x="980" y="855">flag · Deutsch · DE</text><text class="tiny center" x="980" y="870">description + CTA</text>
+  <rect class="footer" x="795" y="900" width="370" height="150" rx="5"/>
+  <text class="label center" x="980" y="933">© SteuerNotta · Educational demo</text>
+  <text class="tiny center" x="980" y="958">No advice · No ELSTER · Fictitious data only</text>
+  <text class="tiny center" x="980" y="982">How It Works · Languages</text>
+
+  <!-- Mobile -->
+  <text class="heading" x="1215" y="92">Mobile — approximately 375px</text>
+  <rect class="panel" x="1210" y="105" width="365" height="965" rx="8"/>
+  <rect class="section" x="1225" y="120" width="335" height="42" rx="5"/>
+  <text class="label" x="1240" y="146">Logo</text><text class="heading" x="1520" y="147">☰</text>
+  <rect class="strong" x="1225" y="176" width="335" height="170" rx="6"/>
+  <text class="label center" x="1392" y="205">Hero copy</text>
+  <rect class="strong" x="1260" y="220" width="105" height="30" rx="4"/><rect class="section" x="1375" y="220" width="115" height="30" rx="4"/>
+  <text class="tiny center" x="1312" y="239">Start Now</text><text class="tiny center" x="1432" y="239">How It Works</text>
+  <rect class="section" x="1245" y="264" width="295" height="64" rx="4"/><text class="tiny center" x="1392" y="291">3-image carousel + controls</text><text class="tiny center" x="1392" y="307">visible pause/resume · reduced motion</text>
+  <rect class="section" x="1225" y="360" width="335" height="64" rx="5"/>
+  <text class="label" x="1240" y="385">Problem</text><text class="tiny" x="1240" y="404">copy first · illustration below/alongside</text>
+  <text class="label" x="1225" y="449">Benefits — one column</text>
+  <rect class="section" x="1225" y="460" width="335" height="34" rx="4"/><rect class="section" x="1225" y="501" width="335" height="34" rx="4"/>
+  <rect class="section" x="1225" y="542" width="335" height="34" rx="4"/><rect class="section" x="1225" y="583" width="335" height="34" rx="4"/>
+  <text class="label" x="1225" y="643">How It Works — stacked</text>
+  <rect class="section" x="1225" y="654" width="335" height="29" rx="4"/><rect class="section" x="1225" y="688" width="335" height="29" rx="4"/>
+  <rect class="section" x="1225" y="722" width="335" height="29" rx="4"/><rect class="section" x="1225" y="756" width="335" height="29" rx="4"/>
+  <rect class="future" x="1225" y="790" width="335" height="29" rx="4"/>
+  <text class="tiny" x="1240" y="674">1 Choose language</text><text class="tiny" x="1240" y="708">2 Complete demo form</text><text class="tiny" x="1240" y="742">3 Understand terms</text><text class="tiny" x="1240" y="776">4 Organise information</text><text class="tiny" x="1240" y="810">5 FUTURE: estimate / submit</text>
+  <text class="label" x="1225" y="843">Languages — three stacked cards</text>
+  <rect class="section" x="1225" y="854" width="335" height="36" rx="4"/><rect class="section" x="1225" y="896" width="335" height="36" rx="4"/><rect class="section" x="1225" y="938" width="335" height="36" rx="4"/>
+  <text class="tiny center" x="1392" y="870">flag · Español · ES</text><text class="tiny center" x="1392" y="883">description + localised CTA</text>
+  <text class="tiny center" x="1392" y="912">flag · English · EN</text><text class="tiny center" x="1392" y="925">description + localised CTA</text>
+  <text class="tiny center" x="1392" y="954">flag · Deutsch · DE</text><text class="tiny center" x="1392" y="967">description + localised CTA</text>
+  <rect class="footer" x="1225" y="990" width="335" height="60" rx="5"/>
+  <text class="tiny center" x="1392" y="1015">© SteuerNotta · Educational demo</text>
+  <text class="tiny center" x="1392" y="1035">No advice · No ELSTER · Fictitious data only · links</text>
+</svg>
