@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Prototipo educativo de SteuerNotta en español con términos alemanes y datos exclusivamente ficticios."
+    >
+    <title>Formulario educativo en español con términos alemanes | SteuerNotta</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al formulario</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <span class="brand" aria-label="SteuerNotta">
+          <span class="brand__mark" aria-hidden="true">SN</span>
+          <span class="brand__name">SteuerNotta</span>
+        </span>
+        <a class="header-link" href="#steuer-notta-form-es">Ir al formulario</a>
+      </div>
+    </header>
+
+    <main id="contenido-principal" class="page-shell">
+      <section class="page-intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Formulario educativo · Español con términos en alemán</p>
+          <h1 id="page-title">Explora la estructura del formulario de SteuerNotta</h1>
+          <p class="page-intro__text">
+            Esta página muestra la arquitectura acordada para el prototipo de referencia 2025.
+            Los campos interactivos son ejemplos genéricos para datos ficticios; los términos
+            fiscales pendientes aparecen como bloques no operativos y conservan su identificador
+            de la matriz de revisión.
+          </p>
+        </div>
+        <span class="status-badge">Contenido fiscal provisional</span>
+      </section>
+
+      <aside class="notice-panel" aria-labelledby="notice-title">
+        <div class="notice-panel__heading">
+          <span class="notice-panel__icon" aria-hidden="true">i</span>
+          <div>
+            <p class="eyebrow">Antes de comenzar</p>
+            <h2 id="notice-title">Prototipo educativo · Año fiscal de referencia 2025</h2>
+          </div>
+        </div>
+        <p class="notice-panel__lead"><strong>Usa únicamente datos inventados.</strong></p>
+        <div class="notice-grid">
+          <p>
+            SteuerNotta no ofrece asesoramiento fiscal, no sustituye a un
+            <span lang="de">Steuerberater</span> y no determina obligaciones ni derechos.
+          </p>
+          <p>
+            No está conectado con ELSTER, no calcula devoluciones y no presenta declaraciones.
+          </p>
+          <p>
+            El navegador muestra y valida localmente los valores ficticios; SteuerNotta no los
+            sube, transmite ni guarda.
+          </p>
+          <p>
+            La validación solo comprueba presencia o formato; no comprueba exactitud jurídica,
+            tratamiento fiscal, integridad ni derecho a devolución.
+          </p>
+        </div>
+      </aside>
+
+      <p class="noscript-notice" data-js-gate-notice>
+        El manejador seguro no está activo. Puedes revisar la estructura, pero todos los controles
+        y la acción final permanecen deshabilitados para evitar cualquier envío del formulario.
+      </p>
+
+      <form
+        id="steuer-notta-form-es"
+        class="demo-form"
+        action="success-es.html"
+        method="post"
+        autocomplete="off"
+        data-demo-form
+        data-success-url="success-es.html"
+      >
+        <fieldset class="form-section" data-matrix-section="SCOPE" disabled>
+          <legend class="section-legend">
+            <span class="section-number">1</span>
+            <span>
+              <span class="term-primary" lang="de">Umfang des Prototyps</span>
+              <span class="term-translation">Alcance del prototipo</span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">SCOPE-01–04 · Pendiente</span>
+            <p>
+              Esta sección documenta el alcance previsto. Las preguntas fiscales específicas no
+              son operativas mientras su texto alemán y español siga pendiente de revisión.
+            </p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field" data-matrix-id="SCOPE-01-UI-01">
+              <label for="reference-year">
+                <span class="term-primary" lang="de">Referenzjahr</span>
+                <span class="term-translation">Año fiscal de referencia</span>
+              </label>
+              <input id="reference-year" type="text" value="2025" readonly aria-describedby="reference-year-note">
+              <p id="reference-year-note" class="field-note">
+                Valor fijo del prototipo; no representa 2026 ni años posteriores.
+              </p>
+            </div>
+
+            <article class="pending-panel pending-panel--compact" data-matrix-id="SCOPE-02-UI-01">
+              <span class="pending-panel__label">SCOPE-02 · Pendiente</span>
+              <h3>Pregunta de residencia pendiente</h3>
+              <p>
+                El control y su redacción bilingüe no se muestran hasta completar la revisión fiscal
+                y lingüística; este prototipo no determina residencia fiscal.
+              </p>
+            </article>
+
+            <article class="pending-panel pending-panel--compact" data-matrix-id="SCOPE-04-UI-01">
+              <span class="pending-panel__label">SCOPE-04 · Pendiente</span>
+              <h3>Pregunta transfronteriza pendiente</h3>
+              <p>
+                El control y su redacción bilingüe permanecen fuera de la demostración hasta su
+                revisión; no se evalúan situaciones internacionales.
+              </p>
+            </article>
+
+            <article class="pending-panel pending-panel--compact" data-matrix-id="SCOPE-04-UI-02">
+              <span class="pending-panel__label">SCOPE-04 · Pendiente</span>
+              <h3>Pregunta sobre otros ingresos pendiente</h3>
+              <p>
+                No se ofrece una lista de tipos de ingresos ni un control de respuesta mientras el
+                alcance y las traducciones no estén aprobados.
+              </p>
+            </article>
+          </div>
+
+          <div class="plain-note" data-matrix-id="SCOPE-03-UI-01">
+            <strong>Sin diagnóstico automático:</strong> esta demostración no produce resultados
+            como “apto”, “caso simple” o “debes declarar”. Para una situación real, consulta la ayuda
+            oficial de ELSTER o a un <span lang="de">Steuerberater</span>.
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section" data-matrix-section="MAIN" disabled>
+          <legend class="section-legend">
+            <span class="section-number">2</span>
+            <span>
+              <span class="term-primary" lang="de">Steuererklärung und persönliche Angaben</span>
+              <span class="term-translation">Declaración y datos personales</span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">MAIN-01–03 · Pendiente</span>
+            <p>
+              Los controles siguientes solo prueban la presentación HTML. No reproducen ni
+              certifican los campos del <span lang="de">Hauptvordruck ESt 1 A</span>.
+            </p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field" data-matrix-id="MAIN-01-DEMO-01" data-content-kind="generic-placeholder">
+              <label for="demo-first-name">
+                <span class="term-primary" lang="de">Vorname (fiktiv)</span>
+                <span class="term-translation">Nombre ficticio</span>
+              </label>
+              <input id="demo-first-name" name="demo-first-name" type="text" placeholder="Ejemplo inventado" autocomplete="off">
+            </div>
+
+            <div class="field" data-matrix-id="MAIN-01-DEMO-02" data-content-kind="generic-placeholder">
+              <label for="demo-last-name">
+                <span class="term-primary" lang="de">Nachname (fiktiv)</span>
+                <span class="term-translation">Apellidos ficticios</span>
+              </label>
+              <input id="demo-last-name" name="demo-last-name" type="text" placeholder="Ejemplo inventado" autocomplete="off">
+            </div>
+
+            <div class="field" data-matrix-id="MAIN-01-DEMO-03" data-content-kind="generic-placeholder">
+              <label for="demo-birth-date">
+                <span class="term-primary" lang="de">Geburtsdatum (fiktiv)</span>
+                <span class="term-translation">Fecha de nacimiento ficticia</span>
+              </label>
+              <input id="demo-birth-date" name="demo-birth-date" type="date" autocomplete="off">
+            </div>
+
+            <div class="field" data-matrix-id="MAIN-01-DEMO-04" data-content-kind="generic-placeholder">
+              <label for="demo-address">
+                <span class="term-primary" lang="de">Anschrift (fiktiv)</span>
+                <span class="term-translation">Dirección ficticia</span>
+              </label>
+              <input id="demo-address" name="demo-address" type="text" placeholder="Calle Ejemplo · Ciudad Demo" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="pending-panel" data-matrix-id="MAIN-02-UI-01 MAIN-03-UI-01">
+            <span class="pending-panel__label">Contenido genérico</span>
+            <h3>Contenido pendiente de revisión</h3>
+            <p>
+              Los datos de pareja y cualquier concepto bancario no se implementan en esta versión.
+              No introduzcas identificadores fiscales, cuentas bancarias ni información real.
+            </p>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section" data-matrix-section="EMP" disabled>
+          <legend class="section-legend">
+            <span class="section-number">3</span>
+            <span>
+              <span class="term-primary" lang="de">Fiktive Beschäftigungsdaten</span>
+              <span class="term-translation">Datos ficticios de empleo</span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">EMP-01–03 · Pendiente</span>
+            <p>
+              El único campo operativo es un ejemplo ficticio de empleador. Las referencias fiscales
+              del bloque permanecen estáticas hasta su revisión profesional y lingüística.
+            </p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field" data-matrix-id="EMP-01-DEMO-01" data-content-kind="generic-placeholder">
+              <label for="demo-employer">
+                <span class="term-primary" lang="de">Arbeitgeber (fiktiv)</span>
+                <span class="term-translation">Empleador ficticio</span>
+              </label>
+              <input id="demo-employer" name="demo-employer" type="text" placeholder="Empresa Demo" autocomplete="off">
+            </div>
+
+            <article class="pending-panel pending-panel--compact" data-matrix-id="EMP-01-UI-01">
+              <span class="pending-panel__label">EMP-01 · Pendiente</span>
+              <h3><span lang="de">Lohnsteuerbescheinigung</span></h3>
+              <p>
+                La pregunta y su explicación no son operativas hasta completar la revisión. No hay
+                campos que reproduzcan el certificado ni espacios para importes.
+              </p>
+            </article>
+          </div>
+
+          <div class="pending-panel" data-matrix-id="EMP-01-UI-02 EMP-02-UI-01 EMP-03-UI-01">
+            <span class="pending-panel__label">Marcador fiscal</span>
+            <h3>Contenido salarial pendiente de revisión profesional</h3>
+            <p>
+              En esta versión solo se muestra la posición del bloque dentro de la interfaz. No hay
+              campos salariales operativos y no deben introducirse importes.
+            </p>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section" data-matrix-section="WORK" disabled>
+          <legend class="section-legend">
+            <span class="section-number">4</span>
+            <span>
+              <span class="term-primary" lang="de">Werbungskosten</span>
+              <span class="term-translation">
+                Conceptos de <span lang="de">Werbungskosten</span> · traducción fiscal pendiente
+              </span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">WORK-01–05 · Pendiente</span>
+            <p>
+              Los términos se muestran únicamente para reconocer categorías. Su presencia no
+              significa que un gasto sea deducible, que deba declararse ni que genere devolución.
+            </p>
+          </div>
+
+          <div class="term-grid" aria-label="Términos pendientes de revisión profesional">
+            <div class="term-card" data-matrix-id="WORK-01-UI-01">
+              <span lang="de">Entfernungspauschale</span>
+              <p>Referencia estructural; sin distancia, días, importes ni cálculo.</p>
+            </div>
+            <div class="term-card" data-matrix-id="WORK-02-UI-01">
+              <span lang="de">Arbeitsmittel</span>
+              <p>Referencia estructural; sin importe ni conclusión fiscal.</p>
+            </div>
+            <div class="term-card" data-matrix-id="WORK-03-UI-01">
+              <span lang="de">Fortbildungskosten</span>
+              <p>Referencia estructural; traducción y alcance pendientes.</p>
+            </div>
+            <div class="term-card" data-matrix-id="WORK-04-UI-01">
+              <span lang="de">Tagespauschale</span>
+              <p>Referencia independiente; sin reglas, días, límites ni importes.</p>
+            </div>
+            <div class="term-card" data-matrix-id="WORK-04-UI-02">
+              <span lang="de">Häusliches Arbeitszimmer</span>
+              <p>Referencia independiente; sin reglas, condiciones, límites ni importes.</p>
+            </div>
+            <div class="term-card" data-matrix-id="WORK-05-UI-01">
+              <span lang="de">Reisekosten bei beruflich veranlasster Auswärtstätigkeit</span>
+              <p>Referencia estructural; sin cálculo ni determinación de aplicabilidad.</p>
+            </div>
+          </div>
+
+          <div class="pending-panel">
+            <span class="pending-panel__label">Marcador fiscal</span>
+            <h3>Contenido fiscal pendiente de revisión profesional</h3>
+            <p>
+              En esta versión se muestra únicamente la estructura del bloque. No hay campos
+              fiscales operativos y no deben introducirse importes.
+            </p>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section" data-matrix-section="DED" disabled>
+          <legend class="section-legend">
+            <span class="section-number">5</span>
+            <span>
+              <span class="term-primary" lang="de">Ausgewählte steuerliche Bereiche</span>
+              <span class="term-translation">Otros conceptos fiscales seleccionados</span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">DED-01–05 · Pendiente</span>
+            <p>
+              Los nombres siguientes se conservan únicamente como referencias del inventario
+              acordado. No contienen traducciones fiscales, reglas, condiciones ni campos operativos.
+            </p>
+          </div>
+
+          <div class="term-grid" aria-label="Grupos pendientes de revisión profesional">
+            <div class="term-card" data-matrix-id="DED-01-UI-01">
+              <span lang="de">Vorsorgeaufwendungen</span>
+              <p>Encabezado educativo sin campos ni importes.</p>
+            </div>
+            <div class="term-card" data-matrix-id="DED-02-UI-01">
+              <span lang="de">Sonderausgaben</span>
+              <p>Encabezado educativo sin condiciones ni conclusión fiscal.</p>
+            </div>
+            <div class="term-card" data-matrix-id="DED-03-UI-01">
+              <span lang="de">Anlage Kind</span>
+              <p>Referencia estructural; no representa un bloque completo.</p>
+            </div>
+            <div class="term-card" data-matrix-id="DED-04-UI-01">
+              <span lang="de">Haushaltsnahe Aufwendungen</span>
+              <p>Encabezado educativo sin condiciones, importes ni explicación fiscal.</p>
+            </div>
+            <div class="term-card" data-matrix-id="DED-05-UI-01">
+              <span lang="de">Außergewöhnliche Belastungen</span>
+              <p>Encabezado educativo sin importes ni inferencias.</p>
+            </div>
+          </div>
+
+          <div class="pending-panel">
+            <span class="pending-panel__label">Marcador fiscal</span>
+            <h3>Contenido fiscal pendiente de revisión profesional</h3>
+            <p>
+              No hay campos operativos, ejemplos de beneficio ni afirmaciones sobre cantidades,
+              condiciones o derecho a devolución.
+            </p>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section" data-matrix-section="DOC" disabled>
+          <legend class="section-legend">
+            <span class="section-number">6</span>
+            <span>
+              <span class="term-primary" lang="de">Unterlagen</span>
+              <span class="term-translation">Documentos de referencia</span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">DOC-01 · Pendiente</span>
+            <p>
+              Este checklist solo prueba la presentación visual con ejemplos inventados. SteuerNotta
+              no recibe archivos ni determina qué documentos son necesarios, válidos o suficientes.
+            </p>
+          </div>
+
+          <div class="checklist" data-matrix-id="DOC-01">
+            <label class="check-card" for="demo-document-certificate" data-matrix-id="DOC-01-DEMO-01">
+              <input id="demo-document-certificate" type="checkbox" name="demo-document-certificate">
+              <span>
+                <span class="term-primary" lang="de">Fiktives Beispiel einer Lohnsteuerbescheinigung 2025</span>
+                <span class="term-translation">
+                  Ejemplo ficticio de <span lang="de">Lohnsteuerbescheinigung</span> 2025
+                </span>
+              </span>
+            </label>
+            <label class="check-card" for="demo-document-expense" data-matrix-id="DOC-01-DEMO-02">
+              <input id="demo-document-expense" type="checkbox" name="demo-document-expense">
+              <span>
+                <span class="term-primary" lang="de">Fiktiver Beleg zu einer Ausgabe</span>
+                <span class="term-translation">Ejemplo ficticio de justificante relacionado con un gasto</span>
+              </span>
+            </label>
+            <label class="check-card" for="demo-document-other" data-matrix-id="DOC-01-DEMO-03">
+              <input id="demo-document-other" type="checkbox" name="demo-document-other">
+              <span>
+                <span class="term-primary" lang="de">Weitere erfundene Testinformation</span>
+                <span class="term-translation">Otra información inventada para probar la interfaz</span>
+              </span>
+            </label>
+          </div>
+
+          <p class="field-note">
+            Este checklist no contiene controles de carga y no afirma que un documento sea obligatorio,
+            completo, verificado o suficiente.
+          </p>
+        </fieldset>
+
+        <fieldset class="form-section form-section--review" data-matrix-section="REVIEW" disabled>
+          <legend class="section-legend">
+            <span class="section-number">7</span>
+            <span>
+              <span class="term-primary" lang="de">Prüfung und Bestätigung</span>
+              <span class="term-translation">Revisión y confirmación</span>
+            </span>
+          </legend>
+
+          <div class="section-meta">
+            <span class="matrix-badge">REVIEW-01–02 · Pendiente</span>
+            <p>
+              Esta revisión confirma los límites de la demostración; no valida una declaración ni
+              comprueba el tratamiento fiscal de las respuestas.
+            </p>
+          </div>
+
+          <div class="review-summary" data-matrix-id="REVIEW-02-UI-01">
+            <h3>Qué ocurre al finalizar</h3>
+            <ul>
+              <li>El script impide el envío normal del formulario.</li>
+              <li>No crea una URL con las respuestas y no utiliza FormData, fetch ni almacenamiento.</li>
+              <li>Restablece los controles y abre la página española de confirmación.</li>
+            </ul>
+          </div>
+
+          <div class="confirmation-list" data-matrix-id="REVIEW-01">
+            <label class="check-card check-card--required" for="confirm-fictitious" data-matrix-id="REVIEW-01-UI-01">
+              <input
+                id="confirm-fictitious"
+                type="checkbox"
+                name="confirm-fictitious"
+                aria-describedby="required-note"
+                required
+              >
+              <span>
+                <span class="term-primary" lang="de">Ich habe ausschließlich erfundene Daten verwendet.</span>
+                <span class="term-translation">Confirmo que he usado exclusivamente datos inventados. *</span>
+              </span>
+            </label>
+            <label class="check-card check-card--required" for="confirm-demo-only" data-matrix-id="REVIEW-01-UI-02">
+              <input
+                id="confirm-demo-only"
+                type="checkbox"
+                name="confirm-demo-only"
+                aria-describedby="required-note"
+                required
+              >
+              <span>
+                <span class="term-primary" lang="de">Diese Aktion beendet nur die Demonstration.</span>
+                <span class="term-translation">
+                  Entiendo que esta acción solo finaliza la demostración y no presenta una declaración fiscal. *
+                </span>
+              </span>
+            </label>
+          </div>
+
+          <p id="required-note" class="required-note">
+            * Obligatorio únicamente para completar la demostración; no significa que el dato sea
+            obligatorio en una declaración real.
+          </p>
+
+          <div class="form-actions">
+            <p>
+              No se mostrará un cálculo, una estimación, un resumen de respuestas ni una descarga.
+            </p>
+            <button class="button button--primary" type="submit" data-matrix-id="REVIEW-01-UI-03">
+              Finalizar demostración
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p><strong>© SteuerNotta</strong> · Prototipo educativo de frontend.</p>
+        <p>Sin asesoramiento fiscal · Sin conexión con ELSTER · Solo datos ficticios.</p>
+      </div>
+    </footer>
+  </body>
+</html>

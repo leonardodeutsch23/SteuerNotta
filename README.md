@@ -2,7 +2,7 @@
 
 > A multilingual educational frontend demo that helps salaried employees in Germany explore selected German tax terms and form concepts, with a primary focus on Spanish-speaking users.
 
-[Repository](https://github.com/leonardodeutsch23/SteuerNotta) · **Live site:** not deployed yet · **Status:** planning · **Reference tax year:** 2025
+[Repository](https://github.com/leonardodeutsch23/SteuerNotta) · **Live site:** not deployed yet · **Status:** implementation started · **Reference tax year:** 2025
 
 ## Important disclaimer
 
@@ -20,6 +20,7 @@ The interface must never describe the demo as complete, certified, secure, encry
 ## Table of contents
 
 - [Project overview](#project-overview)
+- [Current implementation](#current-implementation)
 - [Goals and users](#goals-and-users)
 - [Milestone scope](#milestone-scope)
 - [User experience](#user-experience)
@@ -29,7 +30,7 @@ The interface must never describe the demo as complete, certified, secure, encry
 - [Design direction](#design-direction)
 - [Accessibility](#accessibility)
 - [User stories](#user-stories)
-- [Planned technology stack](#planned-technology-stack)
+- [Technology stack](#technology-stack)
 - [Planned repository structure](#planned-repository-structure)
 - [Project management](#project-management)
 - [Testing](#testing)
@@ -45,7 +46,7 @@ German tax terminology can be difficult even for native speakers. For an employe
 
 SteuerNotta explores a clearer learning experience. It keeps the original German term visible, places a Spanish or English explanation directly beneath it and provides contextual help for difficult concepts.
 
-The current repository will contain a frontend-only demonstration with:
+The target frontend-only demonstration comprises:
 
 - one English homepage;
 - one long-form demo in Spanish, one in English and one in German;
@@ -54,6 +55,18 @@ The current repository will contain a frontend-only demonstration with:
 - clear limits and fictitious-data notices throughout.
 
 The broader product vision may eventually include real guidance, calculations, accounts and submission. Those capabilities are future ideas and are not part of this milestone.
+
+## Current implementation
+
+The first coded slice now contains:
+
+- `form-es.html` — the seven-section Spanish demonstration with German-first labels;
+- `success-es.html` — the matching Spanish completion page;
+- `assets/css/style.css` — the responsive visual system used by both pages;
+- `assets/js/script.js` — the non-serialising completion handler;
+- one provisional traceability and interaction-state inventory in the fiscal review matrix.
+
+The Spanish form intentionally uses generic fictitious controls and static `Pending` cards wherever exact fiscal content has not been professionally reviewed. No specific fiscal question marked `Pending` is currently interactive. Because `index.html` remains planned, the current form header links within the form and the success page links back to the form and to the GitHub repository; the target Home action will replace that temporary repository action when the canonical homepage exists. The English and German parity pages, Bootstrap help-modal pattern and deployment also remain planned. This status must be updated whenever the implemented file set changes.
 
 ## Goals and users
 
@@ -145,7 +158,7 @@ These two low-fidelity SVGs are the canonical structural reference. Earlier gene
 
 ## Page specifications
 
-All features below are planned; none should be marked implemented until code and tests exist.
+The specifications below describe the full target. Individual implementation-status notes identify the Spanish slice that already has code and test evidence; everything else remains planned.
 
 ### Homepage: `index.html`
 
@@ -248,11 +261,15 @@ Flags must be stored locally and credited with their source and licence.
 - `form-en.html`
 - `form-de.html`
 
-The three forms have complete structural parity. They are long, normally scrolling pages—not accordions, dynamic wizards or saved sessions.
+**Implementation status:** `form-es.html` exists; `form-en.html` and `form-de.html` remain planned.
+
+The three target forms must have complete structural parity. They are long, normally scrolling pages—not accordions, dynamic wizards or saved sessions.
 
 The Spanish and English versions show the German term first and the translation immediately below it. The German version contains the same structure without redundant translations.
 
 Complex fields use labelled Bootstrap modal buttons. Each help entry should explain the term, expected information, relevance, a plain example where appropriate and when professional help is advisable.
+
+The current Spanish slice includes no fiscal help modal because every specific fiscal help entry is still `Pending`. A modal must not be populated with improvised guidance merely to demonstrate the component.
 
 No file input is allowed. The Documents section is a preparation checklist only.
 
@@ -274,7 +291,9 @@ This is convenience logic for fictitious demo data, not a security control. Each
 - `success-en.html`
 - `success-de.html`
 
-Each page contains, in its own language:
+**Implementation status:** `success-es.html` exists; the English and German success pages remain planned.
+
+Each target success page must contain, in its own language:
 
 - confirmation that the demonstration ended;
 - confirmation that no form values were submitted to or saved by SteuerNotta;
@@ -357,9 +376,10 @@ The visual system is provisional until it is tested in code.
   --color-surface: #ffffff;
   --color-text: #1f2933;
   --color-text-muted: #5f6b76;
-  --color-border: #cbd5e1;
+  --color-border: #64748b;
   --color-success: #2e7d32;
   --color-warning: #b26a00;
+  --color-warning-text: #704200;
   --color-error: #b3261e;
 }
 ```
@@ -399,19 +419,27 @@ A full formal keyboard audit was not selected as a milestone deliverable, but th
 | Must Have | As a user, I want supportive hero imagery. | The carousel has three coherent local illustrations and usable controls. |
 | Could Have | As a user, I want additional scan aids in the long form. | Static section anchors are added only if they remain consistent and accessible. |
 
-## Planned technology stack
+## Technology stack
 
-- HTML5
-- CSS3
-- Bootstrap 5 CSS and JavaScript bundle
-- Minimal custom JavaScript for mobile-navbar closing and non-serialising demo completion
-- Bootstrap Icons or Font Awesome, after one library is selected
-- Manrope and Inter, subject to final delivery/hosting decision
-- Git and GitHub
-- GitHub Projects and GitHub Pages
-- W3C validators, Lighthouse and browser developer tools
+Implemented now:
 
-Do not list a technology as used until it exists in the repository.
+- semantic HTML5;
+- mobile-first custom CSS3;
+- minimal vanilla JavaScript for non-serialising demo completion;
+- Git version control and the connected GitHub repository/project.
+
+Planned, but not yet implemented:
+
+- Bootstrap 5 CSS and JavaScript bundle;
+- mobile-navbar closing logic;
+- Bootstrap Icons or Font Awesome, after one library is selected;
+- Manrope and Inter delivery, subject to the final hosting decision;
+- GitHub Pages deployment;
+- W3C validator, Lighthouse and cross-browser delivery evidence.
+
+Do not list a planned technology as used until it exists in the repository or a test as passed until evidence is recorded.
+
+Until Manrope and Inter are delivered, the CSS tokens fall back explicitly to Segoe UI and the browser's generic sans-serif font.
 
 ## Planned repository structure
 
@@ -474,16 +502,17 @@ The canonical issue list, checklists and acceptance criteria live in [docs/plann
 
 ## Testing
 
-No test result is claimed yet.
+The first Spanish slice has a documented Chrome responsive and completion-flow smoke test in [docs/testing/form-es-qa.md](docs/testing/form-es-qa.md). This does not convert any broader milestone test into a pass.
 
 | Test | Purpose | Status |
 |---|---|---|
 | W3C HTML Validator | HTML validity and semantic errors | Planned |
 | W3C CSS Validator | CSS validity | Planned |
 | Lighthouse | Accessibility, performance, best practices and SEO | Planned |
-| Manual links | Navigation, CTAs, language routes and footer | Planned |
-| Forms | Required fields, formats, help modals and non-serialising completion | Planned |
-| Responsive review | 375px, 768px and 1440px layouts | Planned |
+| Manual links | Navigation, CTAs, language routes and footer | Local form → success and success → form routes checked; target homepage/language routes planned |
+| Forms | Required fields, formats, help modals and non-serialising completion | Spanish safety confirmations and completion handler passed; final content/modals planned |
+| Responsive review | 375px, 768px and 1440px layouts | Spanish form/success slice passed; full site planned |
+| Targeted colour regression | Control boundary, placeholder and warning-text pairs changed during the ES review | `4.76:1`, `5.45:1` and `7.52:1` respectively; full contrast audit planned |
 | Cross-browser review | Chrome, Firefox, Edge and Safari | Planned |
 | Keyboard smoke test | Primary journey, focus order and visible focus | Planned |
 

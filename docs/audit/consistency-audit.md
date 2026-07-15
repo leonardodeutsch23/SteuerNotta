@@ -23,8 +23,8 @@ No mockup, generated form or assistant statement overrides a later confirmed dec
 | 2 | Critical | The generated form was initially described as “correct and complete”. The assistant later retracted that wording; no field-by-field professional validation exists. | Treat the seven sections and all fields as provisional UX/content research. Track every field in the fiscal review matrix. | Resolved; professional review pending |
 | 3 | Major | The form moved from 19 blocks to an accidental 10-section proposal and finally to seven main sections. The ten-section proposal also omitted Documents. | Seven sections are canonical: Scope; Return/Personal; Employment; Work Expenses; Deductions; Documents; Review/Confirmation. | Resolved |
 | 4 | Major | Early flow used one `success.html`; the final interview approved three localised success pages. | Use `success-es.html`, `success-en.html` and `success-de.html`. | Resolved |
-| 5 | Critical | A generated `form-es.html` redirects to `success.html` and contains `<meta name="author" content="Pepe">`, neither of which matches the final project. | Do not commit that artefact unchanged. Use the localised route and the confirmed author, or omit the author meta tag. | Prevented by plan |
-| 6 | Critical | A GET form action would put all entries into the URL/history while the copy claims nothing is sent. | Use a small valid-submit handler that prevents default and navigates without serialising values; fictitious data remains mandatory. | Resolved in README; implementation pending |
+| 5 | Critical | A superseded chat-generated `form-es.html` redirected to `success.html` and contained `<meta name="author" content="Pepe">`, neither of which matches the final project. | Do not use that artefact. The repository implementation omits the unsupported author metadata and uses the localised route. | Resolved in current ES implementation |
+| 6 | Critical | A GET form action would put all entries into the URL/history while the copy claims nothing is sent. | Use a small valid-submit handler that prevents default and navigates without serialising values; fictitious data remains mandatory. | Resolved and tested in ES implementation; EN/DE parity pending |
 | 7 | Major | “Does not process data” is technically false because the browser renders and validates values locally. | Say “does not upload, transmit or persist form data”; describe local browser validation precisely. | Resolved |
 | 8 | Major | Early raster mockups add Login, Pricing, FAQ, Contact, Resources and separate legal pages. | Exclude them from the milestone; keep raster images as non-canonical visual exploration only. | Resolved |
 | 9 | Critical | Form mockups show a wizard, Back/Continue controls, dynamic progress, Save & exit, stored answers, uploads, review/download and encryption claims. | Canonical form is one long page with seven open sections, no real uploads/storage/calculation/progress/download/security claims. | Resolved |
@@ -59,19 +59,20 @@ No mockup, generated form or assistant statement overrides a later confirmed dec
 ## Canonical artefacts
 
 - `README.md` — product and implementation guide.
+- `form-es.html`, `success-es.html`, `assets/css/style.css` and `assets/js/script.js` — first implemented Spanish slice.
 - `assets/docs/wireframes/homepage-responsive.svg` — homepage layout at the three reference widths.
 - `assets/docs/wireframes/form-success-responsive.svg` — long-form and success layouts at the three reference widths.
 - `docs/content/fiscal-review-matrix.md` — truth-status register for fiscal content.
 - `docs/planning/github-plan.md` — issue and board plan.
 
-Earlier generated raster boards and the generated `form-es.html` are not canonical implementation sources.
+Earlier generated raster boards and the superseded chat-generated `form-es.html` are not canonical implementation sources.
 
 ## Remaining uncertainties
 
 - Exact field list, translations and help copy: pending documented professional/linguistic review.
 - Final logo, typography delivery method, icon library and illustration set: pending implementation decisions.
 - Exact Bootstrap release and CDN integrity values: pending repository setup.
-- Actual validation, accessibility, browser and Lighthouse results: pending execution.
+- Formal validator, full accessibility, cross-browser and Lighthouse results: pending execution. The first Spanish Chrome smoke test and targeted colour-pair checks are documented separately and must not be generalised to the full milestone.
 - Live GitHub Pages URL: pending early deployment.
 
 These items must remain labelled `Pending` rather than being filled with assumed results.
