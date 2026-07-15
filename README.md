@@ -444,10 +444,10 @@ Superseded drafts such as `form.html` and `form2.html` must not be committed as 
 
 ## Project management
 
-- **GitHub Project:** `SteuerNotta Milestone Project`
+- **GitHub Project:** [SteuerNotta Milestone Project](https://github.com/users/leonardodeutsch23/projects/5)
 - **Statuses:** `Todo`, `In Progress`, `Done`
 - **Planning checkpoint:** 18 July 2026 (not a delivery milestone)
-- **Single milestone:** `SteuerNotta Milestone Project`
+- **Single milestone:** [SteuerNotta Milestone Project](https://github.com/leonardodeutsch23/SteuerNotta/milestone/1)
 - **Due date:** 31 July 2026
 - **Working language:** English for README, issues, acceptance criteria and testing records
 - **Git strategy:** small, focused commits directly on `main`
