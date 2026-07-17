@@ -54,7 +54,7 @@
 <body>
     <main>
         <form id="fallprufung-form" method="post" action="#"
-            aria-label="Fallprüfung, Umfang, Hauptvordruck ESt 1 A und Nichtselbständige Arbeit">
+            aria-label="Fallprüfung, Hauptvordruck, Nichtselbständige Arbeit und Werbungskosten">
             <fieldset class="form-section" data-field-group="FULL-SCOPE">
                 <legend>
                     <strong>1</strong>
@@ -1302,6 +1302,469 @@
                     </div>
                 </fieldset>
 
+            </fieldset>
+
+            <!-- ================================================================
+                 4. WERBUNGSKOSTEN
+                 Desplazamientos, medios de trabajo, home office y viajes.
+                 ================================================================ -->
+            <fieldset class="form-section" data-field-group="FULL-WORK">
+                <legend>
+                    <strong>4</strong>
+                    <span lang="de">Werbungskosten</span> · Gastos relacionados con el empleo
+                </legend>
+
+                <p class="field-note">Los datos de esta sección corresponden a la persona seleccionada en
+                    “Anlage N · Datos adicionales de empleo”.</p>
+
+                <p id="work-expenses-amount-help" class="field-note">Introduce los importes en euros usando coma
+                    decimal, por ejemplo 1234,56.</p>
+
+                <!-- Trayectos a la primera actividad, Anlage N líneas 27–52. -->
+                <fieldset class="field-group" data-source-ref="Anlage N 2025 Zeilen 27-52">
+                    <legend><span lang="de">Entfernungspauschale</span> · Trayecto a la primera actividad</legend>
+
+                    <div id="commute-expenses-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-place">
+                                <span class="textde">Erste Tätigkeitsstätte / Sammelpunkt / weiträumiges
+                                    Tätigkeitsgebiet</span><br>
+                                <span class="textes">Lugar y dirección del centro o punto de trabajo</span>
+                            </label>
+                            <input id="full-commute-place" name="full_commute_place" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-from">
+                                <span class="textde">Zeitraum von</span><br>
+                                <span class="textes">Periodo desde</span>
+                            </label>
+                            <input id="full-commute-from" name="full_commute_from" type="date" min="2025-01-01"
+                                max="2025-12-31" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-to">
+                                <span class="textde">Zeitraum bis</span><br>
+                                <span class="textes">Periodo hasta</span>
+                            </label>
+                            <input id="full-commute-to" name="full_commute_to" type="date" min="2025-01-01"
+                                max="2025-12-31" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-weekdays">
+                                <span class="textde">Arbeitstage je Woche</span><br>
+                                <span class="textes">Días de trabajo por semana</span>
+                            </label>
+                            <input id="full-commute-weekdays" name="full_commute_weekdays" type="number" min="1" max="7"
+                                step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-vacation">
+                                <span class="textde">Urlaubs- und Krankheitstage</span><br>
+                                <span class="textes">Días de vacaciones y enfermedad</span>
+                            </label>
+                            <input id="full-commute-vacation" name="full_commute_vacation" type="number" min="0"
+                                step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-home">
+                                <span class="textde">Homeoffice- und Auswärtstage</span><br>
+                                <span class="textes">Días de home office y actividad externa</span>
+                            </label>
+                            <input id="full-commute-home" name="full_commute_home" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-days">
+                                <span class="textde">Tatsächliche Arbeitstage an der Tätigkeitsstätte</span><br>
+                                <span class="textes">Días realmente acudidos</span>
+                            </label>
+                            <input id="full-commute-days" name="full_commute_days" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-distance">
+                                <span class="textde">Einfache Entfernung in Kilometern</span><br>
+                                <span class="textes">Distancia de ida en kilómetros</span>
+                            </label>
+                            <input id="full-commute-distance" name="full_commute_distance" type="text"
+                                inputmode="decimal" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-own-car">
+                                <span class="textde">Kilometer mit eigenem/überlassenem Pkw</span><br>
+                                <span class="textes">Kilómetros en vehículo propio o cedido</span>
+                            </label>
+                            <input id="full-commute-own-car" name="full_commute_own_car" type="text" inputmode="decimal"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-passenger">
+                                <span class="textde">Tage als Mitfahrer</span><br>
+                                <span class="textes">Días como pasajero en vehículo compartido</span>
+                            </label>
+                            <input id="full-commute-passenger" name="full_commute_passenger" type="number" min="0"
+                                step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-public">
+                                <span class="textde">Aufwendungen für öffentliche Verkehrsmittel</span><br>
+                                <span class="textes">Coste real de transporte público</span>
+                            </label>
+                            <input id="full-commute-public" name="full_commute_public" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-ferry">
+                                <span class="textde">Fähr- und Flugkosten</span><br>
+                                <span class="textes">Costes de ferry o avión vinculados al trayecto</span>
+                            </label>
+                            <input id="full-commute-ferry" name="full_commute_ferry" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-employer">
+                                <span class="textde">Ersatzleistungen des Arbeitgebers</span><br>
+                                <span class="textes">Ayudas del empleador para el desplazamiento</span>
+                            </label>
+                            <input id="full-commute-employer" name="full_commute_employer" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-agency">
+                                <span class="textde">Zuschüsse Agentur für Arbeit / Jobcenter</span><br>
+                                <span class="textes">Ayudas de la agencia de empleo o Jobcenter</span>
+                            </label>
+                            <input id="full-commute-agency" name="full_commute_agency" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-commute-disability">
+                                <span class="textde">Behinderungsbedingte Besonderheit</span><br>
+                                <span class="textes">Existe una situación de discapacidad relevante para el
+                                    trayecto</span>
+                            </label>
+                            <select id="full-commute-disability" name="full_commute_disability">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Gastos profesionales generales, Anlage N líneas 53–64. -->
+                <fieldset class="field-group" data-source-ref="Anlage N 2025 Zeilen 53-64">
+                    <legend>Medios de trabajo, home office y otros gastos</legend>
+
+                    <div id="general-work-expenses-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-association">
+                                <span class="textde">Beiträge zu Berufsverbänden</span><br>
+                                <span class="textes">Cuotas de asociaciones profesionales</span>
+                            </label>
+                            <input id="full-association" name="full_association" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-equipment-description">
+                                <span class="textde">Arbeitsmittel · Bezeichnung</span><br>
+                                <span class="textes">Descripción del medio de trabajo</span>
+                            </label>
+                            <input id="full-equipment-description" name="full_equipment_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-equipment-amount">
+                                <span class="textde">Arbeitsmittel · Aufwendungen</span><br>
+                                <span class="textes">Importe de medios de trabajo</span>
+                            </label>
+                            <input id="full-equipment-amount" name="full_equipment_amount" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-office-room">
+                                <span class="textde">Häusliches Arbeitszimmer</span><br>
+                                <span class="textes">Gastos o importe anual del despacho doméstico</span>
+                            </label>
+                            <input id="full-office-room" name="full_office_room" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-home-days-only">
+                                <span class="textde">Tagespauschale · erste Tätigkeitsstätte nicht aufgesucht</span><br>
+                                <span class="textes">Días de actividad total o predominante en casa sin acudir a la
+                                    primera Tätigkeitsstätte</span>
+                            </label>
+                            <input id="full-home-days-only" name="full_home_days_only" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-home-days-no-workplace">
+                                <span class="textde">Tagespauschale · dauerhaft kein anderer Arbeitsplatz</span><br>
+                                <span class="textes">Días con home office y asistencia al centro sin otro puesto
+                                    disponible</span>
+                            </label>
+                            <input id="full-home-days-no-workplace" name="full_home_days_no_workplace" type="number"
+                                min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-training">
+                                <span class="textde">Fortbildungskosten</span><br>
+                                <span class="textes">Costes de formación profesional posterior</span>
+                            </label>
+                            <input id="full-training" name="full_training" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-applications">
+                                <span class="textde">Bewerbungskosten</span><br>
+                                <span class="textes">Costes de solicitudes de empleo</span>
+                            </label>
+                            <input id="full-applications" name="full_applications" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-bank-fees">
+                                <span class="textde">Kontoführungsgebühren</span><br>
+                                <span class="textes">Gastos de cuenta relacionados con el salario</span>
+                            </label>
+                            <input id="full-bank-fees" name="full_bank_fees" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-moving">
+                                <span class="textde">Beruflich veranlasste Umzugskosten</span><br>
+                                <span class="textes">Mudanza motivada por el trabajo</span>
+                            </label>
+                            <input id="full-moving" name="full_moving" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-other-work-description">
+                                <span class="textde">Weitere Werbungskosten · Art</span><br>
+                                <span class="textes">Descripción de otro gasto profesional</span>
+                            </label>
+                            <input id="full-other-work-description" name="full_other_work_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-other-work-amount">
+                                <span class="textde">Weitere Werbungskosten · Betrag</span><br>
+                                <span class="textes">Importe de otro gasto profesional</span>
+                            </label>
+                            <input id="full-other-work-amount" name="full_other_work_amount" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Viajes profesionales, Anlage N líneas 65–77. -->
+                <fieldset class="field-group" data-source-ref="Anlage N 2025 Zeilen 65-77">
+                    <legend><span lang="de">Reisekosten bei Auswärtstätigkeit</span> · Viajes profesionales</legend>
+
+                    <div id="business-travel-expenses-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-travel-description">
+                                <span class="textde">Auswärtstätigkeit · Beschreibung</span><br>
+                                <span class="textes">Descripción de la actividad externa</span>
+                            </label>
+                            <input id="full-travel-description" name="full_travel_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-travel-transport">
+                                <span class="textde">Fahrtkosten</span><br>
+                                <span class="textes">Costes de transporte</span>
+                            </label>
+                            <input id="full-travel-transport" name="full_travel_transport" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-travel-lodging">
+                                <span class="textde">Übernachtungskosten</span><br>
+                                <span class="textes">Costes de alojamiento</span>
+                            </label>
+                            <input id="full-travel-lodging" name="full_travel_lodging" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-travel-incidental">
+                                <span class="textde">Reisenebenkosten</span><br>
+                                <span class="textes">Gastos incidentales de viaje</span>
+                            </label>
+                            <input id="full-travel-incidental" name="full_travel_incidental" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-driver-days">
+                                <span class="textde">Berufskraftfahrer · Kalendertage</span><br>
+                                <span class="textes">Días con pernocta en vehículo profesional</span>
+                            </label>
+                            <input id="full-driver-days" name="full_driver_days" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-travel-reimbursement">
+                                <span class="textde">Steuerfreier Ersatz des Arbeitgebers</span><br>
+                                <span class="textes">Reembolso exento del empleador</span>
+                            </label>
+                            <input id="full-travel-reimbursement" name="full_travel_reimbursement" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-over-eight">
+                                <span class="textde">Abwesenheit mehr als 8 Stunden</span><br>
+                                <span class="textes">Días de ausencia superior a 8 horas</span>
+                            </label>
+                            <input id="full-meal-over-eight" name="full_meal_over_eight" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-arrival">
+                                <span class="textde">An- und Abreisetage</span><br>
+                                <span class="textes">Días de llegada y salida con pernocta</span>
+                            </label>
+                            <input id="full-meal-arrival" name="full_meal_arrival" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-full">
+                                <span class="textde">Abwesenheit 24 Stunden</span><br>
+                                <span class="textes">Días completos de ausencia</span>
+                            </label>
+                            <input id="full-meal-full" name="full_meal_full" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-breakfast">
+                                <span class="textde">Gestellte Frühstücke</span><br>
+                                <span class="textes">Desayunos proporcionados</span>
+                            </label>
+                            <input id="full-meal-breakfast" name="full_meal_breakfast" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-main">
+                                <span class="textde">Gestellte Mittag-/Abendessen</span><br>
+                                <span class="textes">Comidas o cenas proporcionadas</span>
+                            </label>
+                            <input id="full-meal-main" name="full_meal_main" type="number" min="0" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-foreign">
+                                <span class="textde">Auslandspauschalen</span><br>
+                                <span class="textes">Importe de dietas extranjeras</span>
+                            </label>
+                            <input id="full-meal-foreign" name="full_meal_foreign" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-meal-reimbursement">
+                                <span class="textde">Steuerfreie Arbeitgebererstattungen zur Verpflegung</span><br>
+                                <span class="textes">Reembolsos exentos de manutención</span>
+                            </label>
+                            <input id="full-meal-reimbursement" name="full_meal_reimbursement" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Gastos vinculados a ingresos especiales, Anlage N líneas 78–83. -->
+                <fieldset class="field-group" data-source-ref="Anlage N 2025 Zeilen 78-83">
+                    <legend><span lang="de">Werbungskosten in Sonderfällen</span> · Gastos en casos especiales</legend>
+
+                    <div id="special-work-expenses-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-pension-expense">
+                                <span class="textde">Werbungskosten zu steuerbegünstigten
+                                    Versorgungsbezügen</span><br>
+                                <span class="textes">Gastos ligados a prestaciones de previsión fiscalmente
+                                    favorecidas</span>
+                            </label>
+                            <input id="full-special-pension-expense" name="full_special_pension_expense" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-compensation-expense">
+                                <span class="textde">Werbungskosten zu Entschädigungen</span><br>
+                                <span class="textes">Gastos ligados a indemnizaciones</span>
+                            </label>
+                            <input id="full-special-compensation-expense" name="full_special_compensation_expense"
+                                type="text" inputmode="decimal" placeholder="0,00"
+                                aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-multiyear-expense">
+                                <span class="textde">Werbungskosten zu Arbeitslohn für mehrere Jahre</span><br>
+                                <span class="textes">Gastos ligados a salario correspondiente a varios años</span>
+                            </label>
+                            <input id="full-special-multiyear-expense" name="full_special_multiyear_expense" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-naus-expense">
+                                <span class="textde">Werbungskosten zu steuerfreiem Arbeitslohn laut Anlage
+                                    N-AUS</span><br>
+                                <span class="textes">Gastos ligados a salario exento declarado en Anlage N-AUS</span>
+                            </label>
+                            <input id="full-special-naus-expense" name="full_special_naus_expense" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-no-withholding-expense">
+                                <span class="textde">Werbungskosten zu Arbeitslohn ohne Steuerabzug</span><br>
+                                <span class="textes">Gastos ligados a salario imponible sin retención</span>
+                            </label>
+                            <input id="full-special-no-withholding-expense" name="full_special_no_withholding_expense"
+                                type="text" inputmode="decimal" placeholder="0,00"
+                                aria-describedby="work-expenses-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-belgium-expense">
+                                <span class="textde">Werbungskosten bei Ansässigkeit in Belgien und Tätigkeit im
+                                    Inland</span><br>
+                                <span class="textes">Gastos con residencia en Bélgica y trabajo en Alemania</span>
+                            </label>
+                            <input id="full-special-belgium-expense" name="full_special_belgium_expense" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="work-expenses-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
             </fieldset>
 
             <div class="form-actions">
