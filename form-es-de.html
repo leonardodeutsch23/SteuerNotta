@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SteuerNotta — Secciones 1 y 2</title>
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        /* Ajustes locales del prototipo, aplicados después de Bootstrap. */
+        body {
+            padding: 1rem;
+            font-family: system-ui, "Segoe UI", Arial, sans-serif;
+        }
+
+        #fallprufung-form .field {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+        }
+
+        #fallprufung-form .field>label {
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        #fallprufung-form #out-scope-grid>label {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        #fallprufung-form .field>input:not([type="checkbox"]):not([type="radio"]),
+        #fallprufung-form .field>select,
+        #fallprufung-form .field>textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #000000;
+            border-radius: 0.25rem;
+        }
+
+        #fallprufung-form .field>textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        #fallprufung-form .form-actions {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <form id="fallprufung-form" method="post" action="#" aria-label="Fallprüfung, Umfang und Hauptvordruck ESt 1 A">
+            <fieldset class="form-section" data-field-group="FULL-SCOPE">
+                <legend>
+                    <strong>1</strong>
+                    <span lang="de">Fallprüfung und Umfang</span> · Comprobación del caso y alcance
+                </legend>
+
+
+                <fieldset class="field-group" data-source-ref="ELSTER ESt 1 A 2025; Anlagenauswahl">
+                    <legend>Datos que definen el alcance principal</legend>
+
+                    <div id="full-scope-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-year">
+                                <span class="textde">Veranlagungszeitraum</span><br>
+                                <span class="textes">Año fiscal</span>
+                            </label>
+                            <input id="full-scope-year" name="full_scope_year" type="text" value="2025" readonly>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-residence">
+                                <span class="textde">Wohnsitz oder gewöhnlicher Aufenthalt in Deutschland</span><br>
+                                <span class="textes">Domicilio o residencia habitual en Alemania</span>
+                            </label>
+                            <select id="full-scope-residence" name="full_scope_residence">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="partial">Teilweise / Solo parte del año</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-german-wages">
+                                <span class="textde">Arbeitslohn mit deutschem Lohnsteuerabzug</span><br>
+                                <span class="textes">Salario sujeto al sistema alemán de retención fiscal</span>
+                            </label>
+                            <select id="full-scope-german-wages" name="full_scope_german_wages">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-certificates">
+                                <span class="textde">Anzahl der Lohnsteuerbescheinigungen</span><br>
+                                <span class="textes">Nº certificados</span>
+                            </label>
+                            <input id="full-scope-certificates" name="full_scope_certificates" type="number"
+                                inputmode="numeric" min="0" placeholder="0">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-marital">
+                                <span class="textde">Familienstand</span><br>
+                                <span class="textes">Estado civil</span>
+                            </label>
+                            <select id="full-scope-marital" name="full_scope_marital">
+                                <option value="">Seleccionar</option>
+                                <option value="single">Ledig / Soltero/a</option>
+                                <option value="married">Verheiratet / Casado/a</option>
+                                <option value="partnership">Lebenspartnerschaft / Pareja registrada</option>
+                                <option value="separated">Getrennt / Separado/a</option>
+                                <option value="divorced">Geschieden / Divorciado/a</option>
+                                <option value="widowed">Verwitwet / Viudo/a</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-children">
+                                <span class="textde">Kinder</span><br>
+                                <span class="textes">Hijos</span>
+                            </label>
+                            <select id="full-scope-children" name="full_scope_children">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-work-expenses">
+                                <span class="textde">Werbungskosten</span> <br>
+                                <span class="textes">Gastos relacionados con el empleo</span>
+                            </label>
+                            <select id="full-scope-work-expenses" name="full_scope_work_expenses">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-insurance">
+                                <span class="textde">Vorsorgeaufwendungen</span> <br>
+                                <span class="textes">Seguros y previsión</span>
+                            </label>
+                            <select id="full-scope-insurance" name="full_scope_insurance">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="edata">Nur eDaten / Solo datos electrónicos</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-household">
+                                <span class="textde">Haushaltsnahe Aufwendungen</span> <br>
+                                <span class="textes">Servicios domésticos</span>
+                            </label>
+                            <select id="full-scope-household" name="full_scope_household">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-scope-extraordinary">
+                                <span class="textde">Außergewöhnliche Belastungen</span> <br>
+                                <span class="textes">Cargas extraordinarias</span>
+                            </label>
+                            <select id="full-scope-extraordinary" name="full_scope_extraordinary">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="field-group" data-source-ref="ELSTER 2025 Anlagenauswahl">
+                    <legend>Señales de ampliación o salida del alcance</legend>
+
+                    <p class="field-group__intro">Marcar una opción solo identifica que deben consultarse los anexos
+                        oficiales correspondientes.</p>
+
+                    <div id="out-scope-grid" class="row g-3 align-items-stretch">
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="cross_border">
+                            <span class="textde">Ausländische Einkünfte, Auslandsarbeit oder Grenzgänger</span><br>
+                            <span class="textes">Ingresos/trabajo extranjero o situación transfronteriza · AUS, N-AUS,
+                                N-Gre o WA-ESt</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="self_employed">
+                            <span class="textde">Selbständige Arbeit, Gewerbe oder Land- und
+                                Forstwirtschaft</span><br>
+                            <span class="textes">Trabajo autónomo, negocio o agricultura · Anlagen S, G o L</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="rental">
+                            <span class="textde">Vermietung und Verpachtung</span><br>
+                            <span class="textes">Alquileres · Anlagen V</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="pension">
+                            <span class="textde">Renten oder Versorgungsbezüge</span><br>
+                            <span class="textes">Pensiones o prestaciones de jubilación · Anlagen R o campos
+                                especiales</span>
+                        </label>
+
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="capital">
+                            <span class="textde">Kapitalerträge oder Investmenterträge</span><br>
+                            <span class="textes">Rendimientos de capital / inversión que requieren Anlagen KAP</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="double_household">
+                            <span class="textde">Doppelte Haushaltsführung</span><br>
+                            <span class="textes">Doble residencia motivos laborales · Anlage N-Doppelte
+                                Haushaltsführung</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="riester">
+                            <span class="textde">Riester-Vertrag</span><br>
+                            <span class="textes">plan Riester para pensión · Anlage AV</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="support">
+                            <span class="textde">Unterhalt an bedürftige Personen</span><br>
+                            <span class="textes">Manutención de personas necesitadas · Anlage Unterhalt</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="energy">
+                            <span class="textde">Energetische Maßnahmen</span><br>
+                            <span class="textes">Medidas energéticas en vivienda propia · Anlage Energetische
+                                Maßnahmen</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="mobility">
+                            <span class="textde">Mobilitätsprämie</span><br>
+                            <span class="textes">Prima de movilidad · Anlage Mobilitätsprämie</span>
+                        </label>
+
+                        <label class="col-12">
+                            <input type="checkbox" name="out_scope[]" value="special">
+                            <span class="textde">Erbschaft, Todesfall</span><br>
+                            <span class="textes">Herencia, Fallecimiento</span>
+                        </label>
+
+
+                    </div>
+                </fieldset>
+
+            </fieldset>
+
+            <!-- ================================================================
+                 2. HAUPTVORDRUCK ESt 1 A
+                 Campos generales, personas A/B, banco y datos complementarios.
+                 ================================================================ -->
+            <fieldset class="form-section" data-field-group="FULL-MAIN">
+                <legend>
+                    <strong>2</strong>
+                    <span lang="de">Hauptvordruck ESt 1 A</span> · Declaración principal y datos personales
+                </legend>
+
+
+                <!-- Tipo de declaración y oficina fiscal, ESt 1 A líneas 1–7. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 1-7">
+                    <legend>Declaración, Finanzamt y referencia fiscal</legend>
+
+                    <div id="main-declaration-options" class="row g-3 align-items-stretch">
+                        <label class="col-12" for="full-main-income-return">
+                            <input id="full-main-income-return" name="full_main_declaration_types[]"
+                                value="income_tax_return" type="checkbox">
+                            <span class="textde">Einkommensteuererklärung</span><br>
+                            <span class="textes">Declaración del impuesto sobre la renta</span>
+                        </label>
+
+                        <label class="col-12" for="full-main-savings-allowance">
+                            <input id="full-main-savings-allowance" name="full_main_declaration_types[]"
+                                value="employee_savings_allowance" type="checkbox">
+                            <span class="textde">Festsetzung der Arbeitnehmer-Sparzulage</span><br>
+                            <span class="textes">Solicitud de fijación de la prima de ahorro del trabajador</span>
+                        </label>
+
+                        <label class="col-12" for="full-main-church-capital">
+                            <input id="full-main-church-capital" name="full_main_declaration_types[]"
+                                value="church_tax_capital_income" type="checkbox">
+                            <span class="textde">Kirchensteuer auf Kapitalerträge</span><br>
+                            <span class="textes">Determinación del impuesto eclesiástico sobre rendimientos de
+                                capital</span>
+                        </label>
+
+                        <label class="col-12" for="full-main-loss-carry">
+                            <input id="full-main-loss-carry" name="full_main_declaration_types[]"
+                                value="remaining_loss_carryforward" type="checkbox">
+                            <span class="textde">Feststellung des verbleibenden Verlustvortrags</span><br>
+                            <span class="textes">Determinación de pérdidas pendientes</span>
+                        </label>
+                    </div>
+
+                    <div id="main-reference-grid" class="row g-4 align-items-stretch mt-2">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-main-tax-number">
+                                <span class="textde">Steuernummer</span><br>
+                                <span class="textes">Número fiscal</span>
+                            </label>
+                            <input id="full-main-tax-number" name="full_main_tax_number" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-main-tax-office">
+                                <span class="textde">An das Finanzamt</span><br>
+                                <span class="textes">Oficina fiscal competente</span>
+                            </label>
+                            <input id="full-main-tax-office" name="full_main_tax_office" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-main-previous-office">
+                                <span class="textde">Bisheriges Finanzamt</span><br>
+                                <span class="textes">Oficina fiscal anterior, si hubo mudanza</span>
+                            </label>
+                            <input id="full-main-previous-office" name="full_main_previous_office" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-main-phone">
+                                <span class="textde">Telefonische Rückfragen tagsüber</span><br>
+                                <span class="textes">Teléfono para consultas durante el día</span>
+                            </label>
+                            <input id="full-main-phone" name="full_main_phone" type="tel" autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Datos oficiales de la persona A, ESt 1 A líneas 8–17. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 8-17">
+                    <legend>
+                        <span lang="de">Steuerpflichtige Person / Person A</span> · Persona contribuyente / Persona A
+                    </legend>
+
+                    <div class="field-group__intro">
+                        <p>La persona A se determina según las reglas del formulario oficial cuando existe declaración
+                            conjunta.</p>
+                    </div>
+
+                    <div id="person-a-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-id">
+                                <span class="textde">Identifikationsnummer</span><br>
+                                <span class="textes">Número de identificación fiscal</span>
+                            </label>
+                            <input id="full-a-id" name="full_a_id" type="text" inputmode="numeric" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-birth">
+                                <span class="textde">Geburtsdatum</span><br>
+                                <span class="textes">Fecha de nacimiento</span>
+                            </label>
+                            <input id="full-a-birth" name="full_a_birth" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-death">
+                                <span class="textde">Im Sterbefall: Sterbedatum</span><br>
+                                <span class="textes">Solo en caso de fallecimiento: fecha</span>
+                            </label>
+                            <input id="full-a-death" name="full_a_death" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-last-name">
+                                <span class="textde">Name</span><br>
+                                <span class="textes">Apellidos</span>
+                            </label>
+                            <input id="full-a-last-name" name="full_a_last_name" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-first-name">
+                                <span class="textde">Vorname</span><br>
+                                <span class="textes">Nombre</span>
+                            </label>
+                            <input id="full-a-first-name" name="full_a_first_name" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-title">
+                                <span class="textde">Titel, akademischer Grad</span><br>
+                                <span class="textes">Título o grado académico</span>
+                            </label>
+                            <input id="full-a-title" name="full_a_title" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-job">
+                                <span class="textde">Ausgeübter Beruf</span><br>
+                                <span class="textes">Profesión ejercida</span>
+                            </label>
+                            <input id="full-a-job" name="full_a_job" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-religion">
+                                <span class="textde">Religion am 31.12.2025</span><br>
+                                <span class="textes">Religión a 31 de diciembre de 2025</span>
+                            </label>
+                            <select id="full-a-religion" name="full_a_religion">
+                                <option value="">Seleccionar</option>
+                                <option value="ev">EV</option>
+                                <option value="rk">RK</option>
+                                <option value="vd">VD / No sujeto</option>
+                                <option value="other">Sonstige / Otra</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-religion-change">
+                                <span class="textde">Änderung der Religion im Jahr 2025</span><br>
+                                <span class="textes">Cambio de afiliación religiosa en 2025</span>
+                            </label>
+                            <select id="full-a-religion-change" name="full_a_religion_change">
+                                <option value="">Sin cambio / Seleccionar</option>
+                                <option value="exit">Austritt / Salida</option>
+                                <option value="change">Wechsel / Cambio</option>
+                                <option value="entry">Eintritt / Entrada</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-street">
+                                <span class="textde">Straße</span><br>
+                                <span class="textes">Calle</span>
+                            </label>
+                            <input id="full-a-street" name="full_a_street" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-house">
+                                <span class="textde">Hausnummer</span><br>
+                                <span class="textes">Número</span>
+                            </label>
+                            <input id="full-a-house" name="full_a_house" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-house-extra">
+                                <span class="textde">Hausnummerzusatz</span><br>
+                                <span class="textes">Sufijo del número</span>
+                            </label>
+                            <input id="full-a-house-extra" name="full_a_house_extra" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-address-extra">
+                                <span class="textde">Adressergänzung</span><br>
+                                <span class="textes">Complemento de dirección</span>
+                            </label>
+                            <input id="full-a-address-extra" name="full_a_address_extra" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-postcode">
+                                <span class="textde">Postleitzahl</span><br>
+                                <span class="textes">Código postal</span>
+                            </label>
+                            <input id="full-a-postcode" name="full_a_postcode" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-city">
+                                <span class="textde">Wohnort</span><br>
+                                <span class="textes">Localidad</span>
+                            </label>
+                            <input id="full-a-city" name="full_a_city" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-a-country">
+                                <span class="textde">Staat</span><br>
+                                <span class="textes">País, si la dirección está en el extranjero</span>
+                            </label>
+                            <input id="full-a-country" name="full_a_country" type="text" autocomplete="off"
+                                aria-describedby="full-a-country-note">
+                            <p id="full-a-country-note" class="field-note">Una dirección extranjera puede requerir
+                                revisar WA-ESt.</p>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Estado civil y tipo de evaluación, ESt 1 A líneas 18–19. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 18-19">
+                    <legend>Estado civil y <span lang="de">Veranlagungsart</span></legend>
+
+                    <div id="marital-assessment-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-married-since">
+                                <span class="textde">Verheiratet / Lebenspartnerschaft begründet seit</span><br>
+                                <span class="textes">Casado/a o pareja registrada desde</span>
+                            </label>
+                            <input id="full-married-since" name="full_married_since" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-widowed-since">
+                                <span class="textde">Verwitwet seit</span><br>
+                                <span class="textes">Viudo/a desde</span>
+                            </label>
+                            <input id="full-widowed-since" name="full_widowed_since" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-divorced-since">
+                                <span class="textde">Geschieden / Lebenspartnerschaft aufgehoben seit</span><br>
+                                <span class="textes">Divorcio o disolución desde</span>
+                            </label>
+                            <input id="full-divorced-since" name="full_divorced_since" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-separated-since">
+                                <span class="textde">Dauernd getrennt lebend</span><br>
+                                <span class="textes">Separación permanente desde</span>
+                            </label>
+                            <input id="full-separated-since" name="full_separated_since" type="date" autocomplete="off">
+                        </div>
+
+                        <fieldset class="col-12">
+                            <legend>
+                                <span lang="de">Veranlagungsart</span> · Tipo de evaluación para cónyuges o parejas
+                            </legend>
+
+                            <div id="assessment-options" class="row g-3 align-items-stretch">
+                                <label class="col-12 col-md-6" for="full-assessment-joint">
+                                    <input id="full-assessment-joint" name="full_assessment" value="joint" type="radio">
+                                    <span class="textde">Zusammenveranlagung</span><br>
+                                    <span class="textes">Evaluación conjunta</span>
+                                </label>
+
+                                <label class="col-12 col-md-6" for="full-assessment-separate">
+                                    <input id="full-assessment-separate" name="full_assessment" value="individual"
+                                        type="radio">
+                                    <span class="textde">Einzelveranlagung</span><br>
+                                    <span class="textes">Evaluación individual</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <label class="col-12" for="full-property-community">
+                            <input id="full-property-community" name="full_property_community" value="yes"
+                                type="checkbox">
+                            <span class="textde">Gütergemeinschaft</span><br>
+                            <span class="textes">Comunidad de bienes acordada</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Persona B y dirección diferente, ESt 1 A líneas 20–29. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 20-29">
+                    <legend><span lang="de">Ehefrau / Person B</span> · Cónyuge / Persona B</legend>
+
+                    <div id="person-b-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-id">
+                                <span class="textde">Identifikationsnummer</span><br>
+                                <span class="textes">Número de identificación fiscal</span>
+                            </label>
+                            <input id="full-b-id" name="full_b_id" type="text" inputmode="numeric" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-birth">
+                                <span class="textde">Geburtsdatum</span><br>
+                                <span class="textes">Fecha de nacimiento</span>
+                            </label>
+                            <input id="full-b-birth" name="full_b_birth" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-death">
+                                <span class="textde">Im Sterbefall: Sterbedatum</span><br>
+                                <span class="textes">Solo en caso de fallecimiento: fecha</span>
+                            </label>
+                            <input id="full-b-death" name="full_b_death" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-last-name">
+                                <span class="textde">Name</span><br>
+                                <span class="textes">Apellidos</span>
+                            </label>
+                            <input id="full-b-last-name" name="full_b_last_name" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-first-name">
+                                <span class="textde">Vorname</span><br>
+                                <span class="textes">Nombre</span>
+                            </label>
+                            <input id="full-b-first-name" name="full_b_first_name" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-title">
+                                <span class="textde">Titel, akademischer Grad</span><br>
+                                <span class="textes">Título o grado académico</span>
+                            </label>
+                            <input id="full-b-title" name="full_b_title" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-job">
+                                <span class="textde">Ausgeübter Beruf</span><br>
+                                <span class="textes">Profesión ejercida</span>
+                            </label>
+                            <input id="full-b-job" name="full_b_job" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-religion">
+                                <span class="textde">Religion am 31.12.2025</span><br>
+                                <span class="textes">Religión a 31 de diciembre de 2025</span>
+                            </label>
+                            <select id="full-b-religion" name="full_b_religion">
+                                <option value="">Seleccionar</option>
+                                <option value="ev">EV</option>
+                                <option value="rk">RK</option>
+                                <option value="vd">VD / No sujeto</option>
+                                <option value="other">Sonstige / Otra</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-religion-change">
+                                <span class="textde">Änderung der Religion im Jahr 2025</span><br>
+                                <span class="textes">Cambio de afiliación religiosa en 2025</span>
+                            </label>
+                            <select id="full-b-religion-change" name="full_b_religion_change">
+                                <option value="">Sin cambio / Seleccionar</option>
+                                <option value="exit">Austritt / Salida</option>
+                                <option value="change">Wechsel / Cambio</option>
+                                <option value="entry">Eintritt / Entrada</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-street">
+                                <span class="textde">Abweichende Straße</span><br>
+                                <span class="textes">Calle diferente de Persona A</span>
+                            </label>
+                            <input id="full-b-street" name="full_b_street" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-house">
+                                <span class="textde">Hausnummer / Zusatz</span><br>
+                                <span class="textes">Número y sufijo</span>
+                            </label>
+                            <input id="full-b-house" name="full_b_house" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-address-extra">
+                                <span class="textde">Adressergänzung</span><br>
+                                <span class="textes">Complemento de dirección</span>
+                            </label>
+                            <input id="full-b-address-extra" name="full_b_address_extra" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-postcode">
+                                <span class="textde">Postleitzahl</span><br>
+                                <span class="textes">Código postal</span>
+                            </label>
+                            <input id="full-b-postcode" name="full_b_postcode" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-city">
+                                <span class="textde">Wohnort</span><br>
+                                <span class="textes">Localidad</span>
+                            </label>
+                            <input id="full-b-city" name="full_b_city" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-b-country">
+                                <span class="textde">Staat</span><br>
+                                <span class="textes">País si la dirección está en el extranjero</span>
+                            </label>
+                            <input id="full-b-country" name="full_b_country" type="text" autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Datos bancarios oficiales, incluidos aquí solo como inventario visual. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 30-33">
+                    <legend><span lang="de">Bankverbindung</span> · Datos bancarios</legend>
+
+                    <div id="bank-details-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-bank-iban-de">
+                                <span class="textde">IBAN inländisches Geldinstitut</span><br>
+                                <span class="textes">IBAN de una entidad alemana</span>
+                            </label>
+                            <input id="full-bank-iban-de" name="full_bank_iban_de" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-bank-iban-foreign">
+                                <span class="textde">IBAN ausländisches Geldinstitut</span><br>
+                                <span class="textes">IBAN de una entidad extranjera</span>
+                            </label>
+                            <input id="full-bank-iban-foreign" name="full_bank_iban_foreign" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-bank-bic">
+                                <span class="textde">BIC zur ausländischen IBAN</span><br>
+                                <span class="textes">BIC para la IBAN extranjera</span>
+                            </label>
+                            <input id="full-bank-bic" name="full_bank_bic" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-bank-owner">
+                                <span class="textde">Kontoinhaber/-in</span><br>
+                                <span class="textes">Titular de la cuenta</span>
+                            </label>
+                            <input id="full-bank-owner" name="full_bank_owner" type="text" autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Campos complementarios, firma y participación profesional. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 34-40">
+                    <legend>Solicitudes y datos complementarios</legend>
+
+
+                    <div id="supplementary-details-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-savings-person">
+                                <span class="textde">Arbeitnehmer-Sparzulage für</span><br>
+                                <span class="textes">Persona que solicita la prima de ahorro</span>
+                            </label>
+                            <select id="full-savings-person" name="full_savings_person">
+                                <option value="">No seleccionada</option>
+                                <option value="person_a">Person A</option>
+                                <option value="person_b">Person B</option>
+                                <option value="both">Beide / Ambas</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-supplement-reason">
+                                <span class="textde">Grund für ergänzende Angaben</span><br>
+                                <span class="textes">Motivo de información complementaria</span>
+                            </label>
+                            <select id="full-supplement-reason" name="full_supplement_reason">
+                                <option value="">Ninguno / Seleccionar</option>
+                                <option value="not_explainable">Sachverhalt nicht erklärbar / Hecho no explicable en
+                                    campos</option>
+                                <option value="different_legal_opinion">Abweichende Rechtsauffassung / Criterio jurídico
+                                    distinto</option>
+                                <option value="detailed_review">Vertiefte Prüfung / Revisión individual solicitada
+                                </option>
+                                <option value="multiple_reasons">Mehrere Gründe / Varios motivos</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 d-flex flex-column">
+                            <label for="full-supplement-text">
+                                <span class="textde">Ergänzende Angaben zur Steuererklärung</span><br>
+                                <span class="textes">Información complementaria</span>
+                            </label>
+                            <textarea id="full-supplement-text" name="full_supplement_text"
+                                autocomplete="off"></textarea>
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-sign-date">
+                                <span class="textde">Datum</span><br>
+                                <span class="textes">Fecha de firma visual</span>
+                            </label>
+                            <input id="full-sign-date" name="full_sign_date" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-sign-a">
+                                <span class="textde">Unterschrift Person A</span><br>
+                                <span class="textes">Nombre para la firma visual de Persona A</span>
+                            </label>
+                            <input id="full-sign-a" name="full_sign_a" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-sign-b">
+                                <span class="textde">Unterschrift Person B</span><br>
+                                <span class="textes">Nombre para la firma visual de Persona B</span>
+                            </label>
+                            <input id="full-sign-b" name="full_sign_b" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-adviser">
+                                <span class="textde">Mitwirkung einer befugten Person/Vereinigung</span><br>
+                                <span class="textes">Intervención de profesional u organización autorizada</span>
+                            </label>
+                            <select id="full-adviser" name="full_adviser">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 d-flex flex-column">
+                            <label for="full-adviser-details">
+                                <span class="textde">Steuernummer, Name und Vorname</span><br>
+                                <span class="textes">Datos de quien intervino en la preparación</span>
+                            </label>
+                            <input id="full-adviser-details" name="full_adviser_details" type="text" autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="submit">Guardar secciones 1 y 2</button>
+                <button type="reset" style="margin-left:8px;">Restablecer</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Envío demo: bloquea la transmisión y no registra datos fiscales o personales.
+        document.getElementById('fallprufung-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Secciones 1 y 2 procesadas localmente (demo). No se han transmitido datos.');
+        });
+    </script>
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
