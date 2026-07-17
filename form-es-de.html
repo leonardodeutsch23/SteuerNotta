@@ -48,13 +48,47 @@
         #fallprufung-form .form-actions {
             margin-top: 1rem;
         }
+
+        #fallprufung-form .document-card {
+            min-width: 0;
+        }
+
+        #fallprufung-form .document-card>legend {
+            max-width: 100%;
+            margin-bottom: 0.75rem;
+        }
+
+        #fallprufung-form .document-card .form-check-label,
+        #fallprufung-form .document-card .form-label {
+            font-size: 0.9rem;
+        }
+
+        #fallprufung-form .review-summary ul {
+            margin-bottom: 0;
+            padding-left: 1.25rem;
+        }
+
+        #fallprufung-form .review-check {
+            min-width: 0;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        #fallprufung-form .review-check .form-check-label {
+            overflow-wrap: anywhere;
+            cursor: pointer;
+        }
+
+        #fallprufung-form .review-check:has(.form-check-input:checked) {
+            border-color: var(--bs-primary) !important;
+            background-color: rgba(var(--bs-primary-rgb), 0.08);
+        }
     </style>
 </head>
 
 <body>
     <main>
-        <form id="fallprufung-form" method="post" action="#"
-            aria-label="Fallprüfung, Hauptvordruck, Nichtselbständige Arbeit und Werbungskosten">
+        <form id="fallprufung-form"
+            aria-label="Fallprüfung, Hauptvordruck, Nichtselbständige Arbeit, Werbungskosten, weitere steuerliche Bereiche, Unterlagen y revisión final">
             <fieldset class="form-section" data-field-group="FULL-SCOPE">
                 <legend>
                     <strong>1</strong>
@@ -1767,10 +1801,2083 @@
                 </fieldset>
             </fieldset>
 
-            <div class="form-actions">
-                <button type="submit">Guardar</button>
-                <button type="reset" style="margin-left:8px;">Restablecer</button>
-            </div>
+            <!-- ================================================================
+                 5. OTRAS ÁREAS FISCALES ACORDADAS
+                 Seguros, gastos especiales, hijos, reducciones y cargas.
+                 ================================================================ -->
+            <fieldset class="form-section" data-field-group="FULL-DED">
+                <legend>
+                    <strong>5</strong>
+                    <span lang="de">Weitere steuerliche Bereiche</span> · Seguros, gastos especiales, hijos,
+                    reducciones y cargas
+                </legend>
+
+                <p id="additional-tax-amount-help" class="field-note">Introduce los importes en euros usando coma
+                    decimal, por ejemplo: 1250,50.</p>
+
+                <!-- Aportaciones de jubilación, salud y otros seguros de Persona A o Persona B. -->
+                <fieldset class="field-group" data-source-ref="Anlage Vorsorgeaufwand 2025 Zeilen 4-55"
+                    data-repeatable-group="vorsorge-person">
+                    <legend><span lang="de">Anlage Vorsorgeaufwand</span> · Previsión y seguros</legend>
+
+                    <p class="field-note">Selecciona la persona a la que corresponden los importes de este bloque.</p>
+
+                    <div id="vorsorge-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-person">
+                                <span class="textde">Angaben für</span><br>
+                                <span class="textes">Persona a la que corresponden estos importes</span>
+                            </label>
+                            <select id="full-vor-person" name="full_vor_person">
+                                <option value="">Seleccionar</option>
+                                <option value="person_a">Person A</option>
+                                <option value="person_b">Person B</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-pension-employee">
+                                <span class="textde">Arbeitnehmeranteil laut Nr. 23a/b</span><br>
+                                <span class="textes">Aportación del trabajador a jubilación según certificado</span>
+                            </label>
+                            <input id="full-vor-pension-employee" name="full_vor_pension_employee" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-pension-other">
+                                <span class="textde">Weitere Beiträge zur gesetzlichen Rentenversicherung</span><br>
+                                <span class="textes">Otras aportaciones a pensión pública</span>
+                            </label>
+                            <input id="full-vor-pension-other" name="full_vor_pension_other" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-rurup">
+                                <span class="textde">Zertifizierte Basisrentenverträge</span><br>
+                                <span class="textes">Contratos de pensión básica/Rürup</span>
+                            </label>
+                            <input id="full-vor-rurup" name="full_vor_rurup" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-pension-employer">
+                                <span class="textde">Arbeitgeberanteil laut Nr. 22a/b</span><br>
+                                <span class="textes">Aportación del empleador a jubilación</span>
+                            </label>
+                            <input id="full-vor-pension-employer" name="full_vor_pension_employer" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-health-public">
+                                <span class="textde">Gesetzliche Krankenversicherung</span><br>
+                                <span class="textes">Seguro médico público</span>
+                            </label>
+                            <input id="full-vor-health-public" name="full_vor_health_public" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-health-no-sick">
+                                <span class="textde">Davon ohne Anspruch auf Krankengeld</span><br>
+                                <span class="textes">Parte sin derecho a prestación por enfermedad</span>
+                            </label>
+                            <input id="full-vor-health-no-sick" name="full_vor_health_no_sick" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-care-public">
+                                <span class="textde">Soziale Pflegeversicherung</span><br>
+                                <span class="textes">Seguro social de dependencia</span>
+                            </label>
+                            <input id="full-vor-care-public" name="full_vor_care_public" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-public-refund">
+                                <span class="textde">Erstattete Beiträge</span><br>
+                                <span class="textes">Aportaciones reembolsadas por seguro público</span>
+                            </label>
+                            <input id="full-vor-public-refund" name="full_vor_public_refund" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-health-private-base">
+                                <span class="textde">Private Krankenversicherung · Basisabsicherung</span><br>
+                                <span class="textes">Seguro médico privado básico</span>
+                            </label>
+                            <input id="full-vor-health-private-base" name="full_vor_health_private_base" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-care-private">
+                                <span class="textde">Private Pflege-Pflichtversicherung</span><br>
+                                <span class="textes">Seguro privado obligatorio de dependencia</span>
+                            </label>
+                            <input id="full-vor-care-private" name="full_vor_care_private" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-private-extra">
+                                <span class="textde">Wahlleistungen / Zusatzbeiträge</span><br>
+                                <span class="textes">Coberturas adicionales privadas</span>
+                            </label>
+                            <input id="full-vor-private-extra" name="full_vor_private_extra" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-private-refund">
+                                <span class="textde">Beitragserstattungen</span><br>
+                                <span class="textes">Reembolsos de seguro privado</span>
+                            </label>
+                            <input id="full-vor-private-refund" name="full_vor_private_refund" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-employer-subsidy">
+                                <span class="textde">Steuerfreie Arbeitgeberzuschüsse Nr. 24a–c</span><br>
+                                <span class="textes">Subsidios exentos del empleador para salud/dependencia</span>
+                            </label>
+                            <input id="full-vor-employer-subsidy" name="full_vor_employer_subsidy" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-other-person">
+                                <span class="textde">Übernommene Beiträge für andere Personen</span><br>
+                                <span class="textes">Seguro médico/dependencia pagado para otra persona</span>
+                            </label>
+                            <input id="full-vor-other-person" name="full_vor_other_person" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-unemployment">
+                                <span class="textde">Arbeitslosenversicherung außerhalb der
+                                    Lohnsteuerbescheinigung</span><br>
+                                <span class="textes">Seguro de desempleo no certificado</span>
+                            </label>
+                            <input id="full-vor-unemployment" name="full_vor_unemployment" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-disability-insurance">
+                                <span class="textde">Erwerbs- und Berufsunfähigkeitsversicherung</span><br>
+                                <span class="textes">Seguro de incapacidad laboral o profesional</span>
+                            </label>
+                            <input id="full-vor-disability-insurance" name="full_vor_disability_insurance" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-liability">
+                                <span class="textde">Unfall- und Haftpflichtversicherung</span><br>
+                                <span class="textes">Seguro de accidente y responsabilidad civil</span>
+                            </label>
+                            <input id="full-vor-liability" name="full_vor_liability" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-risk-life">
+                                <span class="textde">Risikoversicherungen / Altverträge</span><br>
+                                <span class="textes">Seguros de riesgo o contratos antiguos de vida/pensión</span>
+                            </label>
+                            <input id="full-vor-risk-life" name="full_vor_risk_life" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-vor-special-status">
+                                <span class="textde">Besondere Tätigkeit ohne Rentenversicherungspflicht</span><br>
+                                <span class="textes">Funcionario, directivo, socio-gerente u otra situación
+                                    especial</span>
+                            </label>
+                            <select id="full-vor-special-status" name="full_vor_special_status">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- Impuesto eclesiástico, donaciones y formación profesional inicial. -->
+                <fieldset class="field-group" data-source-ref="Anlage Sonderausgaben 2025 Zeilen 4-14">
+                    <legend><span lang="de">Anlage Sonderausgaben</span> · Gastos especiales</legend>
+
+                    <div id="special-expenses-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-church-paid">
+                                <span class="textde">Gezahlte Kirchensteuer</span><br>
+                                <span class="textes">Impuesto eclesiástico pagado en 2025</span>
+                            </label>
+                            <input id="full-special-church-paid" name="full_special_church_paid" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-special-church-refund">
+                                <span class="textde">Erstattete Kirchensteuer</span><br>
+                                <span class="textes">Impuesto eclesiástico reembolsado</span>
+                            </label>
+                            <input id="full-special-church-refund" name="full_special_church_refund" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-donation-domestic">
+                                <span class="textde">Spenden an Empfänger im Inland</span><br>
+                                <span class="textes">Donaciones/cuotas a destinatarios nacionales</span>
+                            </label>
+                            <input id="full-donation-domestic" name="full_donation_domestic" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-donation-eu">
+                                <span class="textde">Spenden an Empfänger im EU-/EWR-Ausland</span><br>
+                                <span class="textes">Donaciones a destinatarios de UE/EEE</span>
+                            </label>
+                            <input id="full-donation-eu" name="full_donation_eu" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-donation-party">
+                                <span class="textde">Zuwendungen an politische Parteien</span><br>
+                                <span class="textes">Aportaciones a partidos políticos</span>
+                            </label>
+                            <input id="full-donation-party" name="full_donation_party" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-donation-voters">
+                                <span class="textde">Zuwendungen an Wählervereinigungen</span><br>
+                                <span class="textes">Aportaciones a agrupaciones electorales</span>
+                            </label>
+                            <input id="full-donation-voters" name="full_donation_voters" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-donation-foundation">
+                                <span class="textde">Vermögensstock einer Stiftung</span><br>
+                                <span class="textes">Aportación al patrimonio permanente de una fundación</span>
+                            </label>
+                            <input id="full-donation-foundation" name="full_donation_foundation" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-initial-training-description">
+                                <span class="textde">Eigene Berufsausbildung · Beschreibung</span><br>
+                                <span class="textes">Descripción de formación profesional inicial propia</span>
+                            </label>
+                            <input id="full-initial-training-description" name="full_initial_training_description"
+                                type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-initial-training-amount">
+                                <span class="textde">Aufwendungen für eigene Berufsausbildung</span><br>
+                                <span class="textes">Importe de formación profesional inicial</span>
+                            </label>
+                            <input id="full-initial-training-amount" name="full_initial_training_amount" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- Datos fiscales, periodos, formación y cuidado correspondientes a cada hijo. -->
+                <fieldset class="field-group"
+                    data-source-ref="Anlage Kind 2025 Zeilen 4-73; ELSTER Hilfe 2025 Zeilen 39-44 / Anlage K"
+                    data-repeatable-group="child">
+                    <legend><span lang="de">Anlage Kind</span> · Datos de cada hijo</legend>
+
+                    <p class="field-note">Completa los datos del hijo al que corresponde este bloque.</p>
+
+                    <div id="child-data-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-id">
+                                <span class="textde">Identifikationsnummer des Kindes</span><br>
+                                <span class="textes">Identificación fiscal del hijo</span>
+                            </label>
+                            <input id="full-child-id" name="full_child_id" type="text" inputmode="numeric"
+                                maxlength="11" pattern="[0-9]{11}" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-name">
+                                <span class="textde">Name, Vorname</span><br>
+                                <span class="textes">Apellidos y nombre</span>
+                            </label>
+                            <input id="full-child-name" name="full_child_name" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-birth">
+                                <span class="textde">Geburtsdatum</span><br>
+                                <span class="textes">Fecha de nacimiento</span>
+                            </label>
+                            <input id="full-child-birth" name="full_child_birth" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-benefit">
+                                <span class="textde">Anspruch auf Kindergeld oder vergleichbare Leistungen
+                                    2025</span><br>
+                                <span class="textes">Derecho anual a Kindergeld o prestaciones comparables</span>
+                            </label>
+                            <input id="full-child-benefit" name="full_child_benefit" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-office">
+                                <span class="textde">Familienkasse</span><br>
+                                <span class="textes">Caja familiar competente</span>
+                            </label>
+                            <input id="full-child-office" name="full_child_office" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-country">
+                                <span class="textde">Wohnsitzstaat</span><br>
+                                <span class="textes">País de residencia del hijo</span>
+                            </label>
+                            <input id="full-child-country" name="full_child_country" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-residence-from">
+                                <span class="textde">Wohnsitz von</span><br>
+                                <span class="textes">Periodo de residencia desde</span>
+                            </label>
+                            <input id="full-child-residence-from" name="full_child_residence_from" type="date"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-residence-to">
+                                <span class="textde">Wohnsitz bis</span><br>
+                                <span class="textes">Periodo de residencia hasta</span>
+                            </label>
+                            <input id="full-child-residence-to" name="full_child_residence_to" type="date"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-relation-a">
+                                <span class="textde">Kindschaftsverhältnis zu Person A</span><br>
+                                <span class="textes">Relación filial con Persona A</span>
+                            </label>
+                            <select id="full-child-relation-a" name="full_child_relation_a">
+                                <option value="">Seleccionar</option>
+                                <option value="biological">Leibliches Kind / Biológico</option>
+                                <option value="adopted">Adoptivkind / Adoptado</option>
+                                <option value="foster">Pflegekind / Acogido</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-relation-b">
+                                <span class="textde">Kindschaftsverhältnis zu Person B</span><br>
+                                <span class="textes">Relación filial con Persona B</span>
+                            </label>
+                            <select id="full-child-relation-b" name="full_child_relation_b">
+                                <option value="">Seleccionar</option>
+                                <option value="biological">Leibliches Kind / Biológico</option>
+                                <option value="adopted">Adoptivkind / Adoptado</option>
+                                <option value="foster">Pflegekind / Acogido</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-other-parent">
+                                <span class="textde">Andere Elternperson</span><br>
+                                <span class="textes">Nombre e identificación de otro progenitor</span>
+                            </label>
+                            <input id="full-child-other-parent" name="full_child_other_parent" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-adult-status">
+                                <span class="textde">Berücksichtigungsgrund volljähriges Kind</span><br>
+                                <span class="textes">Formación, transición, búsqueda de empleo, voluntariado o
+                                    discapacidad</span>
+                            </label>
+                            <select id="full-child-adult-status" name="full_child_adult_status">
+                                <option value="">No aplica / Seleccionar</option>
+                                <option value="vocational_training">Berufsausbildung / Formación</option>
+                                <option value="transition">Übergangszeit / Transición</option>
+                                <option value="seeking_training_place">Ausbildungsplatzsuche / Busca plaza</option>
+                                <option value="voluntary_service">Freiwilligendienst / Voluntariado</option>
+                                <option value="job_seeking">Arbeitssuchend / Busca empleo</option>
+                                <option value="disability">Behinderung / Discapacidad</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-status-from">
+                                <span class="textde">Berücksichtigungszeitraum von</span><br>
+                                <span class="textes">Situación desde</span>
+                            </label>
+                            <input id="full-child-status-from" name="full_child_status_from" type="date"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-status-to">
+                                <span class="textde">Berücksichtigungszeitraum bis</span><br>
+                                <span class="textes">Situación hasta</span>
+                            </label>
+                            <input id="full-child-status-to" name="full_child_status_to" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-first-training">
+                                <span class="textde">Erstausbildung / Erststudium abgeschlossen</span><br>
+                                <span class="textes">Primera formación o estudios terminados</span>
+                            </label>
+                            <select id="full-child-first-training" name="full_child_first_training">
+                                <option value="">No aplica / Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-employment">
+                                <span class="textde">Erwerbstätigkeit nach Erstausbildung</span><br>
+                                <span class="textes">Actividad laboral después de la primera formación</span>
+                            </label>
+                            <input id="full-child-employment" name="full_child_employment" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-health">
+                                <span class="textde">Übernommene Kranken- und
+                                    Pflegeversicherungsbeiträge</span><br>
+                                <span class="textes">Seguro médico/dependencia del hijo asumido</span>
+                            </label>
+                            <input id="full-child-health" name="full_child_health" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-school">
+                                <span class="textde">Schulgeld</span><br>
+                                <span class="textes">Cuotas escolares</span>
+                            </label>
+                            <input id="full-child-school" name="full_child_school" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-training-away">
+                                <span class="textde">Auswärtige Berufsausbildung</span><br>
+                                <span class="textes">Formación fuera del domicilio familiar</span>
+                            </label>
+                            <select id="full-child-training-away" name="full_child_training_away">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-care-provider">
+                                <span class="textde">Kinderbetreuung · Leistungserbringer</span><br>
+                                <span class="textes">Proveedor del cuidado infantil</span>
+                            </label>
+                            <input id="full-child-care-provider" name="full_child_care_provider" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-care-period">
+                                <span class="textde">Betreuungszeitraum</span><br>
+                                <span class="textes">Periodo de cuidado</span>
+                            </label>
+                            <input id="full-child-care-period" name="full_child_care_period" type="text"
+                                placeholder="von / bis" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-care-cost">
+                                <span class="textde">Kinderbetreuungskosten</span><br>
+                                <span class="textes">Costes de cuidado infantil pagados</span>
+                            </label>
+                            <input id="full-child-care-cost" name="full_child_care_cost" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-child-care-refund">
+                                <span class="textde">Erstattungen</span><br>
+                                <span class="textes">Reembolsos de cuidado infantil</span>
+                            </label>
+                            <input id="full-child-care-refund" name="full_child_care_refund" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+                    </div>
+
+                    <fieldset class="field-group">
+                        <legend>
+                            <span lang="de">Weitere Anträge der Anlage Kind</span> · Otras solicitudes de Anlage Kind
+                        </legend>
+
+                        <div id="child-requests-grid" class="row g-3 align-items-stretch">
+                            <label class="col-12" for="full-child-transfer">
+                                <input id="full-child-transfer" name="full_child_requests[]" type="checkbox"
+                                    value="allowance_transfer">
+                                <span class="textde">Übertragung von Freibeträgen</span><br>
+                                <span class="textes">Transferencia de asignaciones</span>
+                            </label>
+
+                            <label class="col-12" for="full-child-step-grandparent">
+                                <input id="full-child-step-grandparent" name="full_child_requests[]" type="checkbox"
+                                    value="step_grandparent_transfer">
+                                <span class="textde">Übertragung auf Stief-/Großelternteil · Anlage K</span><br>
+                                <span class="textes">Transferencia a padrastro/madrastra o abuelo/a; requiere Anlage K
+                                    firmada</span>
+                            </label>
+
+                            <label class="col-12" for="full-child-single-parent">
+                                <input id="full-child-single-parent" name="full_child_requests[]" type="checkbox"
+                                    value="single_parent_relief">
+                                <span class="textde">Entlastungsbetrag für Alleinerziehende</span><br>
+                                <span class="textes">Reducción para progenitor solo</span>
+                            </label>
+
+                            <label class="col-12" for="full-child-disability-transfer">
+                                <input id="full-child-disability-transfer" name="full_child_requests[]" type="checkbox"
+                                    value="disability_survivor_allowance_transfer">
+                                <span class="textde">Übertragung
+                                    Behinderten-/Hinterbliebenen-Pauschbetrag</span><br>
+                                <span class="textes">Transferencia por discapacidad/supervivencia</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </fieldset>
+                <!-- Servicios domésticos, minijobs, artesanos y reparto del hogar. -->
+                <fieldset class="field-group"
+                    data-source-ref="Anlage Haushaltsnahe Aufwendungen 2025 Zeilen 4-14; ESt 1 A Zeile 37">
+                    <legend>
+                        <span lang="de">Anlage Haushaltsnahe Aufwendungen</span> · Reducciones por servicios del hogar
+                    </legend>
+
+                    <p class="field-note">Indica los importes netos de reembolsos y los datos del reparto cuando exista
+                        un hogar compartido.</p>
+
+                    <div id="household-services-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-house-mini-description">
+                                <span class="textde">Minijob im Privathaushalt · Art</span><br>
+                                <span class="textes">Actividad de minijob doméstico</span>
+                            </label>
+                            <input id="full-house-mini-description" name="full_house_mini_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-house-mini-amount">
+                                <span class="textde">Minijob · Aufwendungen abzüglich Erstattungen</span><br>
+                                <span class="textes">Coste neto del minijob</span>
+                            </label>
+                            <input id="full-house-mini-amount" name="full_house_mini_amount" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-house-service-description">
+                                <span class="textde">Haushaltsnahe Beschäftigung / Dienstleistung · Art</span><br>
+                                <span class="textes">Tipo de empleo o servicio doméstico</span>
+                            </label>
+                            <input id="full-house-service-description" name="full_house_service_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-house-service-amount">
+                                <span class="textde">Dienstleistung · Aufwendungen abzüglich Erstattungen</span><br>
+                                <span class="textes">Coste neto del servicio</span>
+                            </label>
+                            <input id="full-house-service-amount" name="full_house_service_amount" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-craft-description">
+                                <span class="textde">Handwerkerleistung · Art</span><br>
+                                <span class="textes">Tipo de trabajo de artesano</span>
+                            </label>
+                            <input id="full-craft-description" name="full_craft_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-craft-invoice">
+                                <span class="textde">Rechnungsbetrag</span><br>
+                                <span class="textes">Importe total de factura</span>
+                            </label>
+                            <input id="full-craft-invoice" name="full_craft_invoice" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-craft-labour">
+                                <span class="textde">Arbeits-, Maschinen- und Fahrtkosten einschließlich
+                                    Umsatzsteuer</span><br>
+                                <span class="textes">Mano de obra, maquinaria y desplazamiento con IVA</span>
+                            </label>
+                            <input id="full-craft-labour" name="full_craft_labour" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-house-persons">
+                                <span class="textde">Anzahl alleinstehender Personen im Haushalt</span><br>
+                                <span class="textes">Número de personas solteras en el hogar compartido</span>
+                            </label>
+                            <input id="full-house-persons" name="full_house_persons" type="number" min="1" step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-house-share">
+                                <span class="textde">Abweichende Aufteilung</span><br>
+                                <span class="textes">Porcentaje o importe de reparto acordado</span>
+                            </label>
+                            <input id="full-house-share" name="full_house_share" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 d-flex flex-column">
+                            <label for="full-house-change">
+                                <span class="textde">Änderungen in der Haushaltsgemeinschaft · ergänzende
+                                    Angaben</span><br>
+                                <span class="textes">Cambios relevantes del hogar compartido para explicar en datos
+                                    complementarios</span>
+                            </label>
+                            <textarea id="full-house-change" name="full_house_change" rows="3"
+                                placeholder="Describe el cambio y el periodo."></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- Discapacidad, cuidado, supervivencia y otras cargas extraordinarias. -->
+                <fieldset class="field-group" data-source-ref="Anlage Außergewöhnliche Belastungen 2025 Zeilen 4-41">
+                    <legend>
+                        <span lang="de">Anlage Außergewöhnliche Belastungen</span> · Cargas extraordinarias
+                    </legend>
+
+                    <div id="extraordinary-burdens-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-disability-valid-from">
+                                <span class="textde">Behindertennachweis gültig von</span><br>
+                                <span class="textes">Certificado de discapacidad válido desde</span>
+                            </label>
+                            <input id="full-disability-valid-from" name="full_disability_valid_from" type="date"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-disability-valid-to">
+                                <span class="textde">Gültig bis / unbefristet</span><br>
+                                <span class="textes">Válido hasta o indefinido</span>
+                            </label>
+                            <input id="full-disability-valid-to" name="full_disability_valid_to" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-disability-degree">
+                                <span class="textde">Grad der Behinderung</span><br>
+                                <span class="textes">Grado de discapacidad</span>
+                            </label>
+                            <input id="full-disability-degree" name="full_disability_degree" type="number" min="20"
+                                max="100" step="10">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-disability-mark">
+                                <span class="textde">Merkzeichen G, aG, Bl, TBl oder H</span><br>
+                                <span class="textes">Distintivo indicado en el certificado</span>
+                            </label>
+                            <input id="full-disability-mark" name="full_disability_mark" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-disability-care-grade">
+                                <span class="textde">Pflegegrad</span><br>
+                                <span class="textes">Grado de dependencia</span>
+                            </label>
+                            <select id="full-disability-care-grade" name="full_disability_care_grade">
+                                <option value="">No aplica / Seleccionar</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-survivor">
+                                <span class="textde">Hinterbliebenen-Pauschbetrag</span><br>
+                                <span class="textes">Solicitud de cantidad por supervivencia</span>
+                            </label>
+                            <select id="full-survivor" name="full_survivor">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-care-name">
+                                <span class="textde">Name der gepflegten Person</span><br>
+                                <span class="textes">Nombre de la persona cuidada</span>
+                            </label>
+                            <input id="full-care-name" name="full_care_name" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-care-id">
+                                <span class="textde">Identifikationsnummer der gepflegten Person</span><br>
+                                <span class="textes">Identificación fiscal de la persona cuidada</span>
+                            </label>
+                            <input id="full-care-id" name="full_care_id" type="text" inputmode="numeric" maxlength="11"
+                                pattern="[0-9]{11}" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-care-residence">
+                                <span class="textde">Wohnsitz / gewöhnlicher Aufenthalt</span><br>
+                                <span class="textes">Residencia de la persona cuidada</span>
+                            </label>
+                            <input id="full-care-residence" name="full_care_residence" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-care-grade">
+                                <span class="textde">Pflegegrad / Merkzeichen H</span><br>
+                                <span class="textes">Grado de dependencia o distintivo H</span>
+                            </label>
+                            <input id="full-care-grade" name="full_care_grade" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-care-period">
+                                <span class="textde">Pflegezeitraum</span><br>
+                                <span class="textes">Periodo durante el cual se prestó cuidado</span>
+                            </label>
+                            <input id="full-care-period" name="full_care_period" type="text" placeholder="von / bis"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-care-other-carers">
+                                <span class="textde">Weitere Pflegepersonen</span><br>
+                                <span class="textes">Número y datos de otros cuidadores</span>
+                            </label>
+                            <input id="full-care-other-carers" name="full_care_other_carers" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-disability-travel">
+                                <span class="textde">Behinderungsbedingte Fahrtkostenpauschale</span><br>
+                                <span class="textes">Solicitud de cantidad por desplazamiento vinculado a
+                                    discapacidad</span>
+                            </label>
+                            <select id="full-disability-travel" name="full_disability_travel">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-extra-description">
+                                <span class="textde">Andere außergewöhnliche Belastungen · Art</span><br>
+                                <span class="textes">Descripción: enfermedad, cuidado, sepelio u otra carga</span>
+                            </label>
+                            <input id="full-extra-description" name="full_extra_description" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-extra-cost">
+                                <span class="textde">Aufwendungen</span><br>
+                                <span class="textes">Coste total</span>
+                            </label>
+                            <input id="full-extra-cost" name="full_extra_cost" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-extra-refund">
+                                <span class="textde">Erstattungen / erwartete Erstattungen</span><br>
+                                <span class="textes">Reembolsos recibidos o esperados</span>
+                            </label>
+                            <input id="full-extra-refund" name="full_extra_refund" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-extra-household-part">
+                                <span class="textde">Enthaltene haushaltsnahe Pflegeleistungen</span><br>
+                                <span class="textes">Parte correspondiente a servicios domésticos de cuidado</span>
+                            </label>
+                            <input id="full-extra-household-part" name="full_extra_household_part" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-extra-craft-part">
+                                <span class="textde">Enthaltene Arbeitskosten für Handwerkerleistungen</span><br>
+                                <span class="textes">Parte de mano de obra de artesanos incluida</span>
+                            </label>
+                            <input id="full-extra-craft-part" name="full_extra_craft_part" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="additional-tax-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <!-- ================================================================
+                 6. DOCUMENTOS
+                 Referencias, eData y justificantes vinculados al alcance actual.
+                 ================================================================ -->
+            <fieldset class="form-section" data-field-group="FULL-DOC">
+                <legend>
+                    <strong>6</strong>
+                    <span lang="de">Unterlagen</span> · Registros y documentos de apoyo
+                </legend>
+
+                <p class="field-note">Esta lista cubre las secciones 2–5 del alcance actual. Las situaciones marcadas
+                    como fuera de alcance necesitan el checklist específico de sus anexos.</p>
+
+                <p id="document-upload-policy" class="field-note">Puedes seleccionar archivos PDF, JPG o PNG. El
+                    navegador muestra los archivos elegidos en cada control; por ahora no se guardan ni se envían.</p>
+
+                <fieldset class="field-group"
+                    data-source-ref="ESt 1 A 2025; ELSTER 2025 Belegabruf und Belegvorhaltepflicht">
+                    <legend><span lang="de">Referenzdaten und eData</span> · Datos de referencia y eData</legend>
+
+                    <div id="document-reference-grid" class="row g-3 align-items-stretch">
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-key="taxpayer_tax_reference" data-document-mode="reference"
+                                data-related-group="FULL-MAIN"
+                                data-related-prefixes="full-main-tax- full-a-id full-b-id full-bank-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Identifikationsnummer, Steuernummer, Finanzamt und
+                                        Bankverbindung</span><br>
+                                    <span class="textes">Identificaciones fiscales, oficina fiscal y datos
+                                        bancarios</span>
+                                </legend>
+
+                                <div class="form-check mt-auto">
+                                    <input id="full-doc-id" class="form-check-input" type="checkbox"
+                                        name="document_verified[taxpayer_tax_reference]" value="1">
+                                    <label class="form-check-label" for="full-doc-id">
+                                        <span class="textde">Angaben geprüft</span><br>
+                                        <span class="textes">Datos comprobados</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-key="electronic_data_reference" data-document-mode="reference"
+                                data-related-group="FULL-EMP FULL-DED">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Elektronisch übermittelte Daten / Belegabruf</span><br>
+                                    <span class="textes">Datos electrónicos disponibles para comparar</span>
+                                </legend>
+
+                                <div class="form-check mt-auto">
+                                    <input id="full-doc-edata" class="form-check-input" type="checkbox"
+                                        name="document_verified[electronic_data_reference]" value="1">
+                                    <label class="form-check-label" for="full-doc-edata">
+                                        <span class="textde">eData geprüft</span><br>
+                                        <span class="textes">eData revisada</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="personal_status_evidence"
+                                data-document-mode="upload" data-related-group="FULL-MAIN"
+                                data-related-fields="full-a-birth full-a-death full-a-religion-change full-married-since full-widowed-since full-divorced-since full-separated-since full-property-community full-b-birth full-b-death full-b-religion-change">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu Personenstand und Änderungen</span><br>
+                                    <span class="textes">Constancias de estado civil y cambios personales</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-personal-status" class="form-check-input" type="checkbox"
+                                        name="document_available[personal_status_evidence]" value="1"
+                                        data-document-available data-document-key="personal_status_evidence">
+                                    <label class="form-check-label" for="full-doc-personal-status">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-personal-status-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-personal-status-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar archivos</span>
+                                    </label>
+                                    <input id="full-doc-personal-status-files" class="form-control document-file-input"
+                                        name="documents[personal_status_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="personal_status_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="field-group" data-source-ref="Lohnsteuerbescheinigung 2025; ESt 1 A 2025 Zeilen 35-36">
+                    <legend><span lang="de">Arbeitslohn und elektronische Bescheinigungen</span> · Empleo y
+                        certificados electrónicos</legend>
+
+                    <div id="document-employment-grid" class="row g-3 align-items-stretch">
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="wage_tax_certificate"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-EMP"
+                                data-related-fields="full-scope-german-wages full-scope-certificates"
+                                data-related-prefixes="full-cert-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Lohnsteuerbescheinigung jedes Arbeitgebers</span><br>
+                                    <span class="textes">Certificado 2025 de cada empleador</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-lstb">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-lstb" class="form-select"
+                                        name="document_source[wage_tax_certificate]" data-document-source
+                                        data-document-key="wage_tax_certificate">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-lstb-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-lstb-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados</span>
+                                    </label>
+                                    <input id="full-doc-lstb-files" class="form-control document-file-input"
+                                        name="documents[wage_tax_certificate][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="wage_tax_certificate"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="income_replacement_statement"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-EMP"
+                                data-related-fields="full-benefit-type full-benefit-a full-benefit-b full-cert-15 full-cert-15a">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Bescheinigungen über Lohnersatzleistungen</span><br>
+                                    <span class="textes">Certificados de prestaciones sustitutivas del salario</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-benefits">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-benefits" class="form-select"
+                                        name="document_source[income_replacement_statement]" data-document-source
+                                        data-document-key="income_replacement_statement">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-benefits-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-benefits-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados</span>
+                                    </label>
+                                    <input id="full-doc-benefits-files" class="form-control document-file-input"
+                                        name="documents[income_replacement_statement][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="income_replacement_statement"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="employee_savings_certificate"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-MAIN"
+                                data-related-fields="full-main-savings-allowance full-savings-person">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Bescheinigung zur Arbeitnehmer-Sparzulage</span><br>
+                                    <span class="textes">Certificado para la prima de ahorro del trabajador</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-savings">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-savings" class="form-select"
+                                        name="document_source[employee_savings_certificate]" data-document-source
+                                        data-document-key="employee_savings_certificate">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-savings-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-savings-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados</span>
+                                    </label>
+                                    <input id="full-doc-savings-files" class="form-control document-file-input"
+                                        name="documents[employee_savings_certificate][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="employee_savings_certificate"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="field-group" data-source-ref="Anlage N 2025 Zeilen 4-83">
+                    <legend><span lang="de">Beschäftigung und Werbungskosten</span> · Empleo y gastos profesionales
+                    </legend>
+
+                    <div id="document-work-grid" class="row g-3 align-items-stretch">
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="employment_adjustment_evidence"
+                                data-document-mode="upload" data-related-group="FULL-EMP"
+                                data-related-fields="full-n-company-car full-n-no-withholding full-n-exempt-income full-n-person">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu abweichenden Arbeitslohndaten</span><br>
+                                    <span class="textes">Constancias de correcciones u otros datos salariales</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-employment-adjustment" class="form-check-input" type="checkbox"
+                                        name="document_available[employment_adjustment_evidence]" value="1"
+                                        data-document-available data-document-key="employment_adjustment_evidence">
+                                    <label class="form-check-label" for="full-doc-employment-adjustment">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-employment-adjustment-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-employment-adjustment-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar archivos</span>
+                                    </label>
+                                    <input id="full-doc-employment-adjustment-files"
+                                        class="form-control document-file-input"
+                                        name="documents[employment_adjustment_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="employment_adjustment_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="commute_evidence" data-document-mode="upload"
+                                data-related-group="FULL-WORK" data-related-prefixes="full-commute-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Aufzeichnungen zu Arbeitswegen, Fahrtkosten und
+                                        Erstattungen</span><br>
+                                    <span class="textes">Registros de desplazamientos, transporte y reembolsos</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-commute" class="form-check-input" type="checkbox"
+                                        name="document_available[commute_evidence]" value="1" data-document-available
+                                        data-document-key="commute_evidence">
+                                    <label class="form-check-label" for="full-doc-commute">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-commute-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-commute-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar registros y justificantes</span>
+                                    </label>
+                                    <input id="full-doc-commute-files" class="form-control document-file-input"
+                                        name="documents[commute_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="commute_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="general_work_expense_receipts"
+                                data-document-mode="upload" data-related-group="FULL-WORK"
+                                data-related-fields="full-association full-equipment-description full-equipment-amount full-training full-applications full-bank-fees full-moving full-other-work-description full-other-work-amount">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Belege zu Arbeitsmitteln und weiteren
+                                        Werbungskosten</span><br>
+                                    <span class="textes">Justificantes de equipo y otros gastos profesionales</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-work" class="form-check-input" type="checkbox"
+                                        name="document_available[general_work_expense_receipts]" value="1"
+                                        data-document-available data-document-key="general_work_expense_receipts">
+                                    <label class="form-check-label" for="full-doc-work">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-work-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-work-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar facturas y justificantes</span>
+                                    </label>
+                                    <input id="full-doc-work-files" class="form-control document-file-input"
+                                        name="documents[general_work_expense_receipts][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="general_work_expense_receipts"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="home_office_evidence"
+                                data-document-mode="upload" data-related-group="FULL-WORK"
+                                data-related-fields="full-office-room full-home-days-only full-home-days-no-workplace full-commute-home">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Aufzeichnungen zu Homeoffice-Tagen und
+                                        Arbeitszimmer</span><br>
+                                    <span class="textes">Registros de días en casa y despacho doméstico</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-home" class="form-check-input" type="checkbox"
+                                        name="document_available[home_office_evidence]" value="1"
+                                        data-document-available data-document-key="home_office_evidence">
+                                    <label class="form-check-label" for="full-doc-home">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-home-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-home-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar registros y justificantes</span>
+                                    </label>
+                                    <input id="full-doc-home-files" class="form-control document-file-input"
+                                        name="documents[home_office_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="home_office_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="business_travel_evidence"
+                                data-document-mode="upload" data-related-group="FULL-WORK"
+                                data-related-prefixes="full-travel- full-meal-" data-related-fields="full-driver-days">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Reisekostenabrechnungen und Erstattungen</span><br>
+                                    <span class="textes">Liquidaciones y reembolsos de viajes profesionales</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-travel" class="form-check-input" type="checkbox"
+                                        name="document_available[business_travel_evidence]" value="1"
+                                        data-document-available data-document-key="business_travel_evidence">
+                                    <label class="form-check-label" for="full-doc-travel">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-travel-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-travel-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar liquidaciones y justificantes</span>
+                                    </label>
+                                    <input id="full-doc-travel-files" class="form-control document-file-input"
+                                        name="documents[business_travel_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="business_travel_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="special_work_expense_evidence"
+                                data-document-mode="upload" data-related-group="FULL-WORK"
+                                data-related-fields="full-special-pension-expense full-special-compensation-expense full-special-multiyear-expense full-special-naus-expense full-special-no-withholding-expense full-special-belgium-expense">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu Werbungskosten in Sonderfällen</span><br>
+                                    <span class="textes">Justificantes de gastos profesionales en casos
+                                        especiales</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-special-work" class="form-check-input" type="checkbox"
+                                        name="document_available[special_work_expense_evidence]" value="1"
+                                        data-document-available data-document-key="special_work_expense_evidence">
+                                    <label class="form-check-label" for="full-doc-special-work">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-special-work-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-special-work-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar justificantes</span>
+                                    </label>
+                                    <input id="full-doc-special-work-files" class="form-control document-file-input"
+                                        name="documents[special_work_expense_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="special_work_expense_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="field-group" data-source-ref="Anlage Vorsorgeaufwand und Anlage Sonderausgaben 2025">
+                    <legend><span lang="de">Vorsorge und Sonderausgaben</span> · Previsión y gastos especiales
+                    </legend>
+
+                    <div id="document-deductions-grid" class="row g-3 align-items-stretch">
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="pension_contribution_certificate"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-DED"
+                                data-related-prefixes="full-vor-pension-"
+                                data-related-fields="full-vor-person full-vor-rurup full-cert-22a full-cert-22b full-cert-23a full-cert-23b">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Bescheinigungen zur Altersvorsorge</span><br>
+                                    <span class="textes">Certificados de jubilación y previsión</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-pension">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-pension" class="form-select"
+                                        name="document_source[pension_contribution_certificate]" data-document-source
+                                        data-document-key="pension_contribution_certificate">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-pension-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-pension-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados</span>
+                                    </label>
+                                    <input id="full-doc-pension-files" class="form-control document-file-input"
+                                        name="documents[pension_contribution_certificate][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="pension_contribution_certificate"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="health_care_contribution_certificate"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-DED"
+                                data-related-prefixes="full-vor-health- full-vor-care- full-vor-private-"
+                                data-related-fields="full-vor-person full-vor-public-refund full-vor-employer-subsidy full-vor-other-person full-child-health">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Kranken- und Pflegeversicherungsbescheinigungen</span><br>
+                                    <span class="textes">Certificados de seguro médico y dependencia</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-health-care">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-health-care" class="form-select"
+                                        name="document_source[health_care_contribution_certificate]"
+                                        data-document-source data-document-key="health_care_contribution_certificate">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-health-care-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-health-care-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados</span>
+                                    </label>
+                                    <input id="full-doc-health-care-files" class="form-control document-file-input"
+                                        name="documents[health_care_contribution_certificate][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="health_care_contribution_certificate"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="church_tax_statement"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-DED"
+                                data-related-fields="full-special-church-paid full-special-church-refund full-cert-church-code full-cert-6 full-cert-7">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zur Kirchensteuer</span><br>
+                                    <span class="textes">Constancias de impuesto eclesiástico</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-church">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-church" class="form-select"
+                                        name="document_source[church_tax_statement]" data-document-source
+                                        data-document-key="church_tax_statement">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-church-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-church-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-church-files" class="form-control document-file-input"
+                                        name="documents[church_tax_statement][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="church_tax_statement"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="other_insurance_certificate"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-vor-unemployment full-vor-disability-insurance full-vor-liability full-vor-risk-life full-vor-special-status">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Bescheinigungen zu weiteren Versicherungen</span><br>
+                                    <span class="textes">Certificados de otros seguros</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-insurance" class="form-check-input" type="checkbox"
+                                        name="document_available[other_insurance_certificate]" value="1"
+                                        data-document-available data-document-key="other_insurance_certificate">
+                                    <label class="form-check-label" for="full-doc-insurance">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-insurance-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-insurance-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados</span>
+                                    </label>
+                                    <input id="full-doc-insurance-files" class="form-control document-file-input"
+                                        name="documents[other_insurance_certificate][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="other_insurance_certificate"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="donation_receipts" data-document-mode="upload"
+                                data-related-group="FULL-DED" data-related-prefixes="full-donation-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Zuwendungsbestätigungen</span><br>
+                                    <span class="textes">Constancias de donaciones o cuotas</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-donations" class="form-check-input" type="checkbox"
+                                        name="document_available[donation_receipts]" value="1" data-document-available
+                                        data-document-key="donation_receipts">
+                                    <label class="form-check-label" for="full-doc-donations">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-donations-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-donations-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-donations-files" class="form-control document-file-input"
+                                        name="documents[donation_receipts][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="donation_receipts"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="initial_training_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-initial-training-description full-initial-training-amount">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zur eigenen Erstausbildung</span><br>
+                                    <span class="textes">Justificantes de formación profesional inicial propia</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-initial-training" class="form-check-input" type="checkbox"
+                                        name="document_available[initial_training_evidence]" value="1"
+                                        data-document-available data-document-key="initial_training_evidence">
+                                    <label class="form-check-label" for="full-doc-initial-training">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-initial-training-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-initial-training-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar justificantes</span>
+                                    </label>
+                                    <input id="full-doc-initial-training-files" class="form-control document-file-input"
+                                        name="documents[initial_training_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="initial_training_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="field-group" data-source-ref="Anlage Kind 2025 Zeilen 4-73; Anlage K">
+                    <legend><span lang="de">Unterlagen für Kinder</span> · Documentación de hijos</legend>
+
+                    <div id="document-children-grid" class="row g-3 align-items-stretch">
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="child_benefit_notice"
+                                data-document-mode="edata-or-upload" data-related-group="FULL-DED"
+                                data-related-fields="full-child-benefit full-child-office">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Kindergeldbescheid oder vergleichbare Leistung</span><br>
+                                    <span class="textes">Resolución de Kindergeld o prestación comparable</span>
+                                </legend>
+
+                                <div class="field mb-3">
+                                    <label for="full-doc-child-benefit">
+                                        <span class="textde">Datenquelle</span><br>
+                                        <span class="textes">Origen de los datos</span>
+                                    </label>
+                                    <select id="full-doc-child-benefit" class="form-select"
+                                        name="document_source[child_benefit_notice]" data-document-source
+                                        data-document-key="child_benefit_notice">
+                                        <option value="">Pendiente de revisar</option>
+                                        <option value="edata">eData / Belegabruf</option>
+                                        <option value="file">Archivo digital seleccionado</option>
+                                        <option value="not_applicable">No aplica</option>
+                                    </select>
+                                </div>
+
+                                <div id="full-doc-child-benefit-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-child-benefit-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar resoluciones</span>
+                                    </label>
+                                    <input id="full-doc-child-benefit-files" class="form-control document-file-input"
+                                        name="documents[child_benefit_notice][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="child_benefit_notice"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="child_identity_residence_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-child-id full-child-name full-child-birth full-child-country full-child-residence-from full-child-residence-to full-child-relation-a full-child-relation-b full-child-other-parent">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu Kind, Wohnsitz und
+                                        Kindschaftsverhältnis</span><br>
+                                    <span class="textes">Constancias de identidad, residencia y relación filial</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-child" class="form-check-input" type="checkbox"
+                                        name="document_available[child_identity_residence_evidence]" value="1"
+                                        data-document-available data-document-key="child_identity_residence_evidence">
+                                    <label class="form-check-label" for="full-doc-child">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-child-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-child-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-child-files" class="form-control document-file-input"
+                                        name="documents[child_identity_residence_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="child_identity_residence_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="adult_child_status_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-child-adult-status full-child-status-from full-child-status-to full-child-first-training full-child-employment full-child-training-away">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise für volljährige Kinder und Ausbildung</span><br>
+                                    <span class="textes">Constancias de hijos adultos y formación</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-child-adult" class="form-check-input" type="checkbox"
+                                        name="document_available[adult_child_status_evidence]" value="1"
+                                        data-document-available data-document-key="adult_child_status_evidence">
+                                    <label class="form-check-label" for="full-doc-child-adult">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-child-adult-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-child-adult-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-child-adult-files" class="form-control document-file-input"
+                                        name="documents[adult_child_status_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="adult_child_status_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="school_fees_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-child-school">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zum Schulgeld</span><br>
+                                    <span class="textes">Constancias de cuotas escolares</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-child-school" class="form-check-input" type="checkbox"
+                                        name="document_available[school_fees_evidence]" value="1"
+                                        data-document-available data-document-key="school_fees_evidence">
+                                    <label class="form-check-label" for="full-doc-child-school">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-child-school-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-child-school-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-child-school-files" class="form-control document-file-input"
+                                        name="documents[school_fees_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="school_fees_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="childcare_evidence" data-document-mode="upload"
+                                data-related-group="FULL-DED" data-related-prefixes="full-child-care-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Vertrag, Rechnungen und Zahlungsnachweise zur
+                                        Kinderbetreuung</span><br>
+                                    <span class="textes">Contrato, facturas y pagos del cuidado infantil</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-child-care" class="form-check-input" type="checkbox"
+                                        name="document_available[childcare_evidence]" value="1" data-document-available
+                                        data-document-key="childcare_evidence">
+                                    <label class="form-check-label" for="full-doc-child-care">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-child-care-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-child-care-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar contrato, facturas y pagos</span>
+                                    </label>
+                                    <input id="full-doc-child-care-files" class="form-control document-file-input"
+                                        name="documents[childcare_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="childcare_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="child_special_request_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-child-transfer full-child-step-grandparent full-child-single-parent full-child-disability-transfer">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu besonderen Anträgen der Anlage Kind</span><br>
+                                    <span class="textes">Constancias de solicitudes especiales y Anlage K</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-child-special" class="form-check-input" type="checkbox"
+                                        name="document_available[child_special_request_evidence]" value="1"
+                                        data-document-available data-document-key="child_special_request_evidence">
+                                    <label class="form-check-label" for="full-doc-child-special">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-child-special-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-child-special-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar solicitudes y constancias</span>
+                                    </label>
+                                    <input id="full-doc-child-special-files" class="form-control document-file-input"
+                                        name="documents[child_special_request_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="child_special_request_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="field-group"
+                    data-source-ref="Anlage Haushaltsnahe Aufwendungen und Anlage Außergewöhnliche Belastungen 2025">
+                    <legend><span lang="de">Haushalt und außergewöhnliche Belastungen</span> · Hogar y cargas
+                        extraordinarias</legend>
+
+                    <div id="document-household-extra-grid" class="row g-3 align-items-stretch">
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="household_service_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-prefixes="full-house-mini- full-house-service- full-craft-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Rechnungen und unbare Zahlungsnachweise</span><br>
+                                    <span class="textes">Facturas y pagos bancarios de minijob, servicios y
+                                        artesanos</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-household" class="form-check-input" type="checkbox"
+                                        name="document_available[household_service_evidence]" value="1"
+                                        data-document-available data-document-key="household_service_evidence">
+                                    <label class="form-check-label" for="full-doc-household">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-household-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-household-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar facturas y pagos</span>
+                                    </label>
+                                    <input id="full-doc-household-files" class="form-control document-file-input"
+                                        name="documents[household_service_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="household_service_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="household_allocation_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-fields="full-house-persons full-house-share full-house-change">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zur Haushaltsgemeinschaft und Aufteilung</span><br>
+                                    <span class="textes">Constancias del hogar compartido y su reparto</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-household-allocation" class="form-check-input" type="checkbox"
+                                        name="document_available[household_allocation_evidence]" value="1"
+                                        data-document-available data-document-key="household_allocation_evidence">
+                                    <label class="form-check-label" for="full-doc-household-allocation">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-household-allocation-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-household-allocation-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-household-allocation-files"
+                                        class="form-control document-file-input"
+                                        name="documents[household_allocation_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="household_allocation_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="disability_survivor_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-prefixes="full-disability-" data-related-fields="full-survivor">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu Behinderung und Hinterbliebenenstatus</span><br>
+                                    <span class="textes">Constancias de discapacidad y supervivencia</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-disability" class="form-check-input" type="checkbox"
+                                        name="document_available[disability_survivor_evidence]" value="1"
+                                        data-document-available data-document-key="disability_survivor_evidence">
+                                    <label class="form-check-label" for="full-doc-disability">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-disability-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-disability-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar certificados o resoluciones</span>
+                                    </label>
+                                    <input id="full-doc-disability-files" class="form-control document-file-input"
+                                        name="documents[disability_survivor_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="disability_survivor_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="care_evidence" data-document-mode="upload"
+                                data-related-group="FULL-DED" data-related-prefixes="full-care-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zur Pflege einer Person</span><br>
+                                    <span class="textes">Constancias del cuidado de una persona</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-care" class="form-check-input" type="checkbox"
+                                        name="document_available[care_evidence]" value="1" data-document-available
+                                        data-document-key="care_evidence">
+                                    <label class="form-check-label" for="full-doc-care">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-care-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-care-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias</span>
+                                    </label>
+                                    <input id="full-doc-care-files" class="form-control document-file-input"
+                                        name="documents[care_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="care_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="extraordinary_burden_evidence"
+                                data-document-mode="upload" data-related-group="FULL-DED"
+                                data-related-prefixes="full-extra-">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Nachweise zu weiteren außergewöhnlichen
+                                        Belastungen</span><br>
+                                    <span class="textes">Constancias de enfermedad, sepelio u otras cargas</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-extra" class="form-check-input" type="checkbox"
+                                        name="document_available[extraordinary_burden_evidence]" value="1"
+                                        data-document-available data-document-key="extraordinary_burden_evidence">
+                                    <label class="form-check-label" for="full-doc-extra">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-extra-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-extra-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar constancias y reembolsos</span>
+                                    </label>
+                                    <input id="full-doc-extra-files" class="form-control document-file-input"
+                                        name="documents[extraordinary_burden_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="extraordinary_burden_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6 d-flex">
+                            <fieldset class="document-card border rounded p-3 w-100 h-100 d-flex flex-column"
+                                data-document-upload data-document-key="other_requested_evidence"
+                                data-document-mode="upload" data-related-group="FULL-MAIN FULL-EMP FULL-WORK FULL-DED"
+                                data-related-fields="full-supplement-reason full-supplement-text">
+                                <legend class="float-none w-auto px-2 fs-6">
+                                    <span class="textde">Weitere angeforderte oder ergänzende Unterlagen</span><br>
+                                    <span class="textes">Otros documentos solicitados o complementarios</span>
+                                </legend>
+
+                                <div class="form-check mb-3">
+                                    <input id="full-doc-other" class="form-check-input" type="checkbox"
+                                        name="document_available[other_requested_evidence]" value="1"
+                                        data-document-available data-document-key="other_requested_evidence">
+                                    <label class="form-check-label" for="full-doc-other">
+                                        <span class="textde">Digital verfügbar</span><br>
+                                        <span class="textes">Documento disponible en formato digital</span>
+                                    </label>
+                                </div>
+
+                                <div id="full-doc-other-upload" class="field mt-auto">
+                                    <label class="form-label" for="full-doc-other-files">
+                                        <span class="textde">Dateien auswählen</span><br>
+                                        <span class="textes">Seleccionar documentos</span>
+                                    </label>
+                                    <input id="full-doc-other-files" class="form-control document-file-input"
+                                        name="documents[other_requested_evidence][]" type="file" multiple
+                                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                                        data-document-file data-document-key="other_requested_evidence"
+                                        aria-describedby="document-upload-policy">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <!-- ================================================================
+                 7. REVISIÓN FINAL
+                 Comprobaciones de cobertura y acciones pendientes.
+                 ================================================================ -->
+            <fieldset class="form-section form-section--review" data-field-group="FULL-REVIEW">
+                <legend>
+                    <strong>7</strong>
+                    <span lang="de">Prüfung und Hinweise</span> · Revisión final y observaciones
+                </legend>
+
+                <div class="review-summary alert alert-primary" role="note" aria-labelledby="full-review-summary-title">
+                    <span class="badge text-bg-primary mb-2">FULL-REVIEW · sin validación fiscal</span>
+                    <h3 id="full-review-summary-title" class="h5">
+                        <span lang="de">Prüfungen vor dem Absenden</span> · Comprobaciones antes del envío
+                    </h3>
+                    <p>Esta revisión permite comprobar la cobertura del expediente, pero no certifica la declaración ni
+                        sustituye una revisión fiscal profesional.</p>
+                    <ul>
+                        <li>El año de referencia es 2025 y los datos corresponden a ese periodo fiscal.</li>
+                        <li>Las personas, los empleadores y los certificados salariales correspondientes están
+                            representados.</li>
+                        <li>Los importes netos y los reembolsos se han indicado por separado para evitar duplicidades.
+                        </li>
+                        <li>Las señales fuera del alcance actual se han identificado para revisar sus anexos oficiales.
+                        </li>
+                    </ul>
+                </div>
+
+                <fieldset class="field-group mt-4" aria-describedby="full-review-confirmation-help">
+                    <legend>
+                        <span lang="de">Bestätigungen zur Vollständigkeit</span> · Confirmaciones de cobertura
+                    </legend>
+
+                    <p id="full-review-confirmation-help" class="field-note">Marca las comprobaciones que hayas
+                        realizado. Estas confirmaciones documentan la revisión, pero no validan fiscalmente los datos.
+                    </p>
+
+                    <div id="full-review-confirmation-grid" class="row g-3 mt-1">
+                        <div class="col-12">
+                            <div class="review-check border rounded p-3">
+                                <div class="form-check mb-0">
+                                    <input id="full-review-year" class="form-check-input"
+                                        name="review_confirmed[reference_year]" type="checkbox" value="1"
+                                        aria-describedby="full-review-confirmation-help">
+                                    <label class="form-check-label" for="full-review-year">
+                                        <span class="textde">Referenzjahr 2025 geprüft</span><br>
+                                        <span class="textes">Año de referencia 2025 comprobado</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="review-check border rounded p-3">
+                                <div class="form-check mb-0">
+                                    <input id="full-review-people" class="form-check-input"
+                                        name="review_confirmed[people]" type="checkbox" value="1"
+                                        aria-describedby="full-review-confirmation-help">
+                                    <label class="form-check-label" for="full-review-people">
+                                        <span class="textde">Person A und Person B geprüft</span><br>
+                                        <span class="textes">Datos y bloques de ambas personas revisados</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="review-check border rounded p-3">
+                                <div class="form-check mb-0">
+                                    <input id="full-review-employers" class="form-check-input"
+                                        name="review_confirmed[employers]" type="checkbox" value="1"
+                                        aria-describedby="full-review-confirmation-help">
+                                    <label class="form-check-label" for="full-review-employers">
+                                        <span class="textde">Alle Arbeitgeber und Bescheinigungen
+                                            berücksichtigt</span><br>
+                                        <span class="textes">Todos los empleadores y certificados representados</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="review-check border rounded p-3">
+                                <div class="form-check mb-0">
+                                    <input id="full-review-scope" class="form-check-input"
+                                        name="review_confirmed[additional_annexes]" type="checkbox" value="1"
+                                        aria-describedby="full-review-confirmation-help">
+                                    <label class="form-check-label" for="full-review-scope">
+                                        <span class="textde">Zusätzliche Anlagen und Hinweise geprüft</span><br>
+                                        <span class="textes">Señales de anexos adicionales revisadas</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="row g-3 mt-1">
+                    <div class="field col-12">
+                        <label for="full-review-notes">
+                            <span class="textde">Offene Punkte und Notizen</span><br>
+                            <span class="textes">Puntos pendientes o notas para la revisión profesional</span>
+                        </label>
+                        <textarea id="full-review-notes" class="form-control" name="full_review_notes" rows="5"
+                            autocomplete="off" aria-describedby="full-review-notes-help"></textarea>
+                        <p id="full-review-notes-help" class="field-note">Utiliza este espacio para registrar
+                            información que deba comprobarse antes de conectar el envío definitivo.</p>
+                    </div>
+                </div>
+
+                <div class="form-actions mt-4">
+                    <div class="d-grid gap-3 d-sm-flex align-items-sm-center justify-content-sm-between">
+                        <p id="frontend-submit-help" class="field-note mb-0">Las acciones estarán disponibles cuando
+                            se conecte el procesamiento. Por ahora, los datos y documentos no se guardan ni se
+                            transmiten.</p>
+
+                        <div class="d-grid gap-2 d-sm-flex flex-shrink-0">
+                            <button id="full-review-reset" class="btn btn-outline-secondary" type="reset"
+                                disabled>Restablecer</button>
+                            <button id="full-review-submit" class="btn btn-primary" name="form_action" type="submit"
+                                value="submit_for_review" disabled aria-describedby="frontend-submit-help">Enviar para
+                                revisión</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         </form>
     </main>
 
