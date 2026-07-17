@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>SteuerNotta — Secciones 1 y 2</title>
+    <title>SteuerNotta — Form-es/de</title>
     <!--Bootstrap CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
-        /* Ajustes locales del prototipo, aplicados después de Bootstrap. */
+        /* Estilos locales del formulario, aplicados después de Bootstrap. */
         body {
             padding: 1rem;
             font-family: system-ui, "Segoe UI", Arial, sans-serif;
@@ -53,7 +53,8 @@
 
 <body>
     <main>
-        <form id="fallprufung-form" method="post" action="#" aria-label="Fallprüfung, Umfang und Hauptvordruck ESt 1 A">
+        <form id="fallprufung-form" method="post" action="#"
+            aria-label="Fallprüfung, Umfang, Hauptvordruck ESt 1 A und Nichtselbständige Arbeit">
             <fieldset class="form-section" data-field-group="FULL-SCOPE">
                 <legend>
                     <strong>1</strong>
@@ -721,7 +722,7 @@
                     </div>
                 </fieldset>
 
-                <!-- Datos bancarios oficiales, incluidos aquí solo como inventario visual. -->
+                <!-- Datos bancarios oficiales del Hauptvordruck. -->
                 <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 30-33">
                     <legend><span lang="de">Bankverbindung</span> · Datos bancarios</legend>
 
@@ -809,7 +810,7 @@
                         <div class="field col-12 col-md-6 d-flex flex-column">
                             <label for="full-sign-date">
                                 <span class="textde">Datum</span><br>
-                                <span class="textes">Fecha de firma visual</span>
+                                <span class="textes">Fecha de firma</span>
                             </label>
                             <input id="full-sign-date" name="full_sign_date" type="date" autocomplete="off">
                         </div>
@@ -817,7 +818,7 @@
                         <div class="field col-12 col-md-6 d-flex flex-column">
                             <label for="full-sign-a">
                                 <span class="textde">Unterschrift Person A</span><br>
-                                <span class="textes">Nombre para la firma visual de Persona A</span>
+                                <span class="textes">Nombre para la firma de Persona A</span>
                             </label>
                             <input id="full-sign-a" name="full_sign_a" type="text" autocomplete="off">
                         </div>
@@ -825,7 +826,7 @@
                         <div class="field col-12 col-md-6 d-flex flex-column">
                             <label for="full-sign-b">
                                 <span class="textde">Unterschrift Person B</span><br>
-                                <span class="textes">Nombre para la firma visual de Persona B</span>
+                                <span class="textes">Nombre para la firma de Persona B</span>
                             </label>
                             <input id="full-sign-b" name="full_sign_b" type="text" autocomplete="off">
                         </div>
@@ -853,20 +854,463 @@
                 </fieldset>
             </fieldset>
 
+            <!-- ================================================================
+                 3. EMPLEO Y LOHNSTEUERBESCHEINIGUNG
+                 Certificado del empleador separado de Anlage N.
+                 ================================================================ -->
+            <fieldset class="form-section" data-field-group="FULL-EMP">
+                <legend>
+                    <strong>3</strong>
+                    <span lang="de">Nichtselbständige Arbeit</span> · Empleo asalariado y certificado salarial
+                </legend>
+
+                <p class="field-group__intro">La <span lang="de">Lohnsteuerbescheinigung</span> la emite y transmite el
+                    empleador; no es la <span lang="de">Anlage N</span>.</p>
+
+                <p id="employment-amount-help" class="field-note">Introduce los importes en euros usando coma decimal,
+                    por ejemplo 1234,56.</p>
+
+                <!-- Cabecera del modelo oficial de Lohnsteuerbescheinigung 2025. -->
+                <fieldset class="field-group" data-source-ref="BMF Lohnsteuerbescheinigung 2025 Kopf + Nr. 1-2">
+                    <legend><span lang="de">Lohnsteuerbescheinigung 2025</span> · Identificación</legend>
+
+                    <div id="employment-certificate-identification-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-employer">
+                                <span class="textde">Anschrift und Steuernummer des Arbeitgebers</span><br>
+                                <span class="textes">Dirección y número fiscal del empleador</span>
+                            </label>
+                            <input id="full-cert-employer" name="full_cert_employer" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-id">
+                                <span class="textde">Identifikationsnummer</span><br>
+                                <span class="textes">Identificación fiscal del trabajador</span>
+                            </label>
+                            <input id="full-cert-id" name="full_cert_id" type="text" inputmode="numeric"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-personnel">
+                                <span class="textde">Personalnummer</span><br>
+                                <span class="textes">Número de personal</span>
+                            </label>
+                            <input id="full-cert-personnel" name="full_cert_personnel" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-birth">
+                                <span class="textde">Geburtsdatum</span><br>
+                                <span class="textes">Fecha de nacimiento</span>
+                            </label>
+                            <input id="full-cert-birth" name="full_cert_birth" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-ticket">
+                                <span class="textde">Transferticket</span><br>
+                                <span class="textes">Código de transferencia</span>
+                            </label>
+                            <input id="full-cert-ticket" name="full_cert_ticket" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-period-start">
+                                <span class="textde">Nr. 1 Bescheinigungszeitraum von</span><br>
+                                <span class="textes">Inicio del periodo certificado</span>
+                            </label>
+                            <input id="full-cert-period-start" name="full_cert_period_start" type="date"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-period-end">
+                                <span class="textde">Nr. 1 Bescheinigungszeitraum bis</span><br>
+                                <span class="textes">Fin del periodo certificado</span>
+                            </label>
+                            <input id="full-cert-period-end" name="full_cert_period_end" type="date" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-u">
+                                <span class="textde">Nr. 2 Anzahl „U“</span><br>
+                                <span class="textes">Periodos sin derecho a salario</span>
+                            </label>
+                            <input id="full-cert-u" name="full_cert_u" type="number" inputmode="numeric" min="0"
+                                step="1">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-letters">
+                                <span class="textde">Großbuchstaben S, M, F, FR</span><br>
+                                <span class="textes">Letras mayúsculas indicadas en el certificado</span>
+                            </label>
+                            <input id="full-cert-letters" name="full_cert_letters" type="text" autocomplete="off">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Características de retención y cantidades principales del certificado. -->
+                <fieldset class="field-group" data-source-ref="BMF Lohnsteuerbescheinigung 2025 Merkmale + Nr. 3-10">
+                    <legend>Características y salario certificado</legend>
+
+                    <div id="employment-certificate-wages-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-class">
+                                <span class="textde">Steuerklasse / Faktor</span><br>
+                                <span class="textes">Clase fiscal / factor</span>
+                            </label>
+                            <input id="full-cert-class" name="full_cert_class" type="text" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-child-allowance">
+                                <span class="textde">Zahl der Kinderfreibeträge</span><br>
+                                <span class="textes">Número de asignaciones por hijos</span>
+                            </label>
+                            <input id="full-cert-child-allowance" name="full_cert_child_allowance" type="text"
+                                inputmode="decimal" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-annual-free">
+                                <span class="textde">Steuerfreier Jahresbetrag</span><br>
+                                <span class="textes">Importe anual exento</span>
+                            </label>
+                            <input id="full-cert-annual-free" name="full_cert_annual_free" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-addition">
+                                <span class="textde">Jahreshinzurechnungsbetrag</span><br>
+                                <span class="textes">Importe anual adicional</span>
+                            </label>
+                            <input id="full-cert-addition" name="full_cert_addition" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-church-code">
+                                <span class="textde">Kirchensteuermerkmale</span><br>
+                                <span class="textes">Características de impuesto eclesiástico</span>
+                            </label>
+                            <input id="full-cert-church-code" name="full_cert_church_code" type="text"
+                                autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-3">
+                                <span class="textde">Nr. 3 Bruttoarbeitslohn einschließlich Sachbezüge</span><br>
+                                <span class="textes">Salario bruto, prestaciones en especie incluidas</span>
+                            </label>
+                            <input id="full-cert-3" name="full_cert_3" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-4">
+                                <span class="textde">Nr. 4 Einbehaltene Lohnsteuer</span><br>
+                                <span class="textes">Impuesto salarial retenido</span>
+                            </label>
+                            <input id="full-cert-4" name="full_cert_4" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-5">
+                                <span class="textde">Nr. 5 Solidaritätszuschlag</span><br>
+                                <span class="textes">Recargo de solidaridad retenido</span>
+                            </label>
+                            <input id="full-cert-5" name="full_cert_5" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-6">
+                                <span class="textde">Nr. 6 Kirchensteuer Arbeitnehmer</span><br>
+                                <span class="textes">Impuesto eclesiástico del trabajador</span>
+                            </label>
+                            <input id="full-cert-6" name="full_cert_6" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-7">
+                                <span class="textde">Nr. 7 Kirchensteuer Ehegatte/Lebenspartner</span><br>
+                                <span class="textes">Impuesto eclesiástico de cónyuge/pareja</span>
+                            </label>
+                            <input id="full-cert-7" name="full_cert_7" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-10">
+                                <span class="textde">Nr. 10 Arbeitslohn für mehrere Kalenderjahre /
+                                    Entschädigungen</span><br>
+                                <span class="textes">Salario plurianual o indemnizaciones</span>
+                            </label>
+                            <input id="full-cert-10" name="full_cert_10" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Prestaciones y aportaciones del certificado pertinentes al empleo estándar. -->
+                <fieldset class="field-group"
+                    data-source-ref="BMF Lohnsteuerbescheinigung 2025 Nr. 15, 15a, 17, 18, 20, 22-28">
+                    <legend>Prestaciones del empleador y seguros certificados</legend>
+
+                    <div id="employment-certificate-benefits-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-15">
+                                <span class="textde">Nr. 15 Leistungen unter Progressionsvorbehalt</span><br>
+                                <span class="textes">Prestaciones sujetas a progresividad</span>
+                            </label>
+                            <input id="full-cert-15" name="full_cert_15" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-15a">
+                                <span class="textde">Nr. 15a (Saison-)Kurzarbeitergeld</span><br>
+                                <span class="textes">Prestación por reducción de jornada incluida en 15</span>
+                            </label>
+                            <input id="full-cert-15a" name="full_cert_15a" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-17">
+                                <span class="textde">Nr. 17 Steuerfreie Arbeitgeberleistungen zur
+                                    Entfernungspauschale</span><br>
+                                <span class="textes">Prestaciones exentas imputables al desplazamiento</span>
+                            </label>
+                            <input id="full-cert-17" name="full_cert_17" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-18">
+                                <span class="textde">Nr. 18 Pauschal besteuerte Fahrtleistungen</span><br>
+                                <span class="textes">Prestaciones de desplazamiento gravadas al 15 %</span>
+                            </label>
+                            <input id="full-cert-18" name="full_cert_18" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-20">
+                                <span class="textde">Nr. 20 Steuerfreie Verpflegungszuschüsse</span><br>
+                                <span class="textes">Dietas exentas en actividad externa</span>
+                            </label>
+                            <input id="full-cert-20" name="full_cert_20" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-22a">
+                                <span class="textde">Nr. 22a Arbeitgeberanteil gesetzliche
+                                    Rentenversicherung</span><br>
+                                <span class="textes">Aportación del empleador a pensión pública</span>
+                            </label>
+                            <input id="full-cert-22a" name="full_cert_22a" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-22b">
+                                <span class="textde">Nr. 22b Zuschuss berufsständische Versorgung</span><br>
+                                <span class="textes">Aportación a sistema profesional de previsión</span>
+                            </label>
+                            <input id="full-cert-22b" name="full_cert_22b" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-23a">
+                                <span class="textde">Nr. 23a Arbeitnehmeranteil gesetzliche
+                                    Rentenversicherung</span><br>
+                                <span class="textes">Aportación del trabajador a pensión pública</span>
+                            </label>
+                            <input id="full-cert-23a" name="full_cert_23a" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-23b">
+                                <span class="textde">Nr. 23b Arbeitnehmeranteil berufsständische Versorgung</span><br>
+                                <span class="textes">Aportación del trabajador a previsión profesional</span>
+                            </label>
+                            <input id="full-cert-23b" name="full_cert_23b" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-24a">
+                                <span class="textde">Nr. 24a Zuschuss gesetzliche Krankenversicherung</span><br>
+                                <span class="textes">Subsidio a seguro médico público</span>
+                            </label>
+                            <input id="full-cert-24a" name="full_cert_24a" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-24b">
+                                <span class="textde">Nr. 24b Zuschuss private Krankenversicherung</span><br>
+                                <span class="textes">Subsidio a seguro médico privado</span>
+                            </label>
+                            <input id="full-cert-24b" name="full_cert_24b" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-24c">
+                                <span class="textde">Nr. 24c Zuschuss gesetzliche Pflegeversicherung</span><br>
+                                <span class="textes">Subsidio a seguro público de dependencia</span>
+                            </label>
+                            <input id="full-cert-24c" name="full_cert_24c" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-25">
+                                <span class="textde">Nr. 25 Gesetzliche Krankenversicherung</span><br>
+                                <span class="textes">Aportación del trabajador al seguro médico público</span>
+                            </label>
+                            <input id="full-cert-25" name="full_cert_25" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-26">
+                                <span class="textde">Nr. 26 Soziale Pflegeversicherung</span><br>
+                                <span class="textes">Aportación al seguro social de dependencia</span>
+                            </label>
+                            <input id="full-cert-26" name="full_cert_26" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-27">
+                                <span class="textde">Nr. 27 Arbeitslosenversicherung</span><br>
+                                <span class="textes">Aportación al seguro de desempleo</span>
+                            </label>
+                            <input id="full-cert-27" name="full_cert_27" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-cert-28">
+                                <span class="textde">Nr. 28 Private Kranken- und Pflege-Pflichtversicherung oder
+                                    Mindestvorsorgepauschale</span><br>
+                                <span class="textes">Seguro médico/dependencia privado o importe mínimo de
+                                    previsión</span>
+                            </label>
+                            <input id="full-cert-28" name="full_cert_28" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Información de Anlage N que no se limita a copiar el certificado. -->
+                <fieldset class="field-group" data-source-ref="Anlage N 2025 Zeilen 4-26">
+                    <legend><span lang="de">Anlage N</span> · Datos adicionales de empleo</legend>
+
+                    <div id="anlage-n-employment-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-n-person">
+                                <span class="textde">Angaben für</span><br>
+                                <span class="textes">Persona a la que corresponde esta Anlage N</span>
+                            </label>
+                            <select id="full-n-person" name="full_n_person">
+                                <option value="">Seleccionar</option>
+                                <option value="person_a">Person A</option>
+                                <option value="person_b">Person B</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-n-company-car">
+                                <span class="textde">Korrektur Firmenwagennutzung</span><br>
+                                <span class="textes">Existe una corrección por vehículo de empresa</span>
+                            </label>
+                            <select id="full-n-company-car" name="full_n_company_car">
+                                <option value="">Seleccionar</option>
+                                <option value="yes">Ja / Sí</option>
+                                <option value="no">Nein / No</option>
+                                <option value="unclear">Unklar / No está claro</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-n-no-withholding">
+                                <span class="textde">Arbeitslohn ohne Steuerabzug</span><br>
+                                <span class="textes">Salario imponible sin retención</span>
+                            </label>
+                            <input id="full-n-no-withholding" name="full_n_no_withholding" type="text"
+                                inputmode="decimal" placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-n-exempt-income">
+                                <span class="textde">Steuerfreie Aufwandsentschädigungen / Einnahmen</span><br>
+                                <span class="textes">Compensaciones o ingresos exentos no incluidos
+                                    correctamente</span>
+                            </label>
+                            <input id="full-n-exempt-income" name="full_n_exempt_income" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Prestaciones sustitutivas del Hauptvordruck, líneas 35–36. -->
+                <fieldset class="field-group" data-source-ref="ESt 1 A 2025 Zeilen 35-36">
+                    <legend>
+                        <span lang="de">Lohn-/Entgeltersatzleistungen</span> · Prestaciones sustitutivas
+                    </legend>
+
+                    <div id="income-replacement-benefits-grid" class="row g-4 align-items-stretch">
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-benefit-type">
+                                <span class="textde">Lohn-/Entgeltersatzleistung</span><br>
+                                <span class="textes">Tipo de prestación sustitutiva</span>
+                            </label>
+                            <input id="full-benefit-type" name="full_benefit_type" type="text"
+                                placeholder="p. ej., Arbeitslosengeld, Elterngeld, Krankengeld" autocomplete="off">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-benefit-a">
+                                <span class="textde">Betrag Person A</span><br>
+                                <span class="textes">Importe Persona A</span>
+                            </label>
+                            <input id="full-benefit-a" name="full_benefit_a" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+
+                        <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
+                            <label for="full-benefit-b">
+                                <span class="textde">Betrag Person B</span><br>
+                                <span class="textes">Importe Persona B</span>
+                            </label>
+                            <input id="full-benefit-b" name="full_benefit_b" type="text" inputmode="decimal"
+                                placeholder="0,00" aria-describedby="employment-amount-help">
+                        </div>
+                    </div>
+                </fieldset>
+
+            </fieldset>
+
             <div class="form-actions">
-                <button type="submit">Guardar secciones 1 y 2</button>
+                <button type="submit">Guardar</button>
                 <button type="reset" style="margin-left:8px;">Restablecer</button>
             </div>
         </form>
     </main>
 
-    <script>
-        // Envío demo: bloquea la transmisión y no registra datos fiscales o personales.
-        document.getElementById('fallprufung-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Secciones 1 y 2 procesadas localmente (demo). No se han transmitido datos.');
-        });
-    </script>
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
