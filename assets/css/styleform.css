@@ -107,27 +107,6 @@ main {
     margin-inline: auto;
 }
 
-main::before {
-    /* Adds the visual concept marker above the form. */
-    content: "Option 3 · Nordic Ledger";
-    display: block;
-    width: fit-content;
-
-    /* Separates the marker from the form. */
-    margin: 0 0 1rem;
-    padding: 0.42rem 0.72rem;
-
-    /* Styles the marker as a compact label. */
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-control);
-    background-color: var(--color-surface);
-    color: var(--color-primary);
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
 #fallprufung-form .field {
     /* Creates a vertical label-and-control layout. */
     display: flex;
