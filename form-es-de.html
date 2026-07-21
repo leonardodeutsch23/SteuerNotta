@@ -8,81 +8,8 @@
     <!--Bootstrap CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <style>
-        /* Estilos locales del formulario, aplicados después de Bootstrap. */
-        body {
-            padding: 1rem;
-            font-family: system-ui, "Segoe UI", Arial, sans-serif;
-        }
+    <link href="assets/css/styleform.css" rel="stylesheet">
 
-        #fallprufung-form .field {
-            display: flex;
-            min-width: 0;
-            flex-direction: column;
-        }
-
-        #fallprufung-form .field>label {
-            margin-bottom: 0.25rem;
-            font-size: 0.9rem;
-        }
-
-        #fallprufung-form #out-scope-grid>label {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-        }
-
-        #fallprufung-form .field>input:not([type="checkbox"]):not([type="radio"]),
-        #fallprufung-form .field>select,
-        #fallprufung-form .field>textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #000000;
-            border-radius: 0.25rem;
-        }
-
-        #fallprufung-form .field>textarea {
-            min-height: 8rem;
-            resize: vertical;
-        }
-
-        #fallprufung-form .form-actions {
-            margin-top: 1rem;
-        }
-
-        #fallprufung-form .document-card {
-            min-width: 0;
-        }
-
-        #fallprufung-form .document-card>legend {
-            max-width: 100%;
-            margin-bottom: 0.75rem;
-        }
-
-        #fallprufung-form .document-card .form-check-label,
-        #fallprufung-form .document-card .form-label {
-            font-size: 0.9rem;
-        }
-
-        #fallprufung-form .review-summary ul {
-            margin-bottom: 0;
-            padding-left: 1.25rem;
-        }
-
-        #fallprufung-form .review-check {
-            min-width: 0;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-        }
-
-        #fallprufung-form .review-check .form-check-label {
-            overflow-wrap: anywhere;
-            cursor: pointer;
-        }
-
-        #fallprufung-form .review-check:has(.form-check-input:checked) {
-            border-color: var(--bs-primary) !important;
-            background-color: rgba(var(--bs-primary-rgb), 0.08);
-        }
-    </style>
 </head>
 
 <body>
@@ -2669,12 +2596,6 @@
                     <span lang="de">Unterlagen</span> · Registros y documentos de apoyo
                 </legend>
 
-                <p class="field-note">Esta lista cubre las secciones 2–5 del alcance actual. Las situaciones marcadas
-                    como fuera de alcance necesitan el checklist específico de sus anexos.</p>
-
-                <p id="document-upload-policy" class="field-note">Puedes seleccionar archivos PDF, JPG o PNG. El
-                    navegador muestra los archivos elegidos en cada control; por ahora no se guardan ni se envían.</p>
-
                 <fieldset class="field-group"
                     data-source-ref="ESt 1 A 2025; ELSTER 2025 Belegabruf und Belegvorhaltepflicht">
                     <legend><span lang="de">Referenzdaten und eData</span> · Datos de referencia y eData</legend>
@@ -3761,24 +3682,6 @@
                     <strong>7</strong>
                     <span lang="de">Prüfung und Hinweise</span> · Revisión final y observaciones
                 </legend>
-
-                <div class="review-summary alert alert-primary" role="note" aria-labelledby="full-review-summary-title">
-                    <span class="badge text-bg-primary mb-2">FULL-REVIEW · sin validación fiscal</span>
-                    <h3 id="full-review-summary-title" class="h5">
-                        <span lang="de">Prüfungen vor dem Absenden</span> · Comprobaciones antes del envío
-                    </h3>
-                    <p>Esta revisión permite comprobar la cobertura del expediente, pero no certifica la declaración ni
-                        sustituye una revisión fiscal profesional.</p>
-                    <ul>
-                        <li>El año de referencia es 2025 y los datos corresponden a ese periodo fiscal.</li>
-                        <li>Las personas, los empleadores y los certificados salariales correspondientes están
-                            representados.</li>
-                        <li>Los importes netos y los reembolsos se han indicado por separado para evitar duplicidades.
-                        </li>
-                        <li>Las señales fuera del alcance actual se han identificado para revisar sus anexos oficiales.
-                        </li>
-                    </ul>
-                </div>
 
                 <fieldset class="field-group mt-4" aria-describedby="full-review-confirmation-help">
                     <legend>

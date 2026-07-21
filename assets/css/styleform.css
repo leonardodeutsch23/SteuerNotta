@@ -1,0 +1,589 @@
+/* =========================================================
+   CSS VARIABLES
+   ========================================================= */
+
+:root {
+    /* Fonts */
+    --font-heading: Georgia, "Times New Roman", serif;
+    --font-body: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* Brand colors */
+    --color-primary: #0018a8;
+    --color-primary-dark: #00106f;
+    --color-primary-focus: rgba(0, 24, 168, 0.18);
+    --color-primary-selection: rgba(0, 24, 168, 0.08);
+    --color-accent: #b7791f;
+
+    /* Backgrounds and surfaces */
+    --color-page-background: #f1eadc;
+    --color-page-line: rgba(96, 72, 38, 0.035);
+    --color-surface: #fffdf8;
+    --color-surface-alt: #faf6ed;
+    --color-surface-muted: #f8f3e8;
+    --color-note-background: #f5ead3;
+    --color-control-background: #fffefa;
+    --color-control-readonly: rgba(95, 107, 125, 0.08);
+
+    /* Text */
+    --color-text: #252a34;
+    --color-heading: #302a21;
+    --color-text-muted: #6b655b;
+    --color-translation: #736b60;
+
+    /* Borders */
+    --color-border: #d7cbb7;
+    --color-border-group: #d9cebb;
+    --color-border-strong: #cfc1aa;
+
+    /* Shapes and effects */
+    --radius-section: 0.375rem;
+    --radius-card: 0.25rem;
+    --radius-control: 0.1875rem;
+    --radius-number: 0.125rem;
+    --shadow-section: 0 0.5625rem 0 rgba(73, 55, 28, 0.06);
+    --shadow-control: 0 0.0625rem 0.125rem rgba(16, 31, 69, 0.04);
+
+    /* Common */
+    --color-white: #ffffff;
+
+    /* Keeps Bootstrap components aligned with the form palette. */
+    --bs-primary: var(--color-primary);
+    --bs-primary-rgb: 0, 24, 168;
+}
+
+
+/* =========================================================
+   GENERAL STYLES
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    /* Includes borders and padding inside declared dimensions. */
+    box-sizing: border-box;
+}
+
+html {
+    /* Makes in-page navigation move smoothly. */
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Prevents the layout from becoming narrower than a small phone. */
+    min-width: 20rem;
+
+    /* Makes the page at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Removes the browser's default outer margin. */
+    margin: 0;
+
+    /* Adds responsive space around the complete form. */
+    padding: clamp(1rem, 2.4vw, 2.5rem);
+
+    /* Sets the default text appearance. */
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.55;
+
+    /* Applies the ledger-style page background. */
+    background-color: var(--color-page-background);
+    background-image: linear-gradient(
+        var(--color-page-line) 1px,
+        transparent 1px
+    );
+    background-size: 100% 1.75rem;
+}
+
+main {
+    /* Makes the page follow the available browser width. */
+    width: 100%;
+    min-width: 0;
+
+    /* Prevents enlarged browser font settings from widening the form. */
+    max-width: 1280px;
+
+    /* Centers the page content horizontally. */
+    margin-inline: auto;
+}
+
+main::before {
+    /* Adds the visual concept marker above the form. */
+    content: "Option 3 · Nordic Ledger";
+    display: block;
+    width: fit-content;
+
+    /* Separates the marker from the form. */
+    margin: 0 0 1rem;
+    padding: 0.42rem 0.72rem;
+
+    /* Styles the marker as a compact label. */
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-control);
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#fallprufung-form .field {
+    /* Creates a vertical label-and-control layout. */
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+}
+
+#fallprufung-form .document-card,
+#fallprufung-form .review-check {
+    /* Prevents reusable cards from overflowing their grid columns. */
+    min-width: 0;
+}
+
+
+/* =========================================================
+   MAIN FORM CONTAINER
+   ========================================================= */
+
+#fallprufung-form {
+    /* Stacks the form sections with consistent responsive spacing. */
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    gap: clamp(1.25rem, 2vw, 2rem);
+}
+
+
+/* =========================================================
+   FORM SECTION CONTAINERS
+   ========================================================= */
+
+#fallprufung-form .form-section {
+    /* Stores the responsive section spacing for reuse on mobile. */
+    --section-padding: clamp(1.15rem, 2.5vw, 2.25rem);
+
+    /* Prevents fieldsets from overflowing the form. */
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    /* Removes the browser's default fieldset margin. */
+    margin: 0;
+
+    /* Adds responsive space around each section's content. */
+    padding: var(--section-padding);
+
+    /* Creates the main paper-like section card. */
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-section);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-section);
+}
+
+
+/* =========================================================
+   FORM SECTION TITLES
+   ========================================================= */
+
+#fallprufung-form .form-section > legend {
+    /* Places the legend inside the fieldset's normal content area. */
+    float: left;
+    display: block;
+
+    /* Makes the title occupy the complete section width. */
+    width: 100%;
+    max-width: 100%;
+
+    /* Separates the title from the section content. */
+    margin: 0 0 1.4rem;
+    padding: 0 0 0.9rem;
+
+    /* Creates the blue double underline. */
+    border-bottom: 3px double var(--color-primary);
+
+    /* Styles the section heading. */
+    color: var(--color-primary-dark);
+    font-family: var(--font-heading);
+    font-size: clamp(1.18rem, calc(1.2rem + 0.4vw), 1.65rem);
+    font-weight: 780;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+#fallprufung-form .form-section > legend + * {
+    /* Starts the section content below the floated title. */
+    clear: both;
+}
+
+
+/* =========================================================
+   SECTION NUMBER BADGES
+   ========================================================= */
+
+#fallprufung-form .form-section > legend > strong {
+    /* Centers the number inside a fixed square. */
+    display: inline-grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex: 0 0 2.4rem;
+    place-items: center;
+
+    /* Applies the number badge shape and colors. */
+    border-radius: var(--radius-number);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    /* Keeps the number compact and legible. */
+    margin-right: 0.75rem;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   INNER FIELD GROUPS
+   ========================================================= */
+
+#fallprufung-form .field-group {
+    /* Prevents nested fieldsets from overflowing their section. */
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    /* Adds separation from the preceding section content. */
+    margin: 1.2rem 0 0;
+
+    /* Adds responsive space around the fields. */
+    padding: clamp(1rem, 2vw, 1.55rem);
+
+    /* Creates the inner field group card. */
+    border: 1px solid var(--color-border-group);
+    border-radius: var(--radius-card);
+    background-color: var(--color-surface-alt);
+}
+
+
+/* =========================================================
+   INNER FIELD GROUP TITLES
+   ========================================================= */
+
+#fallprufung-form .field-group > legend {
+    /* Overrides Bootstrap's floated legend behavior. */
+    float: none;
+
+    /* Lets the legend use only the width it needs. */
+    width: auto;
+    max-width: calc(100% - 1rem);
+
+    /* Removes the default margin and adds horizontal breathing room. */
+    margin: 0;
+    padding: 0 0.65rem;
+
+    /* Styles the inner group heading. */
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 750;
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   FIELD LABELS AND TRANSLATIONS
+   ========================================================= */
+
+#fallprufung-form .field > label {
+    /* Separates each label from its control. */
+    margin-bottom: 0.25rem;
+
+    /* Keeps field labels compact. */
+    font-size: 0.9rem;
+}
+
+#fallprufung-form .field > label,
+#fallprufung-form .form-label,
+#fallprufung-form .form-check-label {
+    /* Applies consistent label typography across every section. */
+    color: var(--color-text);
+    font-weight: 650;
+    line-height: 1.35;
+}
+
+#fallprufung-form .textde {
+    /* Emphasizes the original German terminology. */
+    color: var(--color-primary-dark);
+    font-weight: 760;
+}
+
+#fallprufung-form .textes {
+    /* Differentiates the Spanish translation from the source label. */
+    color: var(--color-translation);
+    font-size: 0.88rem;
+    font-style: italic;
+    font-weight: 480;
+}
+
+
+/* =========================================================
+   TEXT INPUTS, SELECT MENUS, AND TEXTAREAS
+   ========================================================= */
+
+#fallprufung-form .field > input:not([type="checkbox"]):not([type="radio"]),
+#fallprufung-form .field > select,
+#fallprufung-form .field > textarea,
+#fallprufung-form .form-control,
+#fallprufung-form .form-select {
+    /* Makes every control fill its available grid column. */
+    width: 100%;
+
+    /* Gives controls a consistent height and internal spacing. */
+    min-height: 2.85rem;
+    padding: 0.5rem;
+
+    /* Applies the shared control surface. */
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background-color: var(--color-control-background);
+    color: var(--color-text);
+    box-shadow: var(--shadow-control);
+
+    /* Smooths hover and focus feedback. */
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background-color 160ms ease;
+}
+
+#fallprufung-form .field > textarea {
+    /* Allows users to expand longer notes without changing the width. */
+    resize: vertical;
+}
+
+#fallprufung-form input[readonly] {
+    /* Visually distinguishes values that cannot be edited. */
+    background-color: var(--color-control-readonly);
+}
+
+
+/* =========================================================
+   CONTROL INTERACTION STATES
+   ========================================================= */
+
+#fallprufung-form .field > input:not([type="checkbox"]):not([type="radio"]):hover,
+#fallprufung-form .field > select:hover,
+#fallprufung-form .field > textarea:hover,
+#fallprufung-form .form-control:hover,
+#fallprufung-form .form-select:hover {
+    /* Highlights controls when the pointer is over them. */
+    border-color: var(--color-primary);
+}
+
+#fallprufung-form .field > input:not([type="checkbox"]):not([type="radio"]):focus,
+#fallprufung-form .field > select:focus,
+#fallprufung-form .field > textarea:focus,
+#fallprufung-form .form-control:focus,
+#fallprufung-form .form-select:focus,
+#fallprufung-form .form-check-input:focus,
+#fallprufung-form .btn:focus-visible {
+    /* Applies a visible and accessible focus treatment. */
+    border-color: var(--color-primary);
+    outline: 3px solid transparent;
+    box-shadow: 0 0 0 0.25rem var(--color-primary-focus);
+}
+
+
+/* =========================================================
+   CHECKBOXES AND RADIO CONTROLS
+   ========================================================= */
+
+#fallprufung-form .form-check-input {
+    /* Aligns Bootstrap checks with the form palette. */
+    border-color: var(--color-border);
+    accent-color: var(--color-primary);
+}
+
+#fallprufung-form .form-check-input:checked {
+    /* Applies the primary color to selected controls. */
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+
+/* =========================================================
+   INFORMATION BOXES AND FIELD NOTES
+   ========================================================= */
+
+#fallprufung-form .field-group__intro,
+#fallprufung-form .field-note {
+    /* Applies subdued typography to supporting information. */
+    color: var(--color-text-muted);
+    font-size: 0.91rem;
+}
+
+#fallprufung-form .field-group__intro {
+    /* Separates the information box from the following fields. */
+    margin-bottom: 1.15rem;
+    padding: 0.85rem 1rem;
+
+    /* Creates the golden note accent and surface. */
+    border-inline-start: 0.25rem solid var(--color-accent);
+    border-radius: 0 var(--radius-control) var(--radius-control) 0;
+    background-color: var(--color-note-background);
+}
+
+#fallprufung-form .field-group__intro > :last-child,
+#fallprufung-form .field-note:last-child {
+    /* Removes unnecessary space at the end of supporting copy. */
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SELECTION AND REVIEW CARDS
+   ========================================================= */
+
+#fallprufung-form #out-scope-grid > label,
+#fallprufung-form .review-check {
+    /* Creates a consistent card around selectable content. */
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background-color: var(--color-control-background);
+}
+
+#fallprufung-form #out-scope-grid > label {
+    /* Removes label spacing inherited from Bootstrap. */
+    margin-bottom: 0;
+
+    /* Keeps the scope card text compact. */
+    font-size: 0.9rem;
+}
+
+#fallprufung-form #out-scope-grid > label:hover,
+#fallprufung-form .review-check:hover {
+    /* Highlights selectable cards on pointer hover. */
+    border-color: var(--color-primary);
+}
+
+#fallprufung-form .review-check {
+    /* Smooths the visual change when a review item is selected. */
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+#fallprufung-form .review-check .form-check-label {
+    /* Keeps long review labels inside their cards. */
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+#fallprufung-form .review-check:has(.form-check-input:checked) {
+    /* Highlights the complete card when its checkbox is selected. */
+    border-color: var(--color-primary) !important;
+    background-color: var(--color-primary-selection);
+}
+
+
+/* =========================================================
+   DOCUMENT CARDS
+   ========================================================= */
+
+#fallprufung-form .document-card {
+    /* Overrides Bootstrap's card border and corner utilities. */
+    border-color: var(--color-border) !important;
+    border-radius: var(--radius-card) !important;
+
+    /* Applies the document card surface. */
+    background-color: var(--color-surface);
+    box-shadow: none;
+}
+
+#fallprufung-form .document-card > legend {
+    /* Keeps long document titles inside their cards. */
+    max-width: 100%;
+    margin-bottom: 0.75rem;
+
+    /* Styles document card headings. */
+    color: var(--color-primary-dark);
+    font-weight: 720;
+}
+
+#fallprufung-form .document-card .form-check-label,
+#fallprufung-form .document-card .form-label {
+    /* Keeps document controls visually compact. */
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   FORM ACTIONS AND BUTTONS
+   ========================================================= */
+
+#fallprufung-form .form-actions {
+    /* Separates the action area from the fields above it. */
+    margin-top: 1rem;
+}
+
+#fallprufung-form .btn-primary {
+    /* Applies the primary action appearance. */
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 720;
+}
+
+#fallprufung-form .btn-outline-secondary {
+    /* Uses the brand color for secondary actions. */
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+#fallprufung-form .btn:disabled {
+    /* Clearly indicates unavailable actions. */
+    opacity: 0.58;
+}
+
+
+/* =========================================================
+   MOBILE SCREENS
+   ========================================================= */
+
+@media screen and (max-width: 575.98px) {
+    body {
+        /* Reduces the page spacing on small screens. */
+        padding: 0.75rem;
+    }
+
+    #fallprufung-form .form-section {
+        /* Reduces the section spacing on small screens. */
+        --section-padding: 1rem;
+        padding: var(--section-padding);
+    }
+
+    #fallprufung-form .form-section > legend {
+        /* Reduces the main title size on small screens. */
+        font-size: 1.1rem;
+    }
+
+    #fallprufung-form .field-group {
+        /* Reduces the inner field group spacing on small screens. */
+        padding: 0.85rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        /* Respects the user's reduced-motion preference. */
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
