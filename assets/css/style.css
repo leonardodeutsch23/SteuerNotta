@@ -28,6 +28,37 @@
 
 
 /* =========================================================
+   GENERAL STYLES
+   ========================================================= */
+
+body {
+    /* Keeps the page below the fixed navbar. */
+    padding-top: 4.75rem;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+}
+
+.custom-button-outline {
+    /* Creates the reusable outlined button. */
+    min-width: 8.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 0.375rem;
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.custom-button-outline:hover {
+    /* Changes the button color when the mouse is over it. */
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: white;
+}
+
+
+/* =========================================================
    NAVBAR
    ========================================================= */
 
@@ -198,10 +229,19 @@
 
 
 /* =========================================================
-   MOBILE NAVBAR
+   Mobile devices
    ========================================================= */
 
 @media screen and (max-width: 991.98px) {
+    body {
+        /* Matches the space used by the shorter mobile navbar. */
+        padding-top: 4.25rem;
+    }
+
+/* =========================================================
+     Navbar
+   ========================================================= */
+
     #navbar {
         /* Slightly reduces the navbar height on small screens. */
         min-height: 4.25rem;
@@ -252,5 +292,215 @@
         /* Makes the mobile call-to-action fill the menu width. */
         width: 100%;
         margin-left: 0 !important;
+    }
+}
+
+
+/* =========================================================
+   HEADER AND CAROUSEL
+   ========================================================= */
+
+#header {
+    /* Uses the complete browser width like the mockup. */
+    width: 100%;
+    max-width: none;
+    padding: 1.5rem 1.75rem 2rem;
+    background-color: var(--color-surface);
+}
+
+#header .row {
+    /* Vertically aligns the text and the carousel. */
+    align-items: center;
+}
+
+#header .row > div:first-child {
+    /* Keeps the header copy aligned with the left edge. */
+    text-align: left !important;
+}
+
+#header h1 {
+    /* Hides the temporary project name above the main heading. */
+    display: none;
+}
+
+#header .lead {
+    /* Styles the main header text. */
+    margin-bottom: 1.25rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.08;
+}
+
+#header p:not(.lead) {
+    /* Styles the introductory paragraph. */
+    max-width: 34rem;
+    margin-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+#header .custom-button-outline {
+    /* Stacks both actions on small screens. */
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem !important;
+}
+
+#header .custom-button-outline:first-of-type {
+    /* Turns the first action into the primary button. */
+    background-color: var(--color-primary);
+    color: white;
+}
+
+#header .custom-button-outline:first-of-type::after {
+    /* Adds the arrow shown in the mockup. */
+    content: "\2192";
+    margin-left: 0.75rem;
+    font-size: 1.25rem;
+}
+
+#header .custom-button-outline:last-of-type::before {
+    /* Adds the play symbol shown in the mockup. */
+    content: "\25B7";
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+#carouselExampleAutoplaying {
+    /* Separates the carousel from the text on mobile. */
+    margin-top: 1rem;
+}
+
+#carouselExampleAutoplaying .carousel-inner {
+    /* Creates the amber frame around the images. */
+    padding: 0.35rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 0.5rem;
+    background-color: var(--color-surface);
+}
+
+#carouselExampleAutoplaying .carousel-item img {
+    /* Crops the square images into the landscape header shape. */
+    height: 13rem;
+    border-radius: 0.25rem;
+    object-fit: cover;
+}
+
+#carouselExampleAutoplaying .carousel-control-prev,
+#carouselExampleAutoplaying .carousel-control-next {
+    /* Changes the Bootstrap controls into white circles. */
+    width: 2.75rem;
+    height: 2.75rem;
+    top: 50%;
+    border: 1px solid var(--color-text);
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+#carouselExampleAutoplaying .carousel-control-prev {
+    left: -0.5rem;
+}
+
+#carouselExampleAutoplaying .carousel-control-next {
+    right: -0.5rem;
+}
+
+#carouselExampleAutoplaying .carousel-control-prev-icon,
+#carouselExampleAutoplaying .carousel-control-next-icon {
+    /* Changes Bootstrap's white arrows to dark arrows. */
+    width: 1.25rem;
+    height: 1.25rem;
+    filter: brightness(0);
+}
+
+#carouselExampleAutoplaying::after {
+    /* Adds the three decorative carousel dots. */
+    content: "\25CF  \25CF  \25CF";
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    text-align: center;
+    word-spacing: 0.3rem;
+}
+
+
+/* =========================================================
+   TABLETS AND LARGER SCREENS
+   ========================================================= */
+
+@media screen and (min-width: 768px) {
+
+/* =========================================================
+   Responsive Header and Carousel
+   ========================================================= */
+
+    #header > .row > div:first-child {
+        /* Gives the text column slightly less space. */
+        width: 45%;
+    }
+
+    #header > .row > div:last-child {
+        /* Gives the carousel slightly more space. */
+        width: 55%;
+    }
+
+    #header .lead {
+        font-size: 2.125rem;
+    }
+
+    #header .custom-button-outline {
+        /* Places both actions next to each other. */
+        display: inline-block;
+        width: 8.5rem;
+        padding: 0.6rem 0.75rem;
+        margin-right: 0.75rem;
+        font-size: 0.9rem;
+        line-height: 1.25;
+    }
+
+    #carouselExampleAutoplaying {
+        margin-top: 0;
+    }
+
+    #carouselExampleAutoplaying .carousel-item img {
+        height: 20.5rem;
+    }
+
+    #carouselExampleAutoplaying .carousel-control-prev {
+        left: -1.25rem;
+    }
+
+    #carouselExampleAutoplaying .carousel-control-next {
+        right: -1.25rem;
+    }
+}
+
+/* =========================================================
+   Laptops and Larger Screens
+   ========================================================= */
+
+@media screen and (min-width: 1200px) {
+
+  /* =========================================================
+   Responsive Header and Carousel
+   ========================================================= */
+
+    #header {
+        padding: 2rem;
+    }
+
+    #header .lead {
+        max-width: 35rem;
+        font-size: 3rem;
+    }
+
+    #carouselExampleAutoplaying .carousel-item img {
+        height: 26rem;
     }
 }
