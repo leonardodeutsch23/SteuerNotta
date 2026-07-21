@@ -365,10 +365,10 @@ body {
 
 
 /* =========================================================
-   ABOUT SECTION
+   PROBLEM SECTION
    ========================================================= */
 
-#about {
+#problem {
     /* Extends the section across the complete browser width. */
     width: 100%;
     max-width: none;
@@ -378,18 +378,18 @@ body {
     background-color: var(--color-background);
 }
 
-#about .row {
+#problem .row {
     /* Removes Bootstrap's outer spacing and centers both columns. */
     margin: 0;
     align-items: center;
 }
 
-#about .row > div {
+#problem .row > div {
     /* Removes the default gap between the image and the text. */
     padding: 0;
 }
 
-#about img {
+#problem img {
     /* Crops the square illustration into a horizontal image. */
     display: block;
     width: 100%;
@@ -398,12 +398,12 @@ body {
     object-position: center;
 }
 
-#about .row > div:last-child {
+#problem .row > div:last-child {
     /* Adds breathing room around the written content. */
     padding: 1.75rem;
 }
 
-#about h2 {
+#problem h2 {
     /* Applies the editorial heading style from the mockup. */
     margin-bottom: 1rem;
     color: var(--color-text);
@@ -413,7 +413,7 @@ body {
     line-height: 1.1;
 }
 
-#about p {
+#problem p {
     /* Makes the explanatory text comfortable to read. */
     max-width: 34rem;
     margin-bottom: 1.5rem;
@@ -421,14 +421,14 @@ body {
     line-height: 1.6;
 }
 
-#about ul {
+#problem ul {
     /* Removes the browser's default list appearance. */
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-#about li {
+#problem li {
     /* Aligns every sentence with its check symbol. */
     display: flex;
     margin-bottom: 0.75rem;
@@ -436,7 +436,7 @@ body {
     line-height: 1.4;
 }
 
-#about li::before {
+#problem li::before {
     /* Creates the amber circular check symbol. */
     content: "\2713";
     display: inline-flex;
@@ -576,20 +576,20 @@ body {
     }
 
   /* =========================================================
-     Responsive About Section
+     Responsive Problem Section
      ========================================================= */
 
-    #about img {
+    #problem img {
         /* Increases the illustration height beside the text. */
         height: 24rem;
     }
 
-    #about .row > div:last-child {
+    #problem .row > div:last-child {
         /* Adds more content spacing on tablet screens. */
         padding: 2rem 2.25rem;
     }
 
-    #about h2 {
+    #problem h2 {
         /* Increases the about heading size on tablets. */
         font-size: 2rem;
     }
@@ -622,20 +622,20 @@ body {
     }
 
   /* =========================================================
-     Responsive About Section
+     Responsive Problem Section
      ========================================================= */
 
-    #about img {
+    #problem img {
         /* Matches the desktop illustration height to the mockup. */
         height: 26rem;
     }
 
-    #about .row > div:last-child {
+    #problem .row > div:last-child {
         /* Adds generous desktop spacing around the content. */
         padding: 3rem;
     }
 
-    #about h2 {
+    #problem h2 {
         /* Uses the large editorial heading size on desktop. */
         font-size: 2.25rem;
     }
