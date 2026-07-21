@@ -229,74 +229,6 @@ body {
 
 
 /* =========================================================
-   Mobile devices
-   ========================================================= */
-
-@media screen and (max-width: 991.98px) {
-    body {
-        /* Matches the space used by the shorter mobile navbar. */
-        padding-top: 4.25rem;
-    }
-
-/* =========================================================
-     Navbar
-   ========================================================= */
-
-    #navbar {
-        /* Slightly reduces the navbar height on small screens. */
-        min-height: 4.25rem;
-        padding-block: 0.5rem;
-    }
-
-    #navbar .logo {
-        /* Keeps the logo proportional on narrow screens. */
-        width: 11rem;
-    }
-
-    #navbar .navbar-collapse {
-        /* Separates the expanded mobile menu from the header row. */
-        margin-top: 0.5rem;
-        padding: 0.75rem 0 0.5rem;
-        border-top: 1px solid color-mix(
-            in srgb,
-            var(--color-accent) 20%,
-            transparent
-        );
-    }
-
-    #navbar .navbar-nav {
-        /* Stacks mobile navigation items without desktop spacing. */
-        align-items: stretch;
-        gap: 0.25rem;
-    }
-
-    #navbar .nav-link {
-        /* Increases the mobile link touch area. */
-        padding: 0.75rem 0 !important;
-    }
-
-    #navbar .nav-link.active::after {
-        /* Keeps the mobile active indicator compact. */
-        right: auto;
-        left: 0;
-        width: 2.5rem;
-    }
-
-    #navbar .navbar-nav > .nav-item:last-child {
-        /* Removes the desktop action separation. */
-        margin-top: 0.5rem;
-        margin-left: 0;
-    }
-
-    #navbar .custom-button-filled {
-        /* Makes the mobile call-to-action fill the menu width. */
-        width: 100%;
-        margin-left: 0 !important;
-    }
-}
-
-
-/* =========================================================
    HEADER AND CAROUSEL
    ========================================================= */
 
@@ -403,10 +335,12 @@ body {
 }
 
 #carouselExampleAutoplaying .carousel-control-prev {
+    /* Moves the previous control slightly outside the image frame. */
     left: -0.5rem;
 }
 
 #carouselExampleAutoplaying .carousel-control-next {
+    /* Moves the next control slightly outside the image frame. */
     right: -0.5rem;
 }
 
@@ -431,6 +365,162 @@ body {
 
 
 /* =========================================================
+   ABOUT SECTION
+   ========================================================= */
+
+#about {
+    /* Extends the section across the complete browser width. */
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    border-top: 1px solid #e4d3b5;
+    border-bottom: 1px solid #e4d3b5;
+    background-color: var(--color-background);
+}
+
+#about .row {
+    /* Removes Bootstrap's outer spacing and centers both columns. */
+    margin: 0;
+    align-items: center;
+}
+
+#about .row > div {
+    /* Removes the default gap between the image and the text. */
+    padding: 0;
+}
+
+#about img {
+    /* Crops the square illustration into a horizontal image. */
+    display: block;
+    width: 100%;
+    height: 14rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+#about .row > div:last-child {
+    /* Adds breathing room around the written content. */
+    padding: 1.75rem;
+}
+
+#about h2 {
+    /* Applies the editorial heading style from the mockup. */
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+#about p {
+    /* Makes the explanatory text comfortable to read. */
+    max-width: 34rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#about ul {
+    /* Removes the browser's default list appearance. */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#about li {
+    /* Aligns every sentence with its check symbol. */
+    display: flex;
+    margin-bottom: 0.75rem;
+    align-items: center;
+    line-height: 1.4;
+}
+
+#about li::before {
+    /* Creates the amber circular check symbol. */
+    content: "\2713";
+    display: inline-flex;
+    width: 1.25rem;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* =========================================================
+   Mobile devices
+   ========================================================= */
+
+@media screen and (max-width: 991.98px) {
+    body {
+        /* Matches the space used by the shorter mobile navbar. */
+        padding-top: 4.25rem;
+    }
+
+/* =========================================================
+     Navbar
+   ========================================================= */
+
+    #navbar {
+        /* Slightly reduces the navbar height on small screens. */
+        min-height: 4.25rem;
+        padding-block: 0.5rem;
+    }
+
+    #navbar .logo {
+        /* Keeps the logo proportional on narrow screens. */
+        width: 11rem;
+    }
+
+    #navbar .navbar-collapse {
+        /* Separates the expanded mobile menu from the header row. */
+        margin-top: 0.5rem;
+        padding: 0.75rem 0 0.5rem;
+        border-top: 1px solid color-mix(
+            in srgb,
+            var(--color-accent) 20%,
+            transparent
+        );
+    }
+
+    #navbar .navbar-nav {
+        /* Stacks mobile navigation items without desktop spacing. */
+        align-items: stretch;
+        gap: 0.25rem;
+    }
+
+    #navbar .nav-link {
+        /* Increases the mobile link touch area. */
+        padding: 0.75rem 0 !important;
+    }
+
+    #navbar .nav-link.active::after {
+        /* Keeps the mobile active indicator compact. */
+        right: auto;
+        left: 0;
+        width: 2.5rem;
+    }
+
+    #navbar .navbar-nav > .nav-item:last-child {
+        /* Removes the desktop action separation. */
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+
+    #navbar .custom-button-filled {
+        /* Makes the mobile call-to-action fill the menu width. */
+        width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+/* =========================================================
    TABLETS AND LARGER SCREENS
    ========================================================= */
 
@@ -451,6 +541,7 @@ body {
     }
 
     #header .lead {
+        /* Increases the main heading size on wider screens. */
         font-size: 2.125rem;
     }
 
@@ -465,19 +556,42 @@ body {
     }
 
     #carouselExampleAutoplaying {
+        /* Removes the mobile space when both columns are visible. */
         margin-top: 0;
     }
 
     #carouselExampleAutoplaying .carousel-item img {
+        /* Makes carousel images taller on tablets. */
         height: 20.5rem;
     }
 
     #carouselExampleAutoplaying .carousel-control-prev {
+        /* Places the previous control outside the tablet frame. */
         left: -1.25rem;
     }
 
     #carouselExampleAutoplaying .carousel-control-next {
+        /* Places the next control outside the tablet frame. */
         right: -1.25rem;
+    }
+
+  /* =========================================================
+     Responsive About Section
+     ========================================================= */
+
+    #about img {
+        /* Increases the illustration height beside the text. */
+        height: 24rem;
+    }
+
+    #about .row > div:last-child {
+        /* Adds more content spacing on tablet screens. */
+        padding: 2rem 2.25rem;
+    }
+
+    #about h2 {
+        /* Increases the about heading size on tablets. */
+        font-size: 2rem;
     }
 }
 
@@ -492,15 +606,37 @@ body {
    ========================================================= */
 
     #header {
+        /* Adds more space around the desktop header. */
         padding: 2rem;
     }
 
     #header .lead {
+        /* Limits and enlarges the desktop header title. */
         max-width: 35rem;
         font-size: 3rem;
     }
 
     #carouselExampleAutoplaying .carousel-item img {
+        /* Makes carousel images taller on large screens. */
         height: 26rem;
+    }
+
+  /* =========================================================
+     Responsive About Section
+     ========================================================= */
+
+    #about img {
+        /* Matches the desktop illustration height to the mockup. */
+        height: 26rem;
+    }
+
+    #about .row > div:last-child {
+        /* Adds generous desktop spacing around the content. */
+        padding: 3rem;
+    }
+
+    #about h2 {
+        /* Uses the large editorial heading size on desktop. */
+        font-size: 2.25rem;
     }
 }
