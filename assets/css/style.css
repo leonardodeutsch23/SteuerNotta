@@ -454,10 +454,119 @@ body {
 }
 
 /* =========================================================
-   Mobile devices
+   HOW IT WORKS SECTION
    ========================================================= */
 
-@media screen and (max-width: 991.98px) {
+#how-it-works {
+    /* Separates the process from the surrounding page sections. */
+    padding-right: 1.75rem;
+    padding-left: 1.75rem;
+    scroll-margin-top: 4.75rem;
+    border-top: 1px solid #e4d3b5;
+    border-bottom: 1px solid #e4d3b5;
+    background-color: var(--color-surface);
+}
+
+#how-it-works .container {
+    /* Limits the content width while keeping the section full width. */
+    max-width: 75rem;
+}
+
+#how-it-works h2 {
+    /* Applies the main editorial heading style. */
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 2.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+#how-it-works .section-rule {
+    /* Draws the short amber line below the section title. */
+    width: 4.5rem;
+    height: 0.125rem;
+    background-color: var(--color-accent);
+}
+
+#how-it-works .process-step {
+    /* Creates a positioning reference for each process connector. */
+    position: relative;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+#how-it-works .process-step:not(:last-child)::after {
+    /* Connects each process step with a dashed line. */
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 4.125rem;
+    left: calc(50% + 5.25rem);
+    width: calc(100% - 10.5rem);
+    border-top: 2px dashed #6f747d;
+}
+
+#how-it-works .process-icon {
+    /* Creates the rounded paper frame around every illustration. */
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 10.5rem;
+    height: 8.25rem;
+    border: 1px solid #e4d3b5;
+    border-radius: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-surface);
+}
+
+#how-it-works .process-icon img {
+    /* Gives all three process images the same dimensions. */
+    width: 6.5rem;
+    height: 6.5rem;
+    object-fit: contain;
+}
+
+#how-it-works .process-number {
+    /* Places the numbered cobalt circle over the image frame. */
+    position: absolute;
+    z-index: 2;
+    top: -0.5rem;
+    left: -1.5rem;
+    display: flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+#how-it-works h3 {
+    /* Styles the title below each process illustration. */
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+#how-it-works .process-step p {
+    /* Limits and centers each process description. */
+    max-width: 19rem;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   MOBILE DEVICES
+   ========================================================= */
+
+@media screen and (max-width: 767.98px) {
     body {
         /* Matches the space used by the shorter mobile navbar. */
         padding-top: 4.25rem;
@@ -517,6 +626,33 @@ body {
         /* Makes the mobile call-to-action fill the menu width. */
         width: 100%;
         margin-left: 0 !important;
+    }
+
+    /* =========================================================
+    How it works section
+   ========================================================= */
+
+
+     #how-it-works {
+        /* Reduces the horizontal spacing on narrow screens. */
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
+    }
+
+    #how-it-works h2 {
+        /* Reduces the heading size on mobile screens. */
+        font-size: 2rem;
+    }
+
+    #how-it-works .process-step:not(:last-child)::after {
+        /* Hides horizontal connectors when steps are stacked. */
+        display: none;
+    }
+
+    #how-it-works .process-icon {
+        /* Uses a slightly smaller frame on mobile screens. */
+        width: 9rem;
+        height: 7.5rem;
     }
 }
 
@@ -590,7 +726,7 @@ body {
     }
 
     #problem h2 {
-        /* Increases the about heading size on tablets. */
+        /* Increases the problem heading size on tablets. */
         font-size: 2rem;
     }
 }
