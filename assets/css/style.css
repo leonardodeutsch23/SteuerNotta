@@ -563,6 +563,92 @@ body {
 }
 
 /* =========================================================
+   BENEFITS SECTION
+   ========================================================= */
+
+#benefits {
+    /* Extends the section background across the browser width. */
+    width: 100%;
+    max-width: none;
+    padding: 2.25rem 2.5rem;
+    scroll-margin-top: 4.75rem;
+    border-top: 1px solid #e4d3b5;
+    border-bottom: 1px solid #e4d3b5;
+    background-color: var(--color-background);
+}
+
+#benefits .row {
+    /* Centers the cards and controls the spacing between them. */
+    max-width: 68rem;
+    margin: 0 auto;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+}
+
+#benefits h2 {
+    /* Applies the main editorial heading style. */
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+#benefits h2::after {
+    /* Draws the short amber line below the section title. */
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 0.125rem;
+    margin: 0.65rem auto 0;
+    background-color: var(--color-accent);
+}
+
+#benefits .card {
+    /* Creates the warm paper frame around every benefit. */
+    height: 100%;
+    min-height: 16.25rem;
+    padding: 1rem;
+    border: 1px solid #dfc79f;
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    text-align: center;
+}
+
+#benefits .card-img-top {
+    /* Gives all benefit illustrations the same dimensions. */
+    width: 6.5rem;
+    height: 6.5rem;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+#benefits .card-body {
+    /* Removes excess Bootstrap spacing inside each card. */
+    padding: 0.75rem 0 0;
+}
+
+#benefits .card-title {
+    /* Styles the title of every benefit card. */
+    margin-bottom: 0.6rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+#benefits .card-text {
+    /* Styles and centers the benefit description. */
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+
+
+/* =========================================================
    MOBILE DEVICES
    ========================================================= */
 
@@ -725,6 +811,58 @@ body {
         margin: 0;
         align-self: start;
         font-size: 0.8rem;
+        line-height: 1.35;
+    }
+
+    /* =========================================================
+       Benefits Section
+       ========================================================= */
+
+    #benefits {
+        /* Reduces the section spacing on mobile screens. */
+        padding: 1.5rem 1rem;
+    }
+
+    #benefits .row {
+        /* Reduces the space between stacked benefit cards. */
+        --bs-gutter-y: 0.75rem;
+    }
+
+    #benefits h2 {
+        /* Reduces the section title size on mobile screens. */
+        font-size: 1.75rem;
+    }
+
+    #benefits .card {
+        /* Places the illustration beside the text on mobile. */
+        display: grid;
+        min-height: 0;
+        grid-template-columns: 4rem 1fr;
+        padding: 0.75rem;
+        align-items: center;
+        text-align: left;
+    }
+
+    #benefits .card-img-top {
+        /* Reduces the benefit illustrations on mobile screens. */
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    #benefits .card-body {
+        /* Adds space between the mobile illustration and text. */
+        padding: 0 0 0 0.75rem;
+    }
+
+    #benefits .card-title {
+        /* Reduces title spacing inside compact mobile cards. */
+        margin-bottom: 0.25rem;
+        font-size: 1rem;
+    }
+
+    #benefits .card-text {
+        /* Reduces description text inside compact mobile cards. */
+        font-size: 0.85rem;
         line-height: 1.35;
     }
 }
