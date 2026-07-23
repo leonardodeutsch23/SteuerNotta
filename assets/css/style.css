@@ -749,6 +749,67 @@ body {
 }
 
 
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+#footer {
+    /* Keeps the footer at the bottom of short pages. */
+    width: 100%;
+    margin-top: auto;
+    padding: 1.25rem 2.5rem;
+
+    /* Creates the warm footer surface. */
+    border-top: 1px solid #e4d3b5;
+    background-color: var(--color-background);
+}
+
+#footer .container {
+    /* Places the copyright and navigation on the same row. */
+    display: flex;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    align-items: center;
+}
+
+#footer .footer-copyright {
+    /* Reserves the left side for the copyright. */
+    flex: 0 0 30%;
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#footer .footer-navigation {
+    /* Distributes the footer links across the remaining space. */
+    display: flex;
+    min-height: 3rem;
+    flex: 1;
+    gap: 1.5rem;
+    padding-left: clamp(2rem, 7vw, 6rem);
+    border-left: 1px solid #d8ccb8;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#footer .footer-navigation a {
+    /* Applies the footer link typography. */
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#footer .footer-navigation a:hover,
+#footer .footer-navigation a:focus-visible {
+    /* Highlights footer links during interaction. */
+    color: var(--color-primary);
+}
+
+
 
 /* =========================================================
    MOBILE DEVICES
@@ -1021,6 +1082,44 @@ body {
         padding: 0.35rem 0.5rem;
         font-size: 0.8rem;
     }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+
+    #footer {
+        /* Reduces the footer spacing on mobile screens. */
+        padding: 1rem;
+    }
+
+    #footer .container {
+        /* Stacks the copyright and navigation vertically. */
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    #footer .footer-copyright {
+        /* Removes the desktop column width. */
+        flex: none;
+    }
+
+    #footer .footer-navigation {
+        /* Wraps and centers the footer links on small screens. */
+        width: 100%;
+        min-height: 0;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+        padding: 0.75rem 0 0;
+        border-top: 1px solid #d8ccb8;
+        border-left: 0;
+        justify-content: center;
+    }
+
+    #footer .footer-navigation a {
+        /* Reduces the footer link size on mobile screens. */
+        font-size: 0.8rem;
+    }
 }
 
 /* =========================================================
@@ -1095,6 +1194,15 @@ body {
     #problem h2 {
         /* Increases the problem heading size on tablets. */
         font-size: 2rem;
+    }
+
+    /* =========================================================
+       Responsive Benefits Section
+       ========================================================= */
+
+    #benefits .row {
+        /* Matches the vertical card spacing to the horizontal gutter. */
+        --bs-gutter-y: 1.5rem;
     }
 }
 
