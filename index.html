@@ -17,7 +17,8 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#navbar-scrollspy"
+    data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
 
     <!-- =========================================================
    Navbar
@@ -32,9 +33,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul id="navbar-scrollspy" class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" href="#header">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#how-it-works">How it works</a>
@@ -45,10 +46,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#languages">Languages</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#languages" class="btn  ms-lg-3 custom-button-filled">Start now</a>
-                    </li>
                 </ul>
+                <a href="#languages" class="btn custom-button-filled">Start now</a>
             </div>
         </div>
     </nav>
