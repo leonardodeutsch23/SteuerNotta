@@ -81,6 +81,9 @@ body {
     /* Adds responsive space around the complete form. */
     padding: clamp(1rem, 2.4vw, 2.5rem);
 
+    /* Keeps the form below the fixed navbar. */
+    padding-top: calc(4.75rem + clamp(1rem, 2.4vw, 2.5rem));
+
     /* Sets the default text appearance. */
     color: var(--color-text);
     font-family: var(--font-body);
@@ -105,6 +108,176 @@ main {
 
     /* Centers the page content horizontally. */
     margin-inline: auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+#navbar {
+    /* Aligns Bootstrap's navbar colors with the site palette. */
+    --bs-navbar-color: var(--color-text);
+    --bs-navbar-hover-color: var(--color-primary);
+    --bs-navbar-active-color: var(--color-text);
+    --bs-navbar-toggler-border-color: var(--color-primary);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230018a8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+    /* Sets the navbar proportions and paper-like appearance. */
+    min-height: 4.75rem;
+    padding-block: 0.625rem;
+    border-bottom: 1px solid color-mix(
+        in srgb,
+        var(--color-accent) 25%,
+        transparent
+    );
+    background-color: var(--color-surface);
+    box-shadow: 0 0.125rem 0.5rem
+        color-mix(in srgb, var(--color-text) 6%, transparent);
+
+    /* Applies the body font to every navigation element. */
+    font-family: var(--font-body);
+}
+
+#navbar > .container {
+    /* Lets the navbar use the complete browser width. */
+    width: 100%;
+    max-width: none;
+    padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+#navbar .navbar-brand {
+    /* Removes Bootstrap spacing around the logo. */
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+#navbar .logo {
+    /* Scales the logo to the reference navbar height. */
+    display: block;
+    width: 12.5rem;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+#navbar .navbar-collapse {
+    /* Vertically centers the navigation content. */
+    align-items: center;
+}
+
+#navbar .navbar-nav {
+    /* Aligns the navigation items horizontally. */
+    align-items: center;
+    column-gap: 2.5rem;
+}
+
+#navbar .nav-link {
+    /* Creates the positioning context for the active underline. */
+    position: relative;
+
+    /* Removes Bootstrap's horizontal link padding. */
+    padding: 0.7rem 0 0.65rem !important;
+
+    /* Applies the navigation typography. */
+    color: var(--color-text) !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-transform: capitalize;
+    white-space: nowrap;
+
+    /* Smooths the link color change. */
+    transition: color 160ms ease;
+}
+
+#navbar .nav-link:hover,
+#navbar .nav-link:focus-visible {
+    /* Highlights interactive links with the cobalt color. */
+    color: var(--color-primary) !important;
+}
+
+#navbar .nav-link.active::after {
+    /* Draws the cobalt indicator below the current page. */
+    content: "";
+    position: absolute;
+    right: -0.5rem;
+    bottom: 0;
+    left: -0.5rem;
+    height: 0.1875rem;
+    background-color: var(--color-primary);
+}
+
+#navbar .navbar-nav > .nav-item:last-child {
+    /* Separates the primary action from other navigation links. */
+    margin-left: clamp(3rem, 13vw, 10.5rem);
+}
+
+#navbar .custom-button-filled {
+    /* Centers the button label inside a consistent width. */
+    display: inline-flex;
+    min-width: 8.5rem;
+    min-height: 2.875rem;
+    padding: 0.7rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+
+    /* Applies the cobalt primary action appearance. */
+    border: 1px solid var(--color-primary);
+    border-radius: 0.375rem;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    box-shadow: 0 0.125rem 0.25rem
+        color-mix(in srgb, var(--color-primary) 16%, transparent);
+
+    /* Styles the button label. */
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    /* Smooths button interaction feedback. */
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease;
+}
+
+#navbar .custom-button-filled:hover {
+    /* Darkens the primary action on pointer hover. */
+    border-color: color-mix(
+        in srgb,
+        var(--color-primary) 88%,
+        var(--color-text)
+    );
+    background-color: color-mix(
+        in srgb,
+        var(--color-primary) 88%,
+        var(--color-text)
+    );
+    color: var(--color-surface);
+}
+
+#navbar .custom-button-filled:focus-visible,
+#navbar .navbar-toggler:focus-visible {
+    /* Adds a visible keyboard focus ring. */
+    outline: 0.1875rem solid transparent;
+    box-shadow: 0 0 0 0.25rem
+        color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+#navbar .navbar-toggler {
+    /* Gives the mobile menu control a branded outline. */
+    padding: 0.4rem 0.55rem;
+    border-color: var(--color-primary);
+}
+
+#navbar .navbar-toggler-icon {
+    /* Overrides the dark icon inherited from the HTML attribute. */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230018a8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
 #fallprufung-form .field {
@@ -526,13 +699,77 @@ main {
 
 
 /* =========================================================
+   NAVBAR ON MOBILE DEVICES
+   ========================================================= */
+
+@media screen and (max-width: 767.98px) {
+    body {
+        /* Matches the space used by the shorter mobile navbar. */
+        padding-top: calc(4.25rem + clamp(1rem, 2.4vw, 2.5rem));
+    }
+
+    #navbar {
+        /* Slightly reduces the navbar height on small screens. */
+        min-height: 4.25rem;
+        padding-block: 0.5rem;
+    }
+
+    #navbar .logo {
+        /* Keeps the logo proportional on narrow screens. */
+        width: 11rem;
+    }
+
+    #navbar .navbar-collapse {
+        /* Separates the expanded menu from the header row. */
+        margin-top: 0.5rem;
+        padding: 0.75rem 0 0.5rem;
+        border-top: 1px solid color-mix(
+            in srgb,
+            var(--color-accent) 20%,
+            transparent
+        );
+    }
+
+    #navbar .navbar-nav {
+        /* Stacks mobile navigation items without desktop spacing. */
+        align-items: stretch;
+        gap: 0.25rem;
+    }
+
+    #navbar .nav-link {
+        /* Increases the mobile link touch area. */
+        padding: 0.75rem 0 !important;
+    }
+
+    #navbar .nav-link.active::after {
+        /* Keeps the mobile active indicator compact. */
+        right: auto;
+        left: 0;
+        width: 2.5rem;
+    }
+
+    #navbar .navbar-nav > .nav-item:last-child {
+        /* Removes the desktop action separation. */
+        margin-top: 0.5rem;
+        margin-left: 0;
+    }
+
+    #navbar .custom-button-filled {
+        /* Makes the mobile Home button fill the menu width. */
+        width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+
+/* =========================================================
    MOBILE SCREENS
    ========================================================= */
 
 @media screen and (max-width: 575.98px) {
     body {
-        /* Reduces the page spacing on small screens. */
-        padding: 0.75rem;
+        /* Reduces page spacing while keeping the form below the navbar. */
+        padding: 5rem 0.75rem 0.75rem;
     }
 
     #fallprufung-form .form-section {
