@@ -391,12 +391,17 @@ body {
     padding: 0;
 }
 
+#problem .problem-picture,
 #problem img {
-    /* Crops the square illustration into a horizontal image. */
+    /* Makes the responsive picture fill its complete column. */
     display: block;
     width: 100%;
-    height: 14rem;
-    object-fit: cover;
+}
+
+#problem img {
+    /* Preserves the natural proportion of the selected image. */
+    height: auto;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -1210,11 +1215,6 @@ body {
      Responsive Problem Section
      ========================================================= */
 
-    #problem img {
-        /* Increases the illustration height beside the text. */
-        height: 24rem;
-    }
-
     #problem .row > div:last-child {
         /* Adds more content spacing on tablet screens. */
         padding: 2rem 2.25rem;
@@ -1264,11 +1264,6 @@ body {
   /* =========================================================
      Responsive Problem Section
      ========================================================= */
-
-    #problem img {
-        /* Matches the desktop illustration height to the mockup. */
-        height: 26rem;
-    }
 
     #problem .row > div:last-child {
         /* Adds generous desktop spacing around the content. */
