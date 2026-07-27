@@ -1133,6 +1133,25 @@ body {
 }
 
 /* =========================================================
+   TABLET COLLAPSED NAVBAR
+   ========================================================= */
+
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+    #navbar .navbar-nav {
+        /* Aligns the tablet navigation links to the right. */
+        align-items: flex-end;
+    }
+
+    #navbar .custom-button-filled {
+        /* Centers the button and makes it fill the tablet menu. */
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-left: 0;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
    TABLETS AND LARGER SCREENS
    ========================================================= */
 
