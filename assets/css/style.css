@@ -889,11 +889,6 @@ body {
         font-size: 1.75rem;
     }
 
-    #how-it-works .section-rule {
-        /* Hides the decorative line on mobile. */
-        display: none;
-    }
-
     #how-it-works .process-list {
         /* Removes Bootstrap spacing between the rows. */
         --bs-gutter-x: 0;
