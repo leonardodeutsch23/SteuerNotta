@@ -666,6 +666,11 @@ main {
     box-shadow: none;
 }
 
+#fallprufung-form [data-field-group="FULL-DOC"] .row {
+    /* Centers the final document card when it has no matching column. */
+    justify-content: center;
+}
+
 #fallprufung-form .document-card > legend {
     /* Keeps long document titles inside their cards. */
     max-width: 100%;
@@ -787,6 +792,46 @@ main {
     #fallprufung-form .row {
         /* Centers the remaining item when a two-column row is incomplete. */
         justify-content: center;
+    }
+
+    #fallprufung-form [data-field-group="FULL-DOC"] .document-card {
+        /* Gives every document card the same height across the section. */
+        min-height: 23rem;
+
+        /* Replaces the native top border with a line between both languages. */
+        border-top: 0 !important;
+    }
+
+    #fallprufung-form [data-field-group="FULL-DOC"] .document-card > legend {
+        /* Makes the bilingual title fill the card width. */
+        display: block;
+        width: 100% !important;
+        min-height: 0;
+        padding-inline: 0 !important;
+    }
+
+    #fallprufung-form [data-field-group="FULL-DOC"] .document-card > legend > br {
+        /* Lets each language create its own title row. */
+        display: none;
+    }
+
+    #fallprufung-form [data-field-group="FULL-DOC"] .document-card > legend .textde {
+        /* Keeps the German title above the card line. */
+        display: flex;
+        min-height: 4.9rem;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 0.25rem;
+        overflow-wrap: anywhere;
+    }
+
+    #fallprufung-form [data-field-group="FULL-DOC"] .document-card > legend .textes {
+        /* Places the Spanish translation below the card line. */
+        display: block;
+        min-height: 3.1rem;
+        margin-inline: -1rem;
+        padding: 0.45rem 1rem 0;
+        border-top: 1px solid var(--color-border);
     }
 
     #fallprufung-form #full-a-city,
