@@ -69,20 +69,27 @@ html {
 }
 
 body {
+    /* Stores the reusable space around the main form content. */
+    --page-spacing: clamp(1rem, 2.4vw, 2.5rem);
+
     /* Prevents the layout from becoming narrower than a small phone. */
     min-width: 20rem;
 
     /* Makes the page at least as tall as the browser window. */
     min-height: 100vh;
 
+    /* Keeps the footer at the bottom when the page content is short. */
+    display: flex;
+    flex-direction: column;
+
     /* Removes the browser's default outer margin. */
     margin: 0;
 
     /* Adds responsive space around the complete form. */
-    padding: clamp(1rem, 2.4vw, 2.5rem);
+    padding: var(--page-spacing);
 
     /* Keeps the form below the fixed navbar. */
-    padding-top: calc(4.75rem + clamp(1rem, 2.4vw, 2.5rem));
+    padding-top: calc(4.75rem + var(--page-spacing));
 
     /* Sets the default text appearance. */
     color: var(--color-text);
@@ -102,6 +109,7 @@ main {
     /* Makes the page follow the available browser width. */
     width: 100%;
     min-width: 0;
+    flex: 1 0 auto;
 
     /* Prevents enlarged browser font settings from widening the form. */
     max-width: 1280px;
@@ -703,11 +711,15 @@ main {
    ========================================================= */
 
 #footer {
-    /* Matches the footer width to the main form container. */
-    width: 100%;
-    max-width: 1280px;
-    margin: clamp(1.25rem, 2vw, 2rem) auto 0;
+    /* Extends the footer across the complete browser width. */
+    width: calc(100% + var(--page-spacing) + var(--page-spacing));
+    max-width: none;
+    margin:
+        clamp(1.25rem, 2vw, 2rem)
+        calc(0rem - var(--page-spacing))
+        calc(0rem - var(--page-spacing));
     padding: 1.25rem 2.5rem;
+    flex-shrink: 0;
 
     /* Creates the warm footer surface. */
     border-top: 1px solid var(--color-border-strong);
@@ -871,8 +883,11 @@ main {
 
 @media screen and (max-width: 575.98px) {
     body {
+        /* Reduces the reusable page spacing on small screens. */
+        --page-spacing: 0.75rem;
+
         /* Reduces page spacing while keeping the form below the navbar. */
-        padding: 5rem 0.75rem 0.75rem;
+        padding: 5rem var(--page-spacing) var(--page-spacing);
     }
 
     #fallprufung-form .form-section {
