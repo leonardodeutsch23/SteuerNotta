@@ -311,6 +311,22 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
+    <!-- Closes the mobile navbar after selecting an in-page link -->
+    <script>
+        const navbarCollapse = document.querySelector("#navbarNav");
+        const navbarLinks = document.querySelectorAll("#navbarNav a[href^='#']");
+
+        navbarLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                if (navbarCollapse.classList.contains("show")) {
+                    bootstrap.Collapse
+                        .getOrCreateInstance(navbarCollapse)
+                        .hide();
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
