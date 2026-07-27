@@ -516,6 +516,12 @@ main {
         background-color 160ms ease;
 }
 
+#full-scope-grid .field > input:not([type="checkbox"]):not([type="radio"]),
+#full-scope-grid .field > select {
+    /* Aligns the controls at the bottom of each responsive grid row. */
+    margin-top: auto;
+}
+
 #fallprufung-form .field > textarea {
     /* Allows users to expand longer notes without changing the width. */
     resize: vertical;
