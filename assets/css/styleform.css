@@ -788,6 +788,12 @@ main {
         /* Centers the remaining item when a two-column row is incomplete. */
         justify-content: center;
     }
+
+    #fallprufung-form #full-a-city,
+    #fallprufung-form #full-a-country {
+        /* Aligns the paired controls when the country field includes a note. */
+        margin-top: 0;
+    }
 }
 
 
