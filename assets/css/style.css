@@ -238,6 +238,7 @@ body {
     width: 100%;
     max-width: none;
     padding: 1.5rem 1.75rem 2rem;
+    scroll-margin-top: 4.75rem;
     background-color: var(--color-surface);
 }
 
@@ -875,6 +876,15 @@ body {
         width: 100%;
         margin-top: 0.5rem;
         margin-left: 0;
+    }
+
+    /* =========================================================
+       Responsive Header
+       ========================================================= */
+
+    #header {
+        /* Keeps the header visible below the shorter mobile navbar. */
+        scroll-margin-top: 4.25rem;
     }
 
     /* =========================================================
