@@ -516,9 +516,10 @@ main {
         background-color 160ms ease;
 }
 
-#full-scope-grid .field > input:not([type="checkbox"]):not([type="radio"]),
-#full-scope-grid .field > select {
-    /* Aligns the controls at the bottom of each responsive grid row. */
+#fallprufung-form .field > input:not([type="checkbox"]):not([type="radio"]),
+#fallprufung-form .field > select,
+#fallprufung-form .field > textarea {
+    /* Aligns editable controls at the bottom of every responsive grid row. */
     margin-top: auto;
 }
 
