@@ -1,597 +1,196 @@
 # SteuerNotta
 
-> A multilingual educational frontend demo that helps salaried employees in Germany explore selected German tax terms and form concepts, with a primary focus on Spanish-speaking users.
-
-[Repository](https://github.com/leonardodeutsch23/SteuerNotta) · **Live site:** not deployed yet · **Status:** implementation started · **Reference tax year:** 2025
-
-## Important disclaimer
-
-SteuerNotta is a web-development milestone project, not a tax product.
-
-- It does **not** provide tax advice or replace a qualified `Steuerberater`.
-- It is **not** connected to ELSTER, a German tax authority or a submission service.
-- It does **not** calculate a refund, determine eligibility or submit a return.
-- It does **not** upload, transmit or persist form data. The browser handles fictitious entries locally only for display and basic format/presence validation.
-- The forms are for fictitious test data only.
-- The fiscal wording and field inventory are provisional until they receive a documented field-by-field professional review.
-
-The interface must never describe the demo as complete, certified, secure, encrypted or suitable for real personal or fiscal data.
-
-## Table of contents
-
-- [Project overview](#project-overview)
-- [Current implementation](#current-implementation)
-- [Goals and users](#goals-and-users)
-- [Milestone scope](#milestone-scope)
-- [User experience](#user-experience)
-- [Page specifications](#page-specifications)
-- [Form architecture](#form-architecture)
-- [Responsive design](#responsive-design)
-- [Design direction](#design-direction)
-- [Accessibility](#accessibility)
-- [User stories](#user-stories)
-- [Technology stack](#technology-stack)
-- [Planned repository structure](#planned-repository-structure)
-- [Project management](#project-management)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Content governance and sources](#content-governance-and-sources)
-- [Future development](#future-development)
-- [Credits](#credits)
-- [License](#license)
-
-## Project overview
-
-German tax terminology can be difficult even for native speakers. For an employee who is not confident in German, official terms, tax-relevant categories and record-keeping requirements can make an income-tax return feel inaccessible.
-
-SteuerNotta explores a clearer learning experience. It keeps the original German term visible, places a Spanish or English explanation directly beneath it and provides contextual help for difficult concepts.
-
-The target frontend-only demonstration comprises:
-
-- one English homepage;
-- one long-form demo in Spanish, one in English and one in German;
-- one matching success page for each form;
-- consistent mobile, tablet and desktop layouts;
-- clear limits and fictitious-data notices throughout.
-
-The broader product vision may eventually include real guidance, calculations, accounts and submission. Those capabilities are future ideas and are not part of this milestone.
-
-## Current implementation
-
-The first coded slice now contains:
-
-- `form-es.html` — the seven-section Spanish demonstration with German-first labels;
-- `success-es.html` — the matching Spanish completion page;
-- `assets/css/style.css` — the responsive visual system used by both pages;
-- `assets/js/script.js` — the non-serialising completion handler;
-- one provisional traceability and interaction-state inventory in the fiscal review matrix.
-
-The Spanish form intentionally uses generic fictitious controls and static `Pending` cards wherever exact fiscal content has not been professionally reviewed. No specific fiscal question marked `Pending` is currently interactive. Because `index.html` remains planned, the current form header links within the form and the success page links back to the form and to the GitHub repository; the target Home action will replace that temporary repository action when the canonical homepage exists. The English and German parity pages, Bootstrap help-modal pattern and deployment also remain planned. This status must be updated whenever the implemented file set changes.
-
-## Goals and users
-
-### Primary user
-
-An individual resident in Germany who receives German wage-taxed employment income and wants to explore selected concepts from the 2025 return, especially a Spanish-speaking employee who is not confident with German fiscal terminology. “Basic employee case” is project shorthand, not an official legal or ELSTER category.
-
-### Secondary users
-
-- English-speaking salaried employees in Germany.
-- German-speaking employees who prefer a clearer educational structure.
-- Course assessors and future content reviewers.
-
-### User goals
-
-- Understand common German tax terms in a familiar language.
-- Recognise selected categories of information, expenses and records that may be relevant.
-- Complete a structured demonstration without feeling overwhelmed.
-- Learn what SteuerNotta can and cannot do.
-
-### Project-owner goals
-
-- Meet the frontend milestone requirements with a coherent HTML/CSS/Bootstrap project.
-- Demonstrate UX planning, responsive design, accessibility, testing, Git and GitHub practice.
-- Build a credible portfolio project around a real user problem.
-- Establish a documented foundation for a possible future product without implying professional validation or affiliation.
-
-## Milestone scope
-
-### Included
-
-- Static, responsive frontend hosted with GitHub Pages.
-- English homepage with a Bootstrap navbar and three-image hero carousel.
-- Problem, Benefits, How It Works and Languages sections.
-- Spanish, English and German single-page forms with the same seven-section structure.
-- German-first bilingual labels in the Spanish and English forms; German-only labels in the German form.
-- Bootstrap help modals for difficult terms.
-- Native HTML validation.
-- Minimal custom JavaScript for closing the mobile navbar and completing the demo without sending form values.
-- Three language-specific success pages.
-- Local, credited and optimised visual assets.
-- Planned testing documented without claiming unperformed results.
-
-### Explicitly excluded
-
-- Accounts, login, saved progress or `Save & exit`.
-- Backend, database, analytics of form values or real data handling.
-- Real document upload or file processing.
-- Tax calculations, refund estimates or eligibility decisions.
-- Conditional tax logic or automatic professional review.
-- Review/download of a completed return.
-- ELSTER or tax-authority integration.
-- Pricing, payments, advisor booking or commercial checkout.
-- FAQ, Resources, Contact, Privacy, Terms or Imprint pages for this milestone.
-- A multi-step wizard, dynamic progress percentage or one-question-per-screen flow.
-
-This is an academic scope decision, not a legal conclusion about which notices a future public or commercial service may require.
-
-## User experience
-
-The project follows the five-plane UX model.
-
-| Plane | Canonical decision |
-|---|---|
-| Strategy | Explain German tax concepts to salaried employees, with Spanish as the primary accessibility need. |
-| Scope | Educational frontend demo only; no fiscal processing or data handling. |
-| Structure | Homepage → selected language form → matching language success page. |
-| Skeleton | Same content at all breakpoints; only the layout changes. Forms stay as seven open sections on one long page. |
-| Surface | Independent blue-led identity, clear cards, minimal linear icons and provisional Manrope/Inter typography. |
-
-### Site map
-
-```text
-index.html
-├── form-es.html ──→ success-es.html
-├── form-en.html ──→ success-en.html
-└── form-de.html ──→ success-de.html
-```
-
-Changing language inside a form is intentionally unavailable because navigating away would discard the current entries in this frontend-only version.
-
-### Wireframes
-
-![Responsive homepage wireframe](assets/docs/wireframes/homepage-responsive.svg)
-
-![Responsive long-form and success-page wireframe](assets/docs/wireframes/form-success-responsive.svg)
-
-These two low-fidelity SVGs are the canonical structural reference. Earlier generated mockups remain visual exploration only because several of them show out-of-scope features.
-
-## Page specifications
-
-The specifications below describe the full target. Individual implementation-status notes identify the Spanish slice that already has code and test evidence; everything else remains planned.
-
-### Homepage: `index.html`
-
-The page order is fixed:
-
-1. Navbar
-2. Hero
-3. Problem
-4. Benefits
-5. How It Works
-6. Languages
-7. Footer
-
-#### Navbar
-
-- SteuerNotta logo/wordmark.
-- `Home`, `Benefits`, `How It Works` and `Languages` anchors, matching the page order.
-- Bootstrap collapse on smaller screens.
-- No Login, Pricing, FAQ, Contact or Resources links.
-
-#### Hero
-
-Audited provisional headline:
-
-> Understand your German taxes — and explore what may affect a possible refund.
-
-Audited provisional supporting copy:
-
-> SteuerNotta helps salaried employees explore selected German tax concepts, keep the original German terminology visible, and organise fictitious information through a clear multilingual educational form.
-
-This deliberately replaces the previously approved phrase “identify potential deductions”, which could be read as professionally validated guidance. It must not promise a refund or a valid return.
-
-Calls to action:
-
-- `Start Now` → `#languages`
-- `How It Works` → `#how-it-works`
-
-The buttons share a row while they fit and wrap only on narrower screens.
-
-The hero includes a three-image Bootstrap carousel showing:
-
-1. wage-tax records, receipts and selected tax-relevant categories;
-2. salaried residents in Germany with German wage-taxed employment, especially Spanish-speaking users;
-3. multilingual guidance in German, Spanish and English.
-
-Final carousel behaviour approved in the project interview: autoplay, previous/next controls, indicators and Bootstrap's JavaScript bundle. To reconcile autoplay with accessibility, the implementation also requires a visible pause/resume control, pause on focus/hover and a non-autoplay experience when reduced motion is requested.
-
-#### Problem
-
-Approved heading:
-
-> German taxes can be difficult — especially in another language.
-
-Audited provisional supporting copy:
-
-> German tax forms and official terminology can be difficult to understand, especially in another language. Uncertainty about which information may be relevant and fear of making mistakes can make the process feel intimidating.
-
-This deliberately removes the unvalidated claims that users “can claim” particular items or that their case “may be relatively simple”. A secondary illustration may support the message without introducing additional features.
-
-#### Benefits
-
-1. **Simple explanations** — Clearer wording for complex concepts.
-2. **German terms with translations** — Original terminology remains visible.
-3. **Potentially relevant categories made visible** — Selected categories are presented as possibilities, not entitlements.
-4. **A clearer, more accessible process** — Information is organised without false promises.
-
-#### How It Works
-
-1. **Choose your language.**
-2. **Complete the guided demo form.**
-3. **Understand the terminology.**
-4. **Organise your tax information.**
-5. **Future only: estimate and submit.**
-
-Step five must be visually marked `Future feature` and must never look available in the milestone.
-
-#### Languages
-
-The three cards have equal visual importance and remain present at every breakpoint. Each complete card retains its local flag, language name, code, approved description and localised CTA even when the layout changes.
-
-| Card | Flag | Code | Approved description | CTA | Destination |
-|---|---|---|---|---|---|
-| Español | Spain | ES | Complete the form in Spanish while seeing the original German tax terms. | `Empezar en español` | `form-es.html` |
-| English | United Kingdom | EN | Complete the form in English while keeping the original German terminology visible. | `Start in English` | `form-en.html` |
-| Deutsch | Germany | DE | Complete the form entirely in German. | `Auf Deutsch starten` | `form-de.html` |
-
-Flags must be stored locally and credited with their source and licence.
-
-#### Footer
-
-- `© SteuerNotta`.
-- Educational-demo notice.
-- No-tax-advice notice.
-- No-ELSTER-connection notice.
-- Internal links to How It Works and Languages.
+SteuerNotta is a multilingual frontend draft for organising selected German income-tax
+information in German, Spanish and English. The responsive homepage and three seven-section
+form routes are implemented. Calculation, storage, transmission and submission are not yet
+connected.
+
+[Repository](https://github.com/leonardodeutsch23/SteuerNotta) ·
+[Live site](https://leonardodeutsch23.github.io/SteuerNotta/) ·
+**Reference year:** 2025 · **Status:** frontend draft in active development
+
+## Current scope and limits
+
+- SteuerNotta does not calculate tax, refunds, eligibility or filing obligations.
+- It is not connected to ELSTER, a tax authority, a backend or a database.
+- The browser can display and locally validate entered values, but SteuerNotta does not upload,
+  persist or transmit them.
+- File controls only expose the browser's local file-selection interface; selected files are not
+  uploaded or saved.
+- Reset and submission actions remain disabled until a processing architecture is implemented.
+- Real personal, banking, fiscal or document data must not be entered in the current version.
+- The current field set and translations have not received professional fiscal or linguistic
+  approval.
+
+These limits describe the present development stage, not the intended final capability.
+
+## Implemented pages
+
+### Homepage
+
+`index.html` contains:
+
+1. responsive Bootstrap navigation with Scrollspy;
+2. hero content and a three-image Bootstrap carousel;
+3. Problem section;
+4. three-step How It Works section;
+5. four-card Benefits section;
+6. Spanish, English and German language cards;
+7. footer with internal navigation.
 
 ### Forms
 
-- `form-es.html`
-- `form-en.html`
-- `form-de.html`
+- `form-es-de.html` — German terms with Spanish explanations.
+- `form-en-de.html` — German terms with English explanations.
+- `form-de-de.html` — German-only version.
 
-**Implementation status:** `form-es.html` exists; `form-en.html` and `form-de.html` remain planned.
+All routes share 318 ordered controls and seven main sections:
 
-The three target forms must have complete structural parity. They are long, normally scrolling pages—not accordions, dynamic wizards or saved sessions.
+1. case screening and scope;
+2. main return and personal information;
+3. employment income;
+4. work-related expenses;
+5. additional tax areas and deductions;
+6. records and supporting documents;
+7. final review.
 
-The Spanish and English versions show the German term first and the translation immediately below it. The German version contains the same structure without redundant translations.
+The forms are long, normally scrolling pages rather than JavaScript-driven wizards. Their fields
+reflow from one column on mobile to two columns on tablets and appropriate two- or three-column
+layouts on larger screens. Unpaired tablet fields and document cards are centred.
 
-Complex fields use labelled Bootstrap modal buttons. Each help entry should explain the term, expected information, relevance, a plain example where appropriate and when professional help is advisable.
+There are no completion pages in the current milestone. They were intentionally removed because a
+meaningful completion flow depends on form-processing behaviour that is not implemented yet.
 
-The current Spanish slice includes no fiscal help modal because every specific fiscal help entry is still `Pending`. A modal must not be populated with improvised guidance merely to demonstrate the component.
+## Language and structural parity
 
-No file input is allowed. The Documents section is a preparation checklist only.
+The ES/DE, EN/DE and DE/DE routes have been compared using:
 
-Browser validation checks only whether selected values are present or match a chosen format. It does not verify tax eligibility, legal accuracy, fiscal completeness or entitlement to a refund.
+- seven main `fieldset.form-section` elements;
+- ordered control tags, IDs, names and types;
+- select option values;
+- label targets and accessible descriptions;
+- document selectors;
+- shared navigation and footer destinations.
 
-#### Demo completion behaviour
+The comparison found 318 controls on each route, no control-signature or select-value differences,
+no duplicate control IDs and no unresolved label targets. German field labels in translated forms
+include `lang="de"`. Current evidence is in
+[docs/testing/form-es-qa.md](docs/testing/form-es-qa.md).
 
-The forms must not use `method="get"` with real-looking field names because that would place the entered values in the URL and browser history. A small documented script should:
+## Responsive and accessibility behaviour
 
-1. listen for a valid submit event;
-2. call `preventDefault()`;
-3. navigate to the matching success page without serialising form values.
+The CSS is mobile-first and defines layouts for:
 
-This is convenience logic for fictitious demo data, not a security control. Each form's visible disclaimer and the homepage footer must still instruct testers to use invented values only.
+- mobile widths below `768px`;
+- tablets from `768px` through `991.98px`;
+- laptops and larger screens from `992px`;
+- wider desktop refinements from `1200px`.
 
-### Success pages
+Implemented accessibility features include:
 
-- `success-es.html`
-- `success-en.html`
-- `success-de.html`
-
-**Implementation status:** `success-es.html` exists; the English and German success pages remain planned.
-
-Each target success page must contain, in its own language:
-
-- confirmation that the demonstration ended;
-- confirmation that no form values were submitted to or saved by SteuerNotta;
-- no-tax-advice notice;
-- no-ELSTER-connection notice;
-- return-to-home button;
-- return-to-matching-form button.
-
-There is no answer summary, download or next-steps section.
-
-## Form architecture
-
-All three forms use exactly seven main sections:
-
-1. **Case Screening and Scope** — A SteuerNotta UX grouping with reference year and residence/employment prompts that flag situations outside the prototype. It does not decide whether filing is compulsory or whether a case is legally “simple”.
-
-2. **Tax Return and Personal Details** — Selected declaration, personal, household, address, partner and bank-information concepts informed by the `Hauptvordruck ESt 1 A`.
-
-3. **Employment Income** — Selected educational fields informed by the 2025 `Lohnsteuerbescheinigung` and `Anlage N`. The certificate is issued and transmitted by the employer; this prototype is neither that certificate nor an official `Anlage N`.
-
-4. **Work-related Expenses** — Provisional `Werbungskosten` concepts such as `Entfernungspauschale`, `Arbeitsmittel`, `Fortbildungskosten`, home-office categories and work-related travel. Similar-looking travel and home-office concepts must remain clearly distinguished.
-
-5. **Deductions** — A presentation grouping—not one official deduction type. Any implemented subsections must distinguish insurance/pension items, `Sonderausgaben`, children, household-service tax reductions and extraordinary burdens.
-
-6. **Documents** — A non-exhaustive checklist of records that may help a user review selected information. Records are generally retained and supplied only when official instructions require them or the Finanzamt requests them. SteuerNotta neither uploads evidence nor decides whether it is legally sufficient.
-
-7. **Review and Confirmation** — A SteuerNotta UX grouping with fictitious-data confirmation, demo limits and navigation to the matching success page. It is not a fiscal review or validation.
-
-This is an information architecture, not a claim that the fiscal field set is complete. Every proposed field and help text must be tracked in the [fiscal review matrix](docs/content/fiscal-review-matrix.md) before it is treated as approved content.
-
-## Responsive design
-
-Target review widths:
-
-- mobile: approximately `375px`;
-- tablet: approximately `768px`;
-- desktop: approximately `1440px`.
-
-Rules:
-
-- mobile-first CSS;
-- identical information and hierarchy at every breakpoint;
-- layouts stack before content becomes compressed;
-- related fields may use two columns when readable;
-- long forms prioritise labels and help over density;
-- touch targets remain usable;
-- no horizontal scrolling at target widths.
-
-Key layout changes:
-
-| Area | Mobile | Tablet | Desktop |
-|---|---|---|---|
-| Hero | Stacked | Two columns when comfortable | Text left, carousel right |
-| Benefits | 1 column | 2 × 2 | 4 columns |
-| How It Works | Stacked | 3 + 2 | 5-step row |
-| Languages | 1 column | Responsive grid with the third card centred/full row | 3 equal columns |
-| Form fields | 1 column | 1–2 columns | 2 columns where related |
-
-## Design direction
-
-The visual system is provisional until it is tested in code.
-
-- Independent identity with no visual relationship to NottaSports.
-- Direction: symbol plus `SteuerNotta` wordmark, based on an `SN` translation/conversation concept.
-- No commercial tagline inside the logo.
-- Headings: **Manrope**.
-- Body, labels and controls: **Inter**.
-- Blue-led palette with explicit roles for primary, focus, information and status colours.
-- Alternating blue/white sections, soft borders, restrained shadows and rounded cards.
-- Linear, minimal icons with a consistent visual weight.
-- Professional, approachable illustrations; not childish or falsely official.
-
-```css
-:root {
-  --color-primary-dark: #123b66;
-  --color-primary: #1f6fb2;
-  --color-primary-light: #dceeff;
-  --color-accent: #2f88d6;
-  --color-background: #f7f9fc;
-  --color-surface: #ffffff;
-  --color-text: #1f2933;
-  --color-text-muted: #5f6b76;
-  --color-border: #64748b;
-  --color-success: #2e7d32;
-  --color-warning: #b26a00;
-  --color-warning-text: #704200;
-  --color-error: #b3261e;
-}
-```
-
-## Accessibility
-
-Must Have requirements:
-
-- semantic landmarks and a logical heading hierarchy;
+- semantic header, navigation, main and footer landmarks;
+- skip links on the homepage and all three form routes;
+- associated labels and unique control IDs;
+- language metadata and German-language markers in translated forms;
 - visible keyboard focus;
-- associated `label`, `for` and unique `id` values;
-- native links, buttons and controls;
-- sufficient colour contrast;
 - meaningful alternative text for informative images;
-- empty alternative text for decorative images;
-- accessible names/descriptions for Bootstrap modals;
-- useful native validation constraints and guidance;
-- correct `lang` on each page and `lang="de"` on German terms inside translated pages.
-
-A full formal keyboard audit was not selected as a milestone deliverable, but the primary journey must remain keyboard-operable and will be checked manually.
-
-## User stories
-
-| Priority | User story | Acceptance criteria |
-|---|---|---|
-| Must Have | As a resident employee with German wage-taxed income, I want to understand the demo's purpose and limits so that I can decide whether it is relevant. | The homepage states the audience, value and limitations without implying tax advice or covering cross-border cases. |
-| Must Have | As a user, I want to choose Spanish, English or German before starting. | Three equal cards link to the correct form. |
-| Must Have | As a Spanish-speaking user, I want German terms with Spanish explanations. | German appears first and Spanish immediately below throughout `form-es.html`. |
-| Must Have | As an English-speaking user, I want German terms with English explanations. | German appears first and English immediately below throughout `form-en.html`. |
-| Must Have | As a German-speaking user, I want the same form in natural German. | `form-de.html` has the same seven sections and control intent without extra translations. |
-| Must Have | As a user, I want difficult terms explained. | Labelled help controls open accessible Bootstrap modals. |
-| Must Have | As a user, I want clear input requirements. | Appropriate native HTML constraints and guidance identify invalid or missing values. |
-| Must Have | As a mobile user, I want the same information as a desktop user. | The journey is usable at 375px, 768px and 1440px without lost content or horizontal scrolling. |
-| Must Have | As a cautious tester, I want to know what happens to my entries. | The UI says fictitious data only; the submit handler does not serialise or send values. |
-| Must Have | As a user who finishes the demo, I want confirmation in the same language. | Each form opens its matching success page with the agreed notices and links. |
-| Should Have | As a user, I want a trustworthy, approachable visual system. | The provisional type, colour, icon and card rules are applied consistently and pass contrast review. |
-| Must Have | As a user, I want supportive hero imagery. | The carousel has three coherent local illustrations and usable controls. |
-| Could Have | As a user, I want additional scan aids in the long form. | Static section anchors are added only if they remain consistent and accessible. |
+- accessible carousel controls and indicators;
+- descriptions for local-only file selectors;
+- scroll offsets below the fixed navigation.
 
 ## Technology stack
 
-Implemented now:
+- Semantic HTML5.
+- Mobile-first CSS3 with custom properties.
+- Bootstrap 5.3.8 CSS and JavaScript bundle from jsDelivr.
+- A small inline script that closes the collapsed homepage navigation after choosing an in-page
+  destination.
+- Git, GitHub Issues, GitHub Projects and GitHub Pages.
 
-- semantic HTML5;
-- mobile-first custom CSS3;
-- minimal vanilla JavaScript for non-serialising demo completion;
-- Git version control and the connected GitHub repository/project.
+No external font or separate icon library is loaded. The interface uses system font stacks and
+local image assets.
 
-Planned, but not yet implemented:
-
-- Bootstrap 5 CSS and JavaScript bundle;
-- mobile-navbar closing logic;
-- Bootstrap Icons or Font Awesome, after one library is selected;
-- Manrope and Inter delivery, subject to the final hosting decision;
-- GitHub Pages deployment;
-- W3C validator, Lighthouse and cross-browser delivery evidence.
-
-Do not list a planned technology as used until it exists in the repository or a test as passed until evidence is recorded.
-
-Until Manrope and Inter are delivered, the CSS tokens fall back explicitly to Segoe UI and the browser's generic sans-serif font.
-
-## Planned repository structure
+## Repository structure
 
 ```text
 SteuerNotta/
 ├── index.html
-├── form-es.html
-├── form-en.html
-├── form-de.html
-├── success-es.html
-├── success-en.html
-├── success-de.html
+├── form-es-de.html
+├── form-en-de.html
+├── form-de-de.html
 ├── README.md
 ├── assets/
-│   ├── css/style.css
-│   ├── js/script.js
-│   ├── images/
-│   │   ├── logo/
-│   │   ├── flags/
-│   │   └── illustrations/
-│   └── docs/wireframes/
+│   ├── css/
+│   │   ├── style.css
+│   │   └── styleform.css
+│   ├── docs/wireframes/
+│   │   ├── homepage-responsive.svg
+│   │   └── form-responsive.svg
+│   └── images/
 └── docs/
     ├── audit/consistency-audit.md
     ├── content/fiscal-review-matrix.md
     ├── planning/github-plan.md
-    └── testing/
+    └── testing/form-es-qa.md
 ```
 
-Superseded drafts such as `form.html` and `form2.html` must not be committed as product pages. Useful research from them should be transferred into reviewed documentation first.
+## Testing status
+
+| Check | Current result |
+|---|---|
+| Seven-section structure | Passed on all three forms |
+| Ordered control parity | Passed: 318 controls per form |
+| Unique control IDs | Passed: zero duplicates |
+| Label associations | Passed: zero unresolved targets |
+| Select option parity | Passed: zero differences |
+| Responsive widths | Passed at 375px, 768px and 1440px in Chrome |
+| Horizontal overflow | None detected at the three target widths |
+| Homepage links and local asset paths | Passed |
+| HTML validation | Passed: 0 errors and 0 warnings on all four routes |
+| CSS validation | Passed: 0 errors on both stylesheets; compatibility notices documented |
+| Lighthouse | Home: 83/100/100/100; Spanish form: 83/100/100/100 |
+| Interaction smoke tests | Mobile menu, internal offsets and carousel controls passed in Chrome |
+| Keyboard and browser matrix | Physical keyboard, Firefox and Safari checks remain manual |
+
+Test evidence distinguishes automated structural checks, browser smoke tests and professional
+content review. A browser pass is not fiscal approval.
 
 ## Project management
 
-- **GitHub Project:** [SteuerNotta Milestone Project](https://github.com/users/leonardodeutsch23/projects/5)
-- **Statuses:** `Todo`, `In Progress`, `Done`
-- **Planning checkpoint:** 18 July 2026 (not a delivery milestone)
-- **Single milestone:** [SteuerNotta Milestone Project](https://github.com/leonardodeutsch23/SteuerNotta/milestone/1)
-- **Due date:** 31 July 2026
-- **Working language:** English for README, issues, acceptance criteria and testing records
-- **Git strategy:** small, focused commits directly on `main`
-- **Deployment strategy:** deploy the first valid skeleton early, then verify continuously
+- [GitHub Project board](https://github.com/users/leonardodeutsch23/projects/5)
+- [Milestone issues](https://github.com/leonardodeutsch23/SteuerNotta/issues)
+- [Planning record](docs/planning/github-plan.md)
+- [Fiscal review matrix](docs/content/fiscal-review-matrix.md)
 
-Priority labels:
+Issues #1–#12 describe the current frontend milestone. Issue #9 is closed as not planned because
+completion pages were removed from the current scope. Issue #13 remains open and deferred until
+the field set is frozen and professional review can be commissioned.
 
-- `Must Have`
-- `Should Have`
-- `Could Have`
+## Remaining work
 
-Type labels:
+1. Design and connect form processing, persistence and document handling.
+2. Define privacy, security and consent requirements before real-data handling.
+3. Freeze the supported field set and tax scope.
+4. Obtain professional German fiscal review and specialist Spanish/English linguistic review.
+5. Re-test the processing flow before presenting the project for production use.
 
-- `feature`
-- `documentation`
-- `design`
-- `testing`
-- `bug`
-- `accessibility`
-- `content`
-- `translation`
+## Credits and licences
 
-The canonical issue list, checklists and acceptance criteria live in [docs/planning/github-plan.md](docs/planning/github-plan.md). An issue moves to `Done` only when its acceptance criteria are met and the relevant evidence is recorded.
+- Project design, HTML, CSS and written interface structure: Leonardo Deutsch.
+- The responsive-navbar closing pattern was adapted from Leonardo Deutsch's earlier Boardwalk
+  Games implementation.
+- The logo, carousel scenes, Problem illustration, benefit graphics, How It Works graphics and
+  language-card graphics in `assets/images/` were created for SteuerNotta with generative-image
+  assistance and edited/exported as local project assets. No third-party stock-image source is
+  claimed.
+- The SVG wireframes in `assets/docs/wireframes/` were created specifically for SteuerNotta.
+- [Bootstrap 5.3.8](https://github.com/twbs/bootstrap) is distributed under the MIT License and is
+  loaded from [jsDelivr](https://www.jsdelivr.com/).
+- No affiliation with ELSTER, a German tax authority or a tax-advisory firm is claimed.
 
-## Testing
-
-The first Spanish slice has a documented Chrome responsive and completion-flow smoke test in [docs/testing/form-es-qa.md](docs/testing/form-es-qa.md). This does not convert any broader milestone test into a pass.
-
-| Test | Purpose | Status |
-|---|---|---|
-| W3C HTML Validator | HTML validity and semantic errors | Planned |
-| W3C CSS Validator | CSS validity | Planned |
-| Lighthouse | Accessibility, performance, best practices and SEO | Planned |
-| Manual links | Navigation, CTAs, language routes and footer | Local form → success and success → form routes checked; target homepage/language routes planned |
-| Forms | Required fields, formats, help modals and non-serialising completion | Spanish safety confirmations and completion handler passed; final content/modals planned |
-| Responsive review | 375px, 768px and 1440px layouts | Spanish form/success slice passed; full site planned |
-| Targeted colour regression | Control boundary, placeholder and warning-text pairs changed during the ES review | `4.76:1`, `5.45:1` and `7.52:1` respectively; full contrast audit planned |
-| Cross-browser review | Chrome, Firefox, Edge and Safari | Planned |
-| Keyboard smoke test | Primary journey, focus order and visible focus | Planned |
-
-Use this evidence format:
-
-```text
-Expected result → Test performed → Actual result → Fix or conclusion
-```
-
-The autoplay carousel is a known accessibility risk. Timing, controls, focus, pause behaviour and reduced-motion behaviour require explicit review.
-
-## Deployment
-
-Expected URL after GitHub Pages is enabled:
-
-```text
-https://leonardodeutsch23.github.io/SteuerNotta/
-```
-
-Early-deployment sequence:
-
-1. Add a valid `index.html` and base asset paths.
-2. Commit and push the smallest working skeleton to `main`.
-3. Enable GitHub Pages from `main` and `/ (root)`.
-4. Verify the public URL and case-sensitive paths.
-5. Add the confirmed live URL at the top of this README.
-6. Re-test the deployed build after every material change.
-
-## Content governance and sources
-
-### Fiscal-content rule
-
-Official references support research; they do not certify this project. No field is considered professionally approved until the fiscal review matrix records reviewer, date, reference year, source and decision.
-
-Initial official references:
-
-- [ELSTER — Income-tax return forms, including ESt 1 A through 2025](https://www.elster.de/eportal/formulare-leistungen/alleformulare/est)
-- [ELSTER — 2025 income-tax / Anlage N completion help](https://www.elster.de/elsterweb/helpGlobal?themaGlobal=help_est_ufa_10_2025)
-- [BMF — Updated 2025 electronic wage-tax certificate template](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Lohnsteuer/2025-02-20-geaen-ausdruck-elektron-LSt-besch-2025.html)
-- [Lohnsteuer-Handbuch 2025 — Lohnsteuerbescheinigung](https://ao.bundesfinanzministerium.de/lsth/2025/B-Anhaenge/Anhang-23/uebersicht.html)
-- [BMF — 2026 wage-tax certificate template, used only to document that later years differ](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Lohnsteuer/2025-08-29-ausdruck-elektr-lstbesch-2026.html)
-
-**Fiscal reference year: 2025. Official sources reviewed on 15 July 2026. SteuerNotta does not represent tax year 2026 or later.** Forms and rules change by year; later years require a new review rather than a silent reuse of the same fields. ELSTER's English interface uses machine translation and excludes forms and completion help from that translation, so it is not evidence that SteuerNotta's Spanish or English fiscal wording is correct.
-
-Framework references:
-
-- [Bootstrap 5.3 — Navbar](https://getbootstrap.com/docs/5.3/components/navbar/)
-- [Bootstrap 5.3 — Carousel](https://getbootstrap.com/docs/5.3/components/carousel/)
-- [Bootstrap 5.3 — Forms](https://getbootstrap.com/docs/5.3/forms/overview/)
-- [Bootstrap 5.3 — Modal](https://getbootstrap.com/docs/5.3/components/modal/)
-
-## Future development
-
-- One-question-per-screen guided flow.
-- Conditional questions and real progress tracking.
-- Secure accounts, saving and resuming.
-- Secure document handling.
-- Professionally reviewed tax logic and refund estimates.
-- Generated summaries.
-- ELSTER integration where legally and technically appropriate.
-- Additional languages.
-- Support for self-employed people, businesses and complex cases.
-- Possible professional-advisor escalation, subject to a later product decision.
-- Dedicated privacy, imprint, terms and legal pages.
-
-None of these features may appear active in the milestone interface.
-
-## Credits
-
-- The responsive-navbar closing script will be adapted from the earlier Boardwalk Games course project; the exact source and changes must be documented when the code is added.
-- Flags, icons, fonts and illustrations must be credited with source, licence and modifications before release.
-- Generated assets must record the tool and relevant editing history.
-- The wireframes in `assets/docs/wireframes/` were created specifically for the audited SteuerNotta milestone scope.
-- No formal partnership with a tax firm is claimed.
-
-## License
-
-No licence has been selected. The repository may be publicly visible, but no general permission to copy, modify or redistribute the code is granted unless a licence is added later.
+No project licence has been selected. Public repository visibility does not grant permission to
+copy, modify or redistribute SteuerNotta.
 
 ## Author
 
-Created by [Leonardo Deutsch](https://github.com/leonardodeutsch23) for the **Web Application Development with AI** course.
+Created by [Leonardo Deutsch](https://github.com/leonardodeutsch23).

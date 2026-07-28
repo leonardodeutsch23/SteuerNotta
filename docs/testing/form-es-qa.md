@@ -1,60 +1,121 @@
-# Spanish form implementation QA
+# SteuerNotta frontend QA
 
-**Run date:** 15 July 2026
+**Audit date:** 28 July 2026
 
-**Browser used:** Google Chrome 150.0.7871.115, headless device emulation plus an interactive Chrome smoke test
+**Routes under test:** `index.html`, `form-es-de.html`, `form-en-de.html`,
+`form-de-de.html`
 
-**Files under test:** `form-es.html`, `success-es.html`, `assets/css/style.css`, `assets/js/script.js`
+**Current stage:** pre-publication source and local-render audit
 
-This is implementation evidence for the first Spanish slice. It is not a professional fiscal or linguistic review, a formal accessibility audit, a Lighthouse result, a W3C validation certificate or a cross-browser claim.
+This document records implementation evidence for the current non-processing frontend draft. It
+is not professional fiscal review, linguistic certification, ELSTER compatibility evidence or
+approval for real-data handling.
 
-## Responsive and structural checks
+## Test environment
 
-| Expected result | Test performed | Actual result | Conclusion |
+- Local site served from `http://127.0.0.1:5500/`.
+- Chrome/Chromium rendering used for automated responsive and interaction checks.
+- Lighthouse 13.4.1 run with installed Google Chrome.
+- HTML checked with the W3C Nu HTML Checker.
+- CSS checked with the W3C Jigsaw CSS Validator.
+
+The final deployed URL and commit are recorded after publication. Firefox, Safari and a physical
+keyboard-only pass remain manual checks because those environments are not available to the
+automated Windows test session.
+
+## Structural and language parity
+
+| Check | Result |
+|---|---|
+| Main sections | Passed: 7 `fieldset.form-section` groups on every form |
+| Ordered controls | Passed: 318 on every form; identical tag, ID, name, type and select-value signatures |
+| Control IDs | Passed: 306 on every form; no duplicate IDs |
+| Labels | Passed: 315 on every form; 304 explicit `for` associations and 11 wrapped controls |
+| Descriptions | Passed: 127 `aria-describedby` references on every form; no missing targets |
+| File selectors | Passed: 28 on every form |
+| Select elements | Passed: 35 on every form; identical option values |
+| Matrix groups | Passed: `FULL-SCOPE`, `FULL-MAIN`, `FULL-EMP`, `FULL-WORK`, `FULL-DED`, `FULL-DOC`, `FULL-REVIEW` |
+| Local references | Passed: no missing local `src` or `href` target |
+
+## Official validator results
+
+| File | HTML errors | HTML warnings |
+|---|---:|---:|
+| `index.html` | 0 | 0 |
+| `form-es-de.html` | 0 | 0 |
+| `form-en-de.html` | 0 | 0 |
+| `form-de-de.html` | 0 | 0 |
+
+Both `assets/css/style.css` and `assets/css/styleform.css` returned **0 CSS errors**. At the
+validator's detailed warning level, it reported 199 and 84 non-blocking compatibility/static
+analysis notices respectively, primarily for custom properties and modern CSS that the validator
+cannot fully resolve. These notices did not identify an invalid rule.
+
+## Responsive browser checks
+
+The homepage and all three forms were rendered at 375px, 768px and 1440px.
+
+| Check | 375px | 768px | 1440px |
 |---|---|---|---|
-| Same seven open sections at every target width | Counted direct `fieldset.form-section` children at 375px, 768px and 1440px | `7` at all three widths | Pass |
-| No horizontal page overflow | Compared document `scrollWidth` with the emulated viewport | 360/375, 753/768 and 1425/1440; overflow flag `false` at each width | Pass |
-| Mobile fields stack; larger layouts use related columns | Read computed grid columns | One column at 375px; two columns at 768px and 1440px | Pass |
-| Every input has an explicit associated label | Counted inputs without `id`, labels without `for` and unresolved `label[for]` targets | `11` inputs; `0` missing IDs, `0` labels without `for`, `0` unresolved targets | Pass |
-| IDs remain unique | Compared all rendered `id` attributes | `0` duplicates | Pass |
-| Documents contains no upload control | Counted `input[type="file"]` | `0` | Pass |
-| Form does not use GET | Read the rendered form method | `post` | Pass |
-| Success keeps both current actions at every width | Counted the return-to-form and temporary GitHub-project actions at 375px, 768px and 1440px | `2` at all three widths, with no horizontal overflow | Pass |
+| Required content present | Passed | Passed | Passed |
+| Horizontal page overflow | None | None | None |
+| Broken loaded images | 0 | 0 | 0 |
+| Duplicate IDs | 0 | 0 | 0 |
+| Missing image `alt` attributes | 0 | 0 | 0 |
+| Missing `aria-describedby` targets | 0 | 0 | 0 |
+| Form sections | 7 per form | 7 per form | 7 per form |
+| Enabled submit/reset actions | 0 | 0 | 0 |
 
-The top, final review section and matching success state were visually inspected at the target layouts. The blue/white hierarchy, readable labels, visible status chips, one-column mobile layout and desktop field alignment matched the canonical wireframe direction. The success action count/layout also matches; the target Home destination remains intentionally pending and is temporarily represented by the documented GitHub-project action.
+Lazy images that were still below the viewport were recorded as pending, not broken. Every loaded
+image had a non-zero natural width, and static path checks found no missing asset.
 
-## Completion flow
+## Interaction and accessibility checks
 
-| Expected result | Test performed | Actual result | Conclusion |
-|---|---|---|---|
-| Missing required safety confirmations prevent completion | Activated `Finalizar demostración` with both confirmations clear | Page remained on `form-es.html`, form validity was `false` and focus moved to `confirm-fictitious` | Pass |
-| Valid completion creates no query string | Checked both confirmations and activated the button | Browser navigated to `success-es.html`; `location.search` was empty | Pass |
-| Success page contains no form or answer summary | Inspected the rendered success DOM | Heading was `Demostración finalizada`; no form was present | Pass |
-| Script does not serialise or transmit values | Inspected `assets/js/script.js` | No `FormData`, `fetch`, storage call or query-string construction; controls reset before local navigation | Pass |
-| JavaScript-disabled fallback cannot submit values | Loaded the page with script execution disabled | All seven top-level fieldsets remained disabled and there were `0` enabled named controls | Pass |
-| Success return link resolves locally | Activated the main `Volver al formulario` action | Browser returned to `form-es.html` and rendered the expected heading | Pass |
+- The mobile navigation opens, exposes `aria-expanded="true"` and closes after choosing an
+  in-page destination.
+- Choosing Benefits produces `#benefits`, closes the collapsed menu and places the section 76px
+  below the viewport top, clear of the fixed navbar.
+- Carousel Next moves both the active slide and active indicator from index 0 to index 1.
+- Previous/next controls and all three indicators have accessible names.
+- Carousel indicator click targets render at 24px by 24px.
+- Every route has exactly one `h1`, semantic landmarks and a skip link to the main content.
+- Visible focus rules exist for links, buttons and form controls.
+- Primary text/ivory, cobalt/ivory and white/cobalt combinations exceed WCAG AA contrast for normal
+  text. Amber backgrounds use dark text.
 
-## Content and traceability guard
+A true keyboard-only journey has not been claimed from synthetic browser events. It must be
+completed manually on the deployed site before Issue #10 is closed.
 
-- Every implemented `data-matrix-id` occurs in `docs/content/fiscal-review-matrix.md`: 38 distinct IDs, 0 missing.
-- Operational fiscal amounts, tax-certificate lines, bank data, eligibility decisions, refund calculations and file inputs are absent.
-- Fiscal questions whose German or Spanish wording remains `Pending` are rendered as static cards or explicit pending panels, not response controls or factual guidance.
-- Required controls are limited to the two fictitious-data/demo-only confirmations.
+## Lighthouse 13.4.1
 
-## Targeted accessibility regression checks
+| Route | Performance | Accessibility | Best Practices | SEO |
+|---|---:|---:|---:|---:|
+| `index.html` | 83 | 100 | 100 | 100 |
+| `form-es-de.html` | 83 | 100 | 100 | 100 |
 
-These calculated pairs cover the three colour defects found during this implementation review; they do not replace a full-page accessibility or contrast audit.
+Homepage metrics: FCP 2.1s, LCP 4.4s, TBT 50ms, CLS 0 and Speed Index 2.3s.
 
-| Pair | Calculated contrast | Relevant threshold | Conclusion |
-|---|---:|---:|---|
-| Normal control border `#64748b` on white | `4.76:1` | `3:1` for visible control boundaries | Pass |
-| Placeholder text `#5f6b76` on white at full opacity | `5.45:1` | `4.5:1` for normal text | Pass |
-| Warning text `#704200` on the declared pale warning tint | `7.52:1` | `4.5:1` for normal text | Pass |
+Spanish form metrics: FCP 3.0s, LCP 3.8s, TBT 0ms, CLS 0 and Speed Index 3.0s.
 
-## Work still required before milestone completion
+The remaining performance findings are documented rather than hidden: large local image delivery,
+Bootstrap and project CSS that Lighthouse considers partly unused, unminified project CSS, and
+render-blocking stylesheet requests. The local Live Server WebSocket also prevents the back/forward
+cache during this test; that is a development-server condition.
 
-- Run an official HTML and CSS validator and record the result.
-- Run Lighthouse and a complete manual keyboard/contrast review.
-- Test Chrome, Firefox, Edge and Safari using the final deployed build.
-- Obtain documented German fiscal-content review and separate Spanish linguistic review.
-- Implement and test EN/DE parity, the canonical homepage/Home action and the final deployment.
+## Processing safety
+
+- The form routes have no connected submission or reset action.
+- There is no project JavaScript file that serialises form values.
+- No `fetch`, `XMLHttpRequest`, `FormData`, Web Storage or query-string construction is used.
+- Completion pages are intentionally outside the current milestone and were removed.
+- The pages explicitly warn against entering real personal, banking, fiscal or document data.
+
+## Manual checks still required
+
+1. Use only the keyboard on the deployed homepage and one form: Tab through the skip link,
+   navigation, carousel and representative form controls; activate relevant items with Enter or
+   Space; confirm that focus is visible and never trapped.
+2. Check the deployed homepage and one form in Firefox at mobile, tablet and desktop widths.
+3. Check the deployed homepage and one form in Safari on iPhone/iPad/macOS where available.
+4. Report any failure with route, viewport, browser and a screenshot so it can be reproduced and
+   retested.

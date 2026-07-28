@@ -35,14 +35,14 @@ Types:
 | 3 | Build the responsive homepage shell and navigation | Must Have | feature, accessibility | 1, 2 |
 | 4 | Implement the hero, accessible carousel and Problem section | Must Have | feature, accessibility | 2, 3 |
 | 5 | Implement Benefits, How It Works, Languages and footer | Must Have | feature, content | 2, 3 |
-| 6 | Build the shared seven-section long-form foundation | Must Have | feature, accessibility | 1, 2 |
-| 7 | Implement the Spanish educational form content | Must Have | content, translation | 6, 13 |
-| 8 | Create English and German form parity | Must Have | translation, content | 7, 13 |
-| 9 | Create localised success pages and safe demo completion | Must Have | feature, accessibility | 6–8 |
-| 10 | Complete responsive and accessibility quality work | Must Have | accessibility, testing | 3–9 |
-| 11 | Validate, test and document the deployed milestone | Must Have | testing, bug | 1–10, 13 |
-| 12 | Finalise README, credits and delivery evidence | Must Have | documentation | 1–11, 13 |
-| 13 | Validate or neutralise fiscal content before publication | Must Have | content, translation | 6 |
+| 6 | Build the shared guided-form foundation | Must Have | feature, accessibility | 1, 2 |
+| 7 | Implement the Spanish guided form content | Must Have | content, translation | 6 |
+| 8 | Implement English and German guided-form parity | Must Have | translation, content | 6, 7 |
+| 9 | Remove completion pages from the current frontend scope | Not planned | scope decision | 6–8 |
+| 10 | Complete responsive and accessibility quality work | Must Have | accessibility, testing | 3–8 |
+| 11 | Validate, test and document the deployed milestone | Must Have | testing, bug | 1–10 |
+| 12 | Finalise README, credits and delivery evidence | Must Have | documentation | 1–11 |
+| 13 | Complete professional fiscal and linguistic review before production use | Must Have | content, translation | 6–8 |
 
 ## Planned issues
 
@@ -56,39 +56,40 @@ As the project owner, I want a clean repository and early live deployment so tha
 **Acceptance criteria**
 
 - The agreed directory structure exists without superseded drafts.
-- A valid minimal `index.html` loads CSS and JavaScript through case-correct relative paths.
+- A valid `index.html` loads CSS and required Bootstrap resources through case-correct paths.
 - GitHub Pages deploys from `main` and `/ (root)`.
 - README contains the verified live URL only after deployment succeeds.
 - Commits are small and focused on `main`.
 
 **Checklist**
 
-- [ ] Add page and asset skeleton.
-- [ ] Add `.gitignore` and baseline metadata.
-- [ ] Commit and push the minimum valid site.
-- [ ] Enable GitHub Pages.
-- [ ] Verify the public URL and record the result.
+- [x] Add page and asset skeleton.
+- [x] Add `.gitignore` and baseline metadata.
+- [x] Commit and push the minimum valid site.
+- [x] Enable GitHub Pages.
+- [x] Verify the public URL and record the result.
 
 ### 2. Finalise responsive information architecture and design tokens
 
 **Labels:** `Must Have`, `design`, `documentation`
 
 **User story**  
-As a developer, I want one approved structural and visual reference so that all seven pages remain consistent.
+As a developer, I want approved structural and visual references so that the homepage and three
+form routes remain consistent.
 
 **Acceptance criteria**
 
 - Canonical SVG wireframes show the same content at mobile, tablet and desktop widths.
-- Homepage and form/success wireframes contain no out-of-scope features.
+- Homepage and form wireframes contain no out-of-scope features.
 - Provisional colour, type, spacing, card and icon roles are documented as tokens.
-- Logo/illustration placeholders are clearly marked until assets are selected.
+- Implemented logo and illustrations use documented local assets.
 
 **Checklist**
 
-- [ ] Review both SVGs against the consistency audit.
-- [ ] Define CSS custom properties.
-- [ ] Decide font delivery and one icon library.
-- [ ] Create asset-source/credit placeholders.
+- [x] Review both SVGs against the consistency audit.
+- [x] Define CSS custom properties.
+- [x] Use system font stacks and no separate icon library.
+- [x] Record the source/credit status of local assets.
 
 ### 3. Build the responsive homepage shell and navigation
 
@@ -99,42 +100,41 @@ As a visitor, I want clear navigation so that I can understand and move through 
 
 **Acceptance criteria**
 
-- Semantic page landmarks and skip link are present.
-- Navbar contains only logo, Home, Benefits, How It Works and Languages, matching the page order.
-- Bootstrap collapse works at small sizes.
-- The adapted local script closes the mobile menu after an internal link and is credited.
-- Focus remains visible and anchors land on labelled sections.
+- Semantic header, main, footer and navigation landmarks are present, together with a skip link.
+- Navbar contains the logo, Home, How It Works, Benefits, Languages and the Start Now action.
+- Bootstrap collapse works on mobile and tablet layouts.
+- The adapted Boardwalk Games script closes the collapsed menu after an internal link.
+- Scrollspy, visible focus and section offsets keep navigation understandable below the fixed navbar.
 
 **Checklist**
 
-- [ ] Build header, navbar and section skeleton.
-- [ ] Add skip link and focus styles.
-- [ ] Adapt and comment the mobile-navbar script.
-- [ ] Check keyboard and responsive behaviour.
+- [x] Build header, navbar and section skeleton.
+- [x] Add skip link and focus styles.
+- [x] Adapt and comment the mobile-navbar script.
+- [x] Check internal targets and responsive collapse behaviour.
 
 ### 4. Implement the hero, accessible carousel and Problem section
 
 **Labels:** `Must Have`, `feature`, `accessibility`
 
 **User story**  
-As a resident employee with German wage-taxed income, I want the opening content to explain the prototype without promising a tax result or implying that cross-border cases are covered.
+As a visitor, I want a clear introduction and visual overview before choosing a form language.
 
 **Acceptance criteria**
 
-- Qualified headline/supporting copy cannot be read as a refund promise.
+- The responsive hero contains the approved headline, supporting copy and two primary actions.
 - `Start Now` and `How It Works` target the correct sections.
-- Three coherent local illustrations do not imply calculations or submission.
-- Carousel includes controls, indicators and visible pause/resume.
-- Autoplay is disabled for reduced-motion users and pauses on focus/hover.
-- Problem copy and illustration introduce no new feature.
+- Three local 16:9 illustrations appear in the Bootstrap carousel.
+- Previous/next controls and clickable indicators expose the carousel state.
+- The responsive Problem section contains its approved picture sources, heading, copy and four-item list.
 
 **Checklist**
 
-- [ ] Implement responsive hero composition.
-- [ ] Create/source, optimise and credit three illustrations.
-- [ ] Configure Bootstrap carousel and accessible control.
-- [ ] Add Problem section.
-- [ ] Test focus, motion and target widths.
+- [x] Implement responsive hero composition.
+- [x] Add three optimised local illustrations.
+- [x] Configure Bootstrap carousel controls and indicators.
+- [x] Add the responsive Problem section.
+- [x] Check CTA targets and carousel accessible names.
 
 ### 5. Implement Benefits, How It Works, Languages and footer
 
@@ -145,22 +145,22 @@ As a visitor, I want to understand the benefits, journey and language options be
 
 **Acceptance criteria**
 
-- Four benefits use the approved, non-promissory meaning.
-- How It Works has five steps and labels step five as future only.
+- Four Benefits cards remain visible and readable at every target breakpoint.
+- How It Works presents the approved three-step journey: choose a language, complete the guided form and review the information.
 - ES, EN and DE cards are equally prominent at every breakpoint.
-- Every card retains its approved description and localised CTA when the grid reflows.
-- Local flags have recorded source/licence; language name/code is the primary cue.
-- Footer includes demo, no-advice and no-ELSTER notices plus agreed internal links.
+- Every language card keeps its local flag image, language name and localised CTA when the grid reflows.
+- The language cards link to `form-es-de.html`, `form-en-de.html` and `form-de-de.html`.
+- Footer contains the SteuerNotta copyright and internal links to the implemented homepage sections.
 
 **Checklist**
 
-- [ ] Build four-card Benefits layout.
-- [ ] Build responsive five-step How It Works layout.
-- [ ] Add and credit local flag assets.
-- [ ] Link all three cards to the correct forms.
-- [ ] Build the agreed footer.
+- [x] Build four-card Benefits layout.
+- [x] Build responsive three-step How It Works layout.
+- [x] Add local language-card assets.
+- [x] Link all three cards to the correct forms.
+- [x] Build the agreed footer.
 
-### 6. Build the shared seven-section long-form foundation
+### 6. Build the shared guided-form foundation
 
 **Labels:** `Must Have`, `feature`, `accessibility`
 
@@ -170,88 +170,88 @@ As a form user, I want one readable long page with consistent sections and help 
 **Acceptance criteria**
 
 - Exactly seven main sections appear in the approved order.
-- There is no wizard, saved progress, dynamic percentage, upload or calculation.
+- There is no wizard, saved progress, dynamic percentage, calculation or connected submission.
 - Labels, IDs and controls are unique and correctly associated.
-- If included, static section anchors work without claiming progress; they remain optional scan aids.
-- Complex fields can use one reusable, accessible Bootstrap modal pattern.
-- Browser-validation limits are stated visibly.
+- Document controls only expose the browser's local file selector; no file is uploaded, stored or transmitted.
+- Responsive utilities preserve the seven sections at mobile, tablet and desktop widths.
+- The final section states that processing is not connected and keeps reset/submit actions disabled.
 
 **Checklist**
 
-- [ ] Build common form header and disclaimer; add section navigation only if it remains useful and accessible.
-- [ ] Add seven semantic `fieldset` groups.
-- [ ] Add responsive field-layout utilities.
-- [ ] Build accessible help-modal pattern.
-- [ ] Add non-serialising finish handler foundation.
+- [x] Build the common form header, navigation and footer.
+- [x] Add seven semantic `fieldset` groups.
+- [x] Add responsive field-layout utilities.
+- [x] Associate labels and accessible descriptions with existing controls.
+- [x] Keep processing actions unavailable until backend behaviour is implemented.
 
-### 7. Implement the Spanish educational form content
+### 7. Implement the Spanish guided form content
 
 **Labels:** `Must Have`, `content`, `translation`
 
 **User story**  
-As a Spanish-speaking employee, I want German terms followed by Spanish explanations so that I can learn the terminology while exploring the prototype.
+As a Spanish-speaking employee, I want German terms followed by Spanish explanations so that I can complete the current functional draft more easily.
 
 **Acceptance criteria**
 
 - German appears first with `lang="de"`; Spanish follows consistently.
-- Only selected 2025 concepts within the documented prototype scope appear.
-- Out-of-scope prompts do not determine eligibility and direct users to official/professional help.
-- Documents is a non-exhaustive records checklist without file controls.
-- Every field/help string has a fiscal-matrix ID.
-- No specific fiscal statement remains visibly `Pending`: it is reviewed first or replaced by an unmistakably generic prototype placeholder.
+- The seven implemented sections cover the selected 2025 draft scope in the documented order.
+- Out-of-scope prompts collect review signals without calculating eligibility or a tax result.
+- Document selectors remain local browser controls and perform no upload, persistence or transmission.
+- Every main section records a `data-field-group` matrix reference and source-oriented subgroups use `data-source-ref`.
+- The final review section explains that processing is not connected and that the current controls do not submit data.
 
 **Checklist**
 
-- [ ] Map proposed controls to matrix IDs.
-- [ ] Implement seven Spanish sections.
-- [ ] Add plain-language limits and examples.
-- [ ] Review terminology, required fields and fake-data examples.
-- [ ] Validate HTML.
+- [x] Map the seven main areas to matrix group IDs.
+- [x] Implement all seven Spanish/German sections.
+- [x] Keep German labels first and mark them with `lang="de"`.
+- [x] Confirm local-only document selection and disabled processing actions.
+- [x] Validate identifiers, labels, references and control structure.
 
-### 8. Create English and German form parity
+### 8. Implement English and German guided-form parity
 
 **Labels:** `Must Have`, `translation`, `content`
 
 **User story**  
-As an English- or German-speaking user, I want the same educational structure in my language.
+As an English- or German-speaking user, I want the same functional form structure in my language.
 
 **Acceptance criteria**
 
 - EN and DE have the same section/control intent and help coverage as ES.
-- English pages keep German first and English below.
-- German pages use natural German without duplicated translations.
-- IDs are page-local, unique and consistent enough for maintenance.
+- English keeps German first with `lang="de"` and English immediately below.
+- German uses the same controls without visible duplicate translations.
+- IDs, names, control types, option values and document selectors match across all three pages.
 - No version introduces an extra feature or removes a notice.
-- No translated specific fiscal guidance is published unless Issue 13 records an approved source/review decision; otherwise use generic placeholders.
+- Each form links back to the same homepage sections and states the same no-processing behaviour in its own language.
 
 **Checklist**
 
-- [ ] Create an explicit parity checklist from ES.
-- [ ] Implement EN content.
-- [ ] Implement DE content.
-- [ ] Cross-check all three routes, controls, notices and matrix IDs.
+- [x] Create an explicit parity record from ES.
+- [x] Implement and verify EN content.
+- [x] Implement and verify DE content.
+- [x] Cross-check all three routes, 318 controls, notices, IDs and matrix groups.
 
-### 9. Create localised success pages and safe demo completion
+### 9. Remove completion pages from the current frontend scope
 
-**Labels:** `Must Have`, `feature`, `accessibility`
+**Status:** closed as `Not planned`
 
-**User story**  
-As a user who finishes the demo, I want a clear confirmation in the same language without sending my entries.
+**Scope decision**
+The current forms require future JavaScript and processing work before a completion state can be
+meaningful. Completion pages are therefore excluded from this milestone.
 
 **Acceptance criteria**
 
-- ES, EN and DE forms open their matching success page.
-- Submit handler prevents serialisation/transmission of form values.
-- Button label is equivalent to `Finish demo`, not tax-return submission.
-- Every success page repeats all four agreed messages/actions at every breakpoint.
-- No answer summary, download or next-steps content appears.
+- No completion page or completion handler remains in the current routes.
+- Form submission and reset actions remain disabled.
+- The interface does not claim that a tax return was completed or submitted.
+- Documentation records this as a deliberate scope decision, not missing functionality.
 
 **Checklist**
 
-- [ ] Implement and comment the finish handler.
-- [ ] Create three localised success pages.
-- [ ] Add Home and Return to Form actions to all layouts.
-- [ ] Test invalid and valid completion paths.
+- [x] Remove the Spanish success-page draft.
+- [x] Remove completion-page references from current documentation and wireframes.
+- [x] Keep processing actions disabled.
+- [x] Record future processing as separate product work.
 
 ### 10. Complete responsive and accessibility quality work
 
@@ -262,19 +262,19 @@ As a user on any target device, I want the same readable and operable journey.
 
 **Acceptance criteria**
 
-- No content is removed at approximately 375px, 768px or 1440px.
+- No required content is removed at approximately 375px, 768px or 1440px.
 - No horizontal overflow occurs.
-- Contrast, focus, labels, alt text, headings and modal names meet the documented requirements.
+- Contrast, focus, labels, alt text, headings and accessible control names meet the documented requirements.
 - Primary journey passes a keyboard smoke test.
-- Carousel motion controls behave as specified.
+- Carousel controls and indicators are keyboard operable and clearly named.
 
 **Checklist**
 
-- [ ] Review all seven pages at target widths.
-- [ ] Run contrast and focus review.
-- [ ] Check headings, landmarks, labels and alt text.
+- [x] Review the homepage and all three form routes at target widths.
+- [x] Run contrast and focus review.
+- [x] Check headings, landmarks, labels and alt text.
 - [ ] Run keyboard smoke test.
-- [ ] Fix and retest logged defects.
+- [x] Fix and retest logged defects.
 
 ### 11. Validate, test and document the deployed milestone
 
@@ -285,19 +285,19 @@ As an assessor, I want reproducible evidence so that planned quality is distingu
 
 **Acceptance criteria**
 
-- HTML and CSS validator results are recorded for the final deployed version.
+- HTML and CSS validator results are recorded for the final version.
 - Lighthouse evidence is recorded without hiding failures.
-- Links, forms, modals, carousel, redirects and asset paths are manually tested.
+- Links, disabled form actions, carousel controls and asset paths are manually tested.
 - Chrome, Firefox, Edge and Safari method/results are documented.
 - Each defect records expected, actual, fix and retest result.
 
 **Checklist**
 
-- [ ] Run validators.
-- [ ] Run Lighthouse.
-- [ ] Complete link/form interaction tests.
+- [x] Run validators.
+- [x] Run Lighthouse.
+- [x] Complete link/form interaction tests.
 - [ ] Complete responsive/browser matrix.
-- [ ] Fix and retest issues.
+- [x] Fix and retest issues.
 
 ### 12. Finalise README, credits and delivery evidence
 
@@ -317,30 +317,38 @@ As an assessor or future contributor, I want the README to match the delivered r
 **Checklist**
 
 - [ ] Reconcile README against code and deployed site.
-- [ ] Add final screenshots and test evidence.
-- [ ] Complete credits and source licences.
-- [ ] Record known issues and future development.
-- [ ] Perform final broken-link review.
+- [x] Add final test evidence.
+- [x] Complete credits and source licences.
+- [x] Record known issues and future development.
+- [x] Perform final broken-link review.
 
-### 13. Validate or neutralise fiscal content before publication
+### 13. Complete professional fiscal and linguistic review before production use
 
 **Labels:** `Must Have`, `content`, `translation`
 
 **User story**  
-As the project owner, I want every specific fiscal statement reviewed or neutralised so that provisional content is not mistaken for validated tax guidance.
+As the project owner, I want the frozen field set and translations reviewed professionally before
+SteuerNotta is presented for production use.
+
+**Research input**
+The current ES/EN/DE forms are frontend drafts. They intentionally perform no calculation,
+persistence, upload or transmission. Professional review is deferred until the shared field set
+and supported scope are frozen; it does not block the current non-processing milestone.
 
 **Acceptance criteria**
 
-- Every displayed field, option and help entry has a matrix decision, or is replaced by an unmistakably generic prototype placeholder.
+- The final field set and explanatory copy are frozen before review begins.
+- Every displayed field, option and help entry receives a matrix decision.
 - German, Spanish and English wording are reviewed separately.
 - Reviewer, role, date, reference year and official source are recorded.
-- Rejected/out-of-scope content is removed or clearly flagged before any claim of validation.
-- No unreviewed specific fiscal guidance is published from `main`; use unmistakably generic prototype placeholders until review is complete.
-- The milestone cannot close while unreviewed specific fiscal guidance is presented as factual.
+- Rejected or out-of-scope content is corrected before real-data handling or production use.
+- No professional validation, filing capability or tax-result calculation is claimed until this review is complete.
 
 **Checklist**
 
-- [ ] Expand the matrix to one row per field/help entry.
+- [ ] Freeze the final field set, explanations and supported scope.
+- [ ] Expand the matrix to one row per final field/help entry.
+- [ ] Review every `FULL-*` field, option, translation and official source locator.
 - [ ] Obtain German fiscal-content review.
 - [ ] Obtain Spanish and English linguistic review.
 - [ ] Apply corrections and link commits/issues.

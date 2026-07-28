@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Entwurf des SteuerNotta-Formulars mit deutschen Steuerbegriffen.">
     <title>SteuerNotta — Form-de/de</title>
 
     <!--Favicon-->
@@ -19,14 +20,16 @@
 </head>
 
 <body>
-    <main>
-        <!-- =========================================================
+    <a class="visually-hidden-focusable" href="#main-content">Zum Hauptinhalt springen</a>
+
+    <!-- =========================================================
    Navbar
    ========================================================= -->
-        <nav id="navbar" class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/images/steuernotta-navbar-logo-1000x250.webp" alt="Logo SteuerNotta" class="logo">
+                    <img src="assets/images/steuernotta-navbar-logo-1000x250.webp" alt="Logo SteuerNotta" class="logo"
+                        width="1000" height="250" decoding="async">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,8 +52,10 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+    </nav>
 
+    <main id="main-content">
+        <h1 class="visually-hidden">SteuerNotta Formular auf Deutsch</h1>
         <form id="fallprufung-form"
             aria-label="Fallprüfung, Hauptvordruck, Nichtselbständige Arbeit, Werbungskosten, weitere steuerliche Bereiche, Unterlagen und abschließende Prüfung">
             <fieldset class="form-section" data-field-group="FULL-SCOPE">
@@ -2591,6 +2596,9 @@
                 <legend>
                     <strong>6</strong>
                     <span lang="de">Unterlagen</span></legend>
+
+                <p id="document-upload-policy" class="visually-hidden">Ausgewählte Dateien verbleiben ausschließlich im
+                    Browser; sie werden weder hochgeladen noch gespeichert oder übermittelt.</p>
 
                 <fieldset class="field-group"
                     data-source-ref="ESt 1 A 2025; ELSTER 2025 Belegabruf und Belegvorhaltepflicht">
