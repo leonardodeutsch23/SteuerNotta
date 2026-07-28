@@ -1,13 +1,13 @@
 # SteuerNotta
 
-SteuerNotta is a multilingual frontend draft for organising selected German income-tax
-information in German, Spanish and English. The responsive homepage and three seven-section
-form routes are implemented. Calculation, storage, transmission and submission are not yet
-connected.
+SteuerNotta is a completed multilingual **frontend MVP** for organising selected German
+income-tax information in German, Spanish and English. The responsive homepage and three
+seven-section form routes are implemented. Functional form behaviour, calculation, storage,
+transmission and submission are not yet connected.
 
 [Repository](https://github.com/leonardodeutsch23/SteuerNotta) ·
 [Live site](https://leonardodeutsch23.github.io/SteuerNotta/) ·
-**Reference year:** 2025 · **Status:** frontend draft in active development
+**Reference year:** 2025 · **Status:** frontend MVP completed
 
 ## Current scope and limits
 
@@ -23,6 +23,22 @@ connected.
   approval.
 
 These limits describe the present development stage, not the intended final capability.
+
+## MVP status
+
+| Stage | Status | Meaning |
+|---|---|---|
+| Frontend MVP | Completed | The responsive homepage, three language routes, long-form structure, navigation, accessibility work, deployment and frontend QA are complete. |
+| Functional MVP | Pending | JavaScript must validate the form locally, manage conditional fields, provide a review summary and connect the reset/review/completion flow without claiming submission. |
+| Production-ready tax product | Not ready | Real-data handling requires an approved processing architecture, privacy and security controls, a frozen fiscal scope and the professional review tracked in Issue #13. |
+
+The next reasonable goal is a **local-only functional MVP**:
+
+> A user can complete fictitious information, receive understandable validation feedback and
+> review a generated summary in the browser without the application saving or transmitting data.
+
+This next milestone does not need to calculate tax or connect to ELSTER. Those capabilities require
+separate technical, fiscal, privacy and security decisions.
 
 ## Implemented pages
 
@@ -168,11 +184,18 @@ until the field set is frozen and professional review can be commissioned.
 
 ## Remaining work
 
-1. Design and connect form processing, persistence and document handling.
-2. Define privacy, security and consent requirements before real-data handling.
-3. Freeze the supported field set and tax scope.
-4. Obtain professional German fiscal review and specialist Spanish/English linguistic review.
-5. Re-test the processing flow before presenting the project for production use.
+1. Add JavaScript for required-field validation, understandable error messages and conditional
+   field behaviour.
+2. Generate a local review summary and connect the reset, review and eventual completion state.
+3. Test the JavaScript flow with fictitious data and confirm that values never enter URLs or
+   external services.
+4. Decide whether later versions remain local-only or require a backend, persistence and document
+   handling.
+5. Define privacy, security and consent requirements before any real-data handling.
+6. Freeze the supported field set and fiscal scope.
+7. Complete the professional German fiscal and specialist Spanish/English linguistic review in
+   Issue #13.
+8. Run regression, accessibility and cross-browser tests after functional behaviour is added.
 
 ## Credits and licences
 
