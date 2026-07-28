@@ -273,7 +273,7 @@ As a user on any target device, I want the same readable and operable journey.
 - [x] Review the homepage and all three form routes at target widths.
 - [x] Run contrast and focus review.
 - [x] Check headings, landmarks, labels and alt text.
-- [ ] Run keyboard smoke test.
+- [x] Run keyboard smoke test.
 - [x] Fix and retest logged defects.
 
 ### 11. Validate, test and document the deployed milestone
@@ -296,7 +296,7 @@ As an assessor, I want reproducible evidence so that planned quality is distingu
 - [x] Run validators.
 - [x] Run Lighthouse.
 - [x] Complete link/form interaction tests.
-- [ ] Complete responsive/browser matrix.
+- [x] Complete responsive/browser matrix.
 - [x] Fix and retest issues.
 
 ### 12. Finalise README, credits and delivery evidence

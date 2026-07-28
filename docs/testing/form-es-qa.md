@@ -24,9 +24,8 @@ approval for real-data handling.
 
 GitHub Pages completed its build and deployment workflow successfully for implementation commit
 `be07392`. All four published routes and the two canonical CSS/wireframe assets returned HTTP 200;
-the removed `form-es.html` and `success-es.html` routes returned HTTP 404. Firefox, Safari and a
-physical keyboard-only pass remain manual checks because those environments are not available to
-the automated Windows test session.
+the removed `form-es.html` and `success-es.html` routes returned HTTP 404. The project owner
+subsequently confirmed that the physical keyboard-only and cross-browser checks passed.
 
 ## Structural and language parity
 
@@ -89,8 +88,8 @@ image had a non-zero natural width, and static path checks found no missing asse
 - Primary text/ivory, cobalt/ivory and white/cobalt combinations exceed WCAG AA contrast for normal
   text. Amber backgrounds use dark text.
 
-A true keyboard-only journey has not been claimed from synthetic browser events. It must be
-completed manually on the deployed site before Issue #10 is closed.
+A true keyboard-only journey was not inferred from synthetic events. It was completed manually on
+the deployed site and reported as passed by the project owner.
 
 ## Lighthouse 13.4.1
 
@@ -116,12 +115,17 @@ cache during this test; that is a development-server condition.
 - Completion pages are intentionally outside the current milestone and were removed.
 - The pages explicitly warn against entering real personal, banking, fiscal or document data.
 
-## Manual checks still required
+## Manual validation
 
-1. Use only the keyboard on the deployed homepage and one form: Tab through the skip link,
-   navigation, carousel and representative form controls; activate relevant items with Enter or
-   Space; confirm that focus is visible and never trapped.
-2. Check the deployed homepage and one form in Firefox at mobile, tablet and desktop widths.
-3. Check the deployed homepage and one form in Safari on iPhone/iPad/macOS where available.
-4. Report any failure with route, viewport, browser and a screenshot so it can be reproduced and
-   retested.
+The project owner reported the following results after testing the deployed site:
+
+| Manual check | Result |
+|---|---|
+| Keyboard-only navigation, skip link, menu, carousel and representative form controls | Passed |
+| Visible focus and absence of keyboard traps | Passed |
+| Edge browser check | Passed |
+| Firefox browser check | Passed |
+| Safari browser check | Passed |
+
+These results are recorded as user-confirmed manual evidence and remain distinct from the automated
+Chrome/Chromium checks above.

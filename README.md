@@ -150,7 +150,7 @@ SteuerNotta/
 | CSS validation | Passed: 0 errors on both stylesheets; compatibility notices documented |
 | Lighthouse | Home: 83/100/100/100; Spanish form: 83/100/100/100 |
 | Interaction smoke tests | Mobile menu, internal offsets and carousel controls passed in Chrome |
-| Keyboard and browser matrix | Physical keyboard, Firefox and Safari checks remain manual |
+| Keyboard and browser matrix | Passed manually in Edge, Firefox and Safari; user-confirmed |
 
 Test evidence distinguishes automated structural checks, browser smoke tests and professional
 content review. A browser pass is not fiscal approval.
@@ -162,9 +162,9 @@ content review. A browser pass is not fiscal approval.
 - [Planning record](docs/planning/github-plan.md)
 - [Fiscal review matrix](docs/content/fiscal-review-matrix.md)
 
-Issues #1–#12 describe the current frontend milestone. Issue #9 is closed as not planned because
-completion pages were removed from the current scope. Issue #13 remains open and deferred until
-the field set is frozen and professional review can be commissioned.
+Issues #1–#12 for the current frontend milestone are closed. Issue #9 was closed as not planned
+because completion pages were removed from the current scope. Issue #13 remains open and deferred
+until the field set is frozen and professional review can be commissioned.
 
 ## Remaining work
 
