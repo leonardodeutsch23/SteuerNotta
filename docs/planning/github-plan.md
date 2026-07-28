@@ -103,7 +103,8 @@ As a visitor, I want clear navigation so that I can understand and move through 
 - Semantic header, main, footer and navigation landmarks are present, together with a skip link.
 - Navbar contains the logo, Home, How It Works, Benefits, Languages and the Start Now action.
 - Bootstrap collapse works on mobile and tablet layouts.
-- The adapted Boardwalk Games script closes the collapsed menu after an internal link.
+- The script adapted from the Code Institute Boardwalk Games activity closes the collapsed menu
+  after an internal link.
 - Scrollspy, visible focus and section offsets keep navigation understandable below the fixed navbar.
 
 **Checklist**

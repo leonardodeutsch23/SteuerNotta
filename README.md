@@ -135,6 +135,7 @@ SteuerNotta/
 ├── form-en-de.html
 ├── form-de-de.html
 ├── README.md
+├── THIRD-PARTY-NOTICE.txt
 ├── assets/
 │   ├── css/
 │   │   ├── style.css
@@ -199,13 +200,19 @@ until the field set is frozen and professional review can be commissioned.
 
 ## Credits and licences
 
-- Project design, HTML, CSS and written interface structure: Leonardo Deutsch.
-- The responsive-navbar closing pattern was adapted from Leonardo Deutsch's earlier Boardwalk
-  Games implementation.
+- Project direction, design decisions and final implementation responsibility: Leonardo Deutsch.
+- The homepage navbar structure and responsive-navbar closing pattern were adapted from the
+  Boardwalk Games activity completed as part of the Code Institute coursework.
+- OpenAI Codex provided AI assistance during the creation and review of code, the organisation of
+  project files and documentation, quality-assurance planning and the Git/GitHub workflow. Leonardo
+  Deutsch retained the final decisions and responsibility for the resulting project.
 - The logo, carousel scenes, Problem illustration, benefit graphics, How It Works graphics and
-  language-card graphics in `assets/images/` were created for SteuerNotta with generative-image
-  assistance and edited/exported as local project assets. No third-party stock-image source is
-  claimed.
+  surrounding language-card compositions in `assets/images/` were created for SteuerNotta with
+  generative-image assistance and edited/exported as local project assets.
+- The flag artwork used in the language cards comes from
+  [flag-icons 7.5.0](https://github.com/lipis/flag-icons), Copyright (c) 2013 Panayiotis Lipiridis,
+  and is used under the MIT License. The complete licence text is included in
+  [THIRD-PARTY-NOTICE.txt](THIRD-PARTY-NOTICE.txt).
 - The SVG wireframes in `assets/docs/wireframes/` were created specifically for SteuerNotta.
 - [Bootstrap 5.3.8](https://github.com/twbs/bootstrap) is distributed under the MIT License and is
   loaded from [jsDelivr](https://www.jsdelivr.com/).
