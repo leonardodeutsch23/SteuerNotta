@@ -5,7 +5,9 @@
 **Routes under test:** `index.html`, `form-es-de.html`, `form-en-de.html`,
 `form-de-de.html`
 
-**Current stage:** pre-publication source and local-render audit
+**Published implementation commit:** `be07392`
+
+**Current stage:** published implementation audit
 
 This document records implementation evidence for the current non-processing frontend draft. It
 is not professional fiscal review, linguistic certification, ELSTER compatibility evidence or
@@ -14,14 +16,17 @@ approval for real-data handling.
 ## Test environment
 
 - Local site served from `http://127.0.0.1:5500/`.
+- Published site checked at `https://leonardodeutsch23.github.io/SteuerNotta/`.
 - Chrome/Chromium rendering used for automated responsive and interaction checks.
 - Lighthouse 13.4.1 run with installed Google Chrome.
 - HTML checked with the W3C Nu HTML Checker.
 - CSS checked with the W3C Jigsaw CSS Validator.
 
-The final deployed URL and commit are recorded after publication. Firefox, Safari and a physical
-keyboard-only pass remain manual checks because those environments are not available to the
-automated Windows test session.
+GitHub Pages completed its build and deployment workflow successfully for implementation commit
+`be07392`. All four published routes and the two canonical CSS/wireframe assets returned HTTP 200;
+the removed `form-es.html` and `success-es.html` routes returned HTTP 404. Firefox, Safari and a
+physical keyboard-only pass remain manual checks because those environments are not available to
+the automated Windows test session.
 
 ## Structural and language parity
 
@@ -53,7 +58,8 @@ cannot fully resolve. These notices did not identify an invalid rule.
 
 ## Responsive browser checks
 
-The homepage and all three forms were rendered at 375px, 768px and 1440px.
+The homepage and all three forms were rendered locally and again from GitHub Pages at 375px, 768px
+and 1440px.
 
 | Check | 375px | 768px | 1440px |
 |---|---|---|---|

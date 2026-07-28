@@ -316,7 +316,7 @@ As an assessor or future contributor, I want the README to match the delivered r
 
 **Checklist**
 
-- [ ] Reconcile README against code and deployed site.
+- [x] Reconcile README against code and deployed site.
 - [x] Add final test evidence.
 - [x] Complete credits and source licences.
 - [x] Record known issues and future development.
