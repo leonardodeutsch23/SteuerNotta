@@ -523,6 +523,12 @@ main {
     margin-top: auto;
 }
 
+#fallprufung-form [data-field-group="FULL-MAIN"] .field > input:not([type="checkbox"]):not([type="radio"]),
+#fallprufung-form [data-field-group="FULL-MAIN"] .field > select {
+    /* Aligns both personal-information controls below their labels. */
+    margin-top: 0;
+}
+
 #fallprufung-form .field > textarea {
     /* Allows users to expand longer notes without changing the width. */
     resize: vertical;
