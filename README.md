@@ -236,7 +236,7 @@ Implemented accessibility work includes:
 - Git and GitHub for version control, issues and project management.
 - GitHub Pages for deployment.
 - W3C Nu HTML Checker and W3C CSS Validation Service for code validation.
-- Lighthouse 13.4.1 for performance, accessibility, best-practices and SEO auditing.
+- Lighthouse 13.0.1 for performance, accessibility, best-practices and SEO auditing.
 
 ## Testing
 
@@ -253,8 +253,10 @@ Current headline results:
 | Form parity | 7 sections and 12 matching controls on each route |
 | Duplicate control IDs | 0 |
 | Responsive overflow | None at 375px, 768px or 1440px |
-| Lighthouse — Home mobile/desktop | 84 / 99 performance; 100 for all other categories |
-| Lighthouse — ES form mobile/desktop | 96 / 100 performance; 100 for all other categories |
+| Lighthouse — Home mobile/desktop | 92 / 100 performance; 100 for all other categories |
+| Lighthouse — ES form mobile/desktop | 97 / 100 performance; 100 for all other categories |
+| Lighthouse — EN form mobile/desktop | 97 / 100 performance; 100 for all other categories |
+| Lighthouse — DE form mobile/desktop | 96 / 100 performance; 100 for all other categories |
 | Internal links opening new tabs | None |
 | Connected form submission/reset actions | None |
 
@@ -268,6 +270,7 @@ Current headline results:
 | Fixed navbar covered section headings | Section scroll margins were added and tested. |
 | Mobile navigation stayed open after selecting a section | The collapsed menu is closed by the adapted inline script. |
 | Form fields and unpaired cards were misaligned at tablet widths | Shared grid and centring rules were added. |
+| The marital-status select sat below the paired tax-ID field | A scoped rule aligns both controls directly below their labels while preserving the helper note. |
 | Carousel and Problem images cropped inconsistently | Purpose-specific responsive image sources were supplied. |
 | Desktop navbar action could extend beyond the viewport | The responsive action gap was reduced and rechecked at 1440px. |
 | Internal form links opened unnecessary new tabs | `target="_blank"` was removed from all three language cards. |

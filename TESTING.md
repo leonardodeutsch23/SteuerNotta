@@ -25,15 +25,17 @@ The forms use native HTML constraints but do not save, upload or transmit data.
 
 | Environment | Purpose |
 |---|---|
-| Local Python static server on Windows 11 | Functional, visual and automated checks before deployment |
-| Chrome DevTools responsive mode | Mobile, tablet and desktop layout inspection |
-| GitHub Pages | Final deployment and route/asset verification |
+| Local Python static server on Windows 11 | Functional and visual checks before deployment |
+| Google Chrome 150.0.7871.187 on Windows 11 | Responsive, navigation and form checks |
+| Microsoft Edge 150.0.4078.105 on Windows 11 | Independent Chromium-browser layout check |
+| GitHub Pages | Route, asset, W3C and Lighthouse verification of the published site |
 | W3C Nu HTML Checker | HTML conformance |
 | W3C CSS Validation Service | CSS conformance |
-| Lighthouse 13.4.1 | Performance, accessibility, best-practices and SEO audits |
+| Lighthouse 13.0.1 | Performance, accessibility, best-practices and SEO audits |
 
 The primary responsive reference widths were `375px`, `768px` and `1440px`. The page was also
-resized between those values to find breakpoint or overflow problems.
+resized between those values to find breakpoint or overflow problems. The evidence in this document
+was refreshed on 29 July 2026.
 
 ## User story testing
 
@@ -45,7 +47,7 @@ resized between those values to find breakpoint or overflow problems.
 | See the intended benefits | Open Benefits | Four benefit cards are visible and adapt to the viewport | Pass |
 | Choose a language | Select each language card | The corresponding internal form opens in the same tab | Pass |
 | Receive the same form structure in every language | Compare all three form routes | Section order, control IDs, names, types and option values match | Pass |
-| Know what happens to entered information | Read the form warning and final section | The user is told to use fictitious data and that nothing is saved or transmitted | Pass |
+| Know what happens to entered information | Read the final review section | The user is told that nothing is saved or transmitted | Pass |
 | Use the site with a keyboard | Tab through navigation, carousel and form controls | Interactive elements receive visible focus in a logical order | Pass |
 | Review or submit information | Inspect the final actions | Reset and review buttons remain disabled because processing is not implemented | Pass |
 
@@ -84,7 +86,7 @@ checks confirmed that the same constraints are present on the English/German and
 | Gross wages | Required empty value is invalid | `-1` is invalid | `1000.50` is valid | Pass |
 | Work expenses | Empty optional value is valid | `-1` is invalid | `0` is valid | Pass |
 | Special expenses | Empty optional value is valid | `-1` is invalid | `0.01` is valid | Pass |
-| Documents | Empty optional value is valid | Browser picker is restricted to the listed formats | Multiple PDF/JPG/JPEG/PNG files may be selected locally | Pass |
+| Documents | Empty optional value is valid | The `accept` attribute suggests the listed formats to the browser picker | Multiple PDF/JPG/JPEG/PNG files may be selected locally | Pass |
 | Fictitious-data confirmation | Unchecked required box is invalid | Not applicable | Checked box is valid | Pass |
 | Notes | Empty optional value is valid | Typed input is limited by `maxlength="500"` | Text within 500 characters is valid | Pass |
 
@@ -98,6 +100,15 @@ Additional checks:
 - the Reset and Review buttons are visibly and programmatically disabled.
 
 Native validation messages are intentionally browser-provided, so their exact wording can vary.
+The following captures record representative states; the corresponding browser validity properties
+were also inspected during the test:
+
+| Evidence | Observed result |
+|---|---|
+| [Required selects left on their default option](docs/testing/evidence/forms/required-controls-empty.png) | Both controls reported `valueMissing: true` |
+| [Three-digit tax ID](docs/testing/evidence/forms/tax-id-pattern-invalid.png) | `patternMismatch: true`; the 11-digit helper remains visible |
+| [Negative gross-wage value](docs/testing/evidence/forms/negative-amount-invalid.png) | `rangeUnderflow: true` because `min="0"` |
+| [Document selector](docs/testing/evidence/forms/file-input-accept.png) | `multiple` is enabled and `accept=".pdf,.jpg,.jpeg,.png"` is present |
 
 ## Multilingual parity
 
@@ -136,11 +147,38 @@ option values. Visible supporting copy changes by language, while the data struc
 | 768px | Two-column field layout, aligned controls and centred unpaired items | Pass |
 | 1440px | Up to three columns, consistent spacing and footer spanning the viewport | Pass |
 
-![Form at 375px](docs/testing/evidence/form-es-mobile-375.png)
+The three language routes were checked independently because translated labels can wrap at
+different points:
 
-![Form at 768px](docs/testing/evidence/form-es-tablet-768.png)
+| Route | 375px | 768px | 1440px |
+|---|---|---|---|
+| Spanish/German | Pass | Pass | Pass |
+| English/German | Pass | Pass | Pass |
+| German | Pass | Pass | Pass |
 
-![Form at 1440px](docs/testing/evidence/form-es-desktop-1440.png)
+#### Spanish/German form
+
+![Spanish/German form at 375px](docs/testing/evidence/form-es-mobile-375.png)
+
+![Spanish/German form at 768px](docs/testing/evidence/form-es-tablet-768.png)
+
+![Spanish/German form at 1440px](docs/testing/evidence/form-es-desktop-1440.png)
+
+#### English/German form
+
+![English/German form at 375px](docs/testing/evidence/form-en-mobile-375.png)
+
+![English/German form at 768px](docs/testing/evidence/form-en-tablet-768.png)
+
+![English/German form at 1440px](docs/testing/evidence/form-en-desktop-1440.png)
+
+#### German form
+
+![German form at 375px](docs/testing/evidence/form-de-mobile-375.png)
+
+![German form at 768px](docs/testing/evidence/form-de-tablet-768.png)
+
+![German form at 1440px](docs/testing/evidence/form-de-desktop-1440.png)
 
 At all three widths, the measured document width did not exceed the viewport width. No horizontal
 scrollbar was produced.
@@ -163,15 +201,16 @@ scrollbar was produced.
 
 ## Browser compatibility
 
-| Browser | Scope | Result |
-|---|---|---|
-| Google Chrome | Full responsive, navigation, form and Lighthouse testing | Pass |
-| Microsoft Edge | Manual layout, navigation and form-control review | Pass |
-| Mozilla Firefox | Manual layout and native form-control review | Pass |
-| Safari | Manual review on the deployed responsive site | Pass |
+| Browser | Version/platform | Scope | Result | Evidence |
+|---|---|---|---|---|
+| Google Chrome | 150.0.7871.187 / Windows 11 | Responsive layout, navigation, form constraints and deployed-site rendering | Pass | [Screenshot](docs/testing/evidence/browsers/chrome-home-desktop.png) |
+| Microsoft Edge | 150.0.4078.105 / Windows 11 | Deployed homepage layout, navigation and asset rendering | Pass | [Screenshot](docs/testing/evidence/browsers/edge-home-desktop.png) |
+| Mozilla Firefox | Manual project QA; version not retained | Layout and native form-control review reported by the tester | Pass | Tester-confirmed |
+| Safari/iOS | Manual deployed-site QA; version not retained | Responsive layout and touch navigation reported by the tester | Pass | Tester-confirmed |
 
 Browser-native date, number, select and file controls may look slightly different, but the content
-and constraints remain available.
+and constraints remain available. The two reproducible Windows-browser captures are retained in the
+repository rather than presenting the Firefox and Safari checks as automated results.
 
 ## Code validation
 
@@ -179,12 +218,12 @@ and constraints remain available.
 
 All current HTML pages were submitted to the official W3C Nu HTML Checker.
 
-| File | Errors | Warnings | Result |
-|---|---:|---:|---|
-| `index.html` | 0 | 0 | Pass |
-| `form-es-de.html` | 0 | 0 | Pass |
-| `form-en-de.html` | 0 | 0 | Pass |
-| `form-de-de.html` | 0 | 0 | Pass |
+| File | Errors | Warnings | Result | Evidence |
+|---|---:|---:|---|---|
+| `index.html` | 0 | 0 | Pass | [Screenshot](docs/testing/evidence/validation/html-index-w3c.png) |
+| `form-es-de.html` | 0 | 0 | Pass | [Screenshot](docs/testing/evidence/validation/html-form-es-w3c.png) |
+| `form-en-de.html` | 0 | 0 | Pass | [Screenshot](docs/testing/evidence/validation/html-form-en-w3c.png) |
+| `form-de-de.html` | 0 | 0 | Pass | [Screenshot](docs/testing/evidence/validation/html-form-de-w3c.png) |
 
 The deployed documents can be rechecked with these links:
 
@@ -200,10 +239,10 @@ Both project stylesheets are checked with the official W3C CSS Validation Servic
 - [Validate `style.css`](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fleonardodeutsch23.github.io%2FSteuerNotta%2Fassets%2Fcss%2Fstyle.css&profile=css3svg)
 - [Validate `styleform.css`](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fleonardodeutsch23.github.io%2FSteuerNotta%2Fassets%2Fcss%2Fstyleform.css&profile=css3svg)
 
-| File | Errors | Compatibility/static-analysis warnings | Result |
-|---|---:|---:|---|
-| `assets/css/style.css` | 0 | 11 | Pass |
-| `assets/css/styleform.css` | 0 | 6 | Pass |
+| File | Errors | Compatibility/static-analysis warnings | Result | Evidence |
+|---|---:|---:|---|---|
+| `assets/css/style.css` | 0 | 14 | Pass | [Screenshot](docs/testing/evidence/validation/css-style-w3c.png) |
+| `assets/css/styleform.css` | 0 | 8 | Pass | [Screenshot](docs/testing/evidence/validation/css-styleform-w3c.png) |
 
 The non-blocking warnings relate to custom properties and modern CSS values that the validator
 cannot resolve statically; they do not identify invalid declarations. They are recorded here rather
@@ -213,14 +252,20 @@ The URI checks are repeated after deployment so that the validator reads the exa
 
 ## Lighthouse
 
-Lighthouse was run against the local static-server build in mobile and desktop modes.
+Lighthouse 13.0.1 was run on 29 July 2026 against the published GitHub Pages URLs in mobile and
+desktop modes. The URL visible at the top of each capture confirms that the deployed site, rather
+than a localhost copy, was audited.
 
-| Page and mode | Performance | Accessibility | Best practices | SEO |
-|---|---:|---:|---:|---:|
-| Homepage — mobile | 84 | 100 | 100 | 100 |
-| Homepage — desktop | 99 | 100 | 100 | 100 |
-| Spanish/German form — mobile | 96 | 100 | 100 | 100 |
-| Spanish/German form — desktop | 100 | 100 | 100 | 100 |
+| Page and mode | Performance | Accessibility | Best practices | SEO | Evidence |
+|---|---:|---:|---:|---:|---|
+| Homepage — mobile | 92 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-home-mobile.png) |
+| Homepage — desktop | 100 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-home-desktop.png) |
+| Spanish/German form — mobile | 97 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-form-es-mobile.png) |
+| Spanish/German form — desktop | 100 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-form-es-desktop.png) |
+| English/German form — mobile | 97 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-form-en-mobile.png) |
+| English/German form — desktop | 100 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-form-en-desktop.png) |
+| German form — mobile | 96 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-form-de-mobile.png) |
+| German form — desktop | 100 | 100 | 100 | 100 | [Screenshot](docs/testing/evidence/lighthouse-form-de-desktop.png) |
 
 ![Homepage mobile Lighthouse result](docs/testing/evidence/lighthouse-home-mobile.png)
 
@@ -230,8 +275,9 @@ Lighthouse was run against the local static-server build in mobile and desktop m
 
 ![Form desktop Lighthouse result](docs/testing/evidence/lighthouse-form-es-desktop.png)
 
-The lower homepage mobile performance score is primarily associated with large local illustrations
-and render-blocking CSS. Accessibility, best-practices and SEO passed at 100 in every recorded run.
+The homepage mobile performance score remains the lowest result and is primarily associated with
+large illustrations and cache-lifetime opportunities. Accessibility, best-practices and SEO passed
+at 100 in every recorded run.
 
 ## Bugs fixed during testing
 
@@ -242,6 +288,7 @@ and render-blocking CSS. Accessibility, best-practices and SEO passed at 100 in 
 | Mobile menu remained open after navigation | Bootstrap collapse state was not changed by in-page links | Added the small adapted collapse script | Pass |
 | Active section could be incorrect | Scrollspy offset and section positions disagreed | Aligned navigation target/offset behaviour | Pass |
 | Tablet and desktop fields were uneven | Mixed content heights affected grid alignment | Applied shared grid and alignment rules | Pass |
+| Marital-status control sat below the tax-ID control | The helper note changed the available flex-column height | Scoped both controls to start directly below their labels | Pass |
 | Unpaired items stayed in the left column | Grid placement had no last-item exception | Centred unpaired tablet/desktop items | Pass |
 | Problem illustration cropped unpredictably | One image source was forced across dissimilar aspect ratios | Added viewport-specific picture sources | Pass |
 | Desktop navigation CTA extended too far right | Its responsive left margin was excessive | Reduced the responsive margin and remeasured | Pass |
