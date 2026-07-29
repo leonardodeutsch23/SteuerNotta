@@ -220,7 +220,7 @@ main {
 
 #navbar .navbar-nav > .nav-item:last-child {
     /* Separates the primary action from other navigation links. */
-    margin-left: clamp(3rem, 13vw, 10.5rem);
+    margin-left: clamp(2rem, 6vw, 6rem);
 }
 
 #navbar .custom-button-filled {

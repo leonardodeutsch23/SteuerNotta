@@ -166,11 +166,13 @@ As a visitor, I want to understand the benefits, journey and language options be
 **Labels:** `Must Have`, `feature`, `accessibility`
 
 **User story**  
-As a form user, I want one readable long page with consistent sections and help so that I can explore it without a hidden wizard.
+As a form user, I want one readable page with a short, representative set of fields so that I can
+explore it without a hidden wizard.
 
 **Acceptance criteria**
 
 - Exactly seven main sections appear in the approved order.
+- Exactly twelve representative controls keep the milestone practical to test.
 - There is no wizard, saved progress, dynamic percentage, calculation or connected submission.
 - Labels, IDs and controls are unique and correctly associated.
 - Document controls only expose the browser's local file selector; no file is uploaded, stored or transmitted.
@@ -196,9 +198,9 @@ As a Spanish-speaking employee, I want German terms followed by Spanish explanat
 
 - German appears first with `lang="de"`; Spanish follows consistently.
 - The seven implemented sections cover the selected 2025 draft scope in the documented order.
-- Out-of-scope prompts collect review signals without calculating eligibility or a tax result.
+- Representative prompts do not calculate eligibility or a tax result.
 - Document selectors remain local browser controls and perform no upload, persistence or transmission.
-- Every main section records a `data-field-group` matrix reference and source-oriented subgroups use `data-source-ref`.
+- Every main section records its `data-field-group` matrix reference.
 - The final review section explains that processing is not connected and that the current controls do not submit data.
 
 **Checklist**
@@ -230,7 +232,7 @@ As an English- or German-speaking user, I want the same functional form structur
 - [x] Create an explicit parity record from ES.
 - [x] Implement and verify EN content.
 - [x] Implement and verify DE content.
-- [x] Cross-check all three routes, 318 controls, notices, IDs and matrix groups.
+- [x] Cross-check all three routes, 12 controls, notices, IDs and matrix groups.
 
 ### 9. Remove completion pages from the current frontend scope
 

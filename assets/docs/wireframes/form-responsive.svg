@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="850" viewBox="0 0 1600 850" role="img" aria-labelledby="title description">
-  <title id="title">SteuerNotta responsive long-form wireframe</title>
+  <title id="title">SteuerNotta responsive seven-section form wireframe</title>
   <desc id="description">Low-fidelity mobile, tablet and desktop layouts with a form introduction, seven open form sections and disabled processing actions.</desc>
   <style>
     .canvas{fill:#f5f7fa}.panel{fill:#fff;stroke:#243447;stroke-width:2}.section{fill:#f8fafc;stroke:#64748b;stroke-width:1.2}.strong{fill:#dbeafe;stroke:#1d4ed8;stroke-width:1.3}.button{fill:#e2e8f0;stroke:#64748b;stroke-width:1.3}.title{font:700 25px Arial,sans-serif;fill:#0f172a}.heading{font:700 16px Arial,sans-serif;fill:#0f172a}.label{font:700 12px Arial,sans-serif;fill:#0f172a}.text{font:11px Arial,sans-serif;fill:#334155}.tiny{font:9px Arial,sans-serif;fill:#475569}.center{text-anchor:middle}
   </style>
   <rect class="canvas" width="1600" height="850"/>
-  <text class="title" x="30" y="38">SteuerNotta — canonical long-form wireframes</text>
+  <text class="title" x="30" y="38">SteuerNotta — seven-section form wireframes</text>
   <text class="text" x="30" y="60">Seven open sections · no wizard · no progress · no saved data · no calculations · processing actions disabled · same content at every width</text>
 
   <!-- Desktop form -->

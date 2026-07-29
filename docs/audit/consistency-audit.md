@@ -62,7 +62,7 @@ No mockup, generated form or assistant statement overrides a later confirmed dec
 - `index.html`, `form-es-de.html`, `form-en-de.html` and `form-de-de.html` — current implemented routes.
 - `assets/css/style.css` and `assets/css/styleform.css` — shared homepage and form styling.
 - `assets/docs/wireframes/homepage-responsive.svg` — homepage layout at the three reference widths.
-- `assets/docs/wireframes/form-responsive.svg` — long-form layout at the three reference widths.
+- `assets/docs/wireframes/form-responsive.svg` — seven-section form concept at the three reference widths.
 - `docs/content/fiscal-review-matrix.md` — truth-status register for fiscal content.
 - `docs/planning/github-plan.md` — issue and board plan.
 
