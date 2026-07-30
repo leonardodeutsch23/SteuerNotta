@@ -56,11 +56,11 @@ replacement for ELSTER, tax software or professional tax advice.
 | Spanish, English and German form routes | Account creation or saved progress |
 | Seven clearly labelled form sections | Conditional JavaScript behaviour |
 | Twelve matching controls per route | Data storage, transmission or file upload |
-| Native HTML constraints and accessible labels | Submission, success or completion pages |
+| Native HTML constraints and accessible labels | Server-side submission or completion pages |
 | GitHub Pages deployment and documented QA | Connection to ELSTER or a tax authority |
 
-Only fictitious data should be used. The forms deliberately keep reset and review actions disabled
-until local processing behaviour can be implemented and tested.
+Only fictitious data should be used. The Reset action clears the local controls and the Review action
+opens a frontend confirmation modal; neither action saves or transmits information.
 
 ## User experience
 
@@ -81,7 +81,7 @@ preserved.
 | Must Have | see the intended benefits before choosing a form | Four responsive Benefits cards describe the intended value of the product. |
 | Must Have | choose Spanish, English or German | Three equally prominent language cards open matching local routes. |
 | Must Have | explore the same form structure in each language | All three routes contain the same seven sections and twelve controls. |
-| Must Have | know what happens to my information | Every form warns that data is not saved or transmitted and keeps processing actions disabled. |
+| Must Have | receive feedback after reviewing the form | Every form provides Reset and Review actions, with Review opening an accessible confirmation modal. |
 | Must Have | use the site with keyboard or assistive technology | Semantic landmarks, associated labels, focus states and accessible names are implemented. |
 | Should Have | review a completed summary locally | Deferred until JavaScript processing is introduced. |
 
@@ -94,7 +94,8 @@ Detailed tests against these stories are recorded in [TESTING.md](TESTING.md#use
 3. The visitor chooses a language.
 4. The selected form opens in the same tab.
 5. The visitor can explore a short seven-section draft using fictitious data.
-6. The final section explains that review, reset and submission behaviour is not connected.
+6. The visitor can reset the local controls or open the frontend review confirmation modal; no
+   server-side processing is connected.
 
 ## Design
 
@@ -114,6 +115,18 @@ clinical application.
 
 Headings use Georgia with Times New Roman as a fallback. Body text uses a system sans-serif stack so
 that the site does not depend on an external font request.
+
+### Mockups
+
+The complete homepage mockup established the intended content order, Nordic Ledger palette,
+illustration style and overall visual hierarchy.
+
+![Complete homepage mockup](assets/docs/mockups/homepage-complete-mockup.png)
+
+The responsive reference board shows how the same design was expected to adapt across desktop,
+tablet and mobile layouts before implementation refinements.
+
+![Responsive homepage mockup](assets/docs/mockups/homepage-responsive-mockup.png)
 
 ### Wireframes
 
@@ -143,10 +156,14 @@ headings from being hidden behind the fixed bar.
 The hero combines the main message, two calls to action and a three-image Bootstrap carousel with
 named previous, next and indicator controls.
 
+![Navigation and hero section](docs/testing/evidence/feature-navigation-hero.png)
+
 ### Problem section
 
 The responsive picture uses different local crops for mobile, tablet, laptop and desktop. Supporting
 copy and four short benefits explain why the product exists.
+
+![Problem section](docs/testing/evidence/feature-problem.png)
 
 ### How It Works
 
@@ -224,7 +241,7 @@ Implemented accessibility work includes:
 - descriptive alternative text;
 - accessible carousel controls and indicators;
 - sufficient primary colour contrast;
-- explicit help text for file selectors and disabled processing actions.
+- explicit help text for file selectors and an accessible review confirmation modal.
 
 ## Technologies
 
@@ -330,7 +347,8 @@ prepared the repository for assessment.
 
 1. Add JavaScript-driven local validation feedback and conditional questions.
 2. Generate a local review summary without transmitting data.
-3. Connect reset and review actions only after the complete interaction is tested.
+3. Replace the frontend-only confirmation modal with a connected review workflow only after the
+   complete interaction is implemented and tested.
 4. Decide whether the product remains local-only or later requires a secured backend.
 5. Define privacy, consent, retention and document-handling requirements before real-data use.
 6. Freeze the fiscal scope and obtain the professional review tracked in Issue #13.

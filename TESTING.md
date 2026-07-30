@@ -47,9 +47,9 @@ was refreshed on 29 July 2026.
 | See the intended benefits | Open Benefits | Four benefit cards are visible and adapt to the viewport | Pass |
 | Choose a language | Select each language card | The corresponding internal form opens in the same tab | Pass |
 | Receive the same form structure in every language | Compare all three form routes | Section order, control IDs, names, types and option values match | Pass |
-| Know what happens to entered information | Read the final review section | The user is told that nothing is saved or transmitted | Pass |
+| Receive feedback after reviewing the form | Activate the final Review action | A labelled confirmation modal appears with a link back to the homepage | Pass |
 | Use the site with a keyboard | Tab through navigation, carousel and form controls | Interactive elements receive visible focus in a logical order | Pass |
-| Review or submit information | Inspect the final actions | Reset and review buttons remain disabled because processing is not implemented | Pass |
+| Reset entered information | Enter local values and activate Reset | The form controls return to their initial values | Pass |
 
 ## Navigation and link testing
 
@@ -65,6 +65,9 @@ was refreshed on 29 July 2026.
 | English language CTA | Activate | Open `form-en-de.html` in the same tab | Pass |
 | German language CTA | Activate | Open `form-de-de.html` in the same tab | Pass |
 | Form navbar/footer links | Activate | Return to the requested homepage section in the same tab | Pass |
+| Form Reset action | Activate after entering local values | Restore the form controls to their initial values | Pass |
+| Form Review action | Activate | Open the translated success modal | Pass |
+| Modal homepage action | Activate | Return to `index.html` in the same tab | Pass |
 | Skip link | Focus and activate | Move focus to the main content | Pass |
 
 No internal link uses `target="_blank"`. This preserves normal Back-button behaviour and avoids
@@ -97,7 +100,9 @@ Additional checks:
 - every visible control has an associated label;
 - every ID is unique within its page;
 - the form has no connected submission target;
-- the Reset and Review buttons are visibly and programmatically disabled.
+- the enabled Reset action restores the initial control values;
+- the enabled Review action opens a labelled Bootstrap confirmation modal;
+- the modal contains one action that returns to `index.html`.
 
 Native validation messages are intentionally browser-provided, so their exact wording can vary.
 The following captures record representative states; the corresponding browser validity properties
@@ -109,6 +114,7 @@ were also inspected during the test:
 | [Three-digit tax ID](docs/testing/evidence/forms/tax-id-pattern-invalid.png) | `patternMismatch: true`; the 11-digit helper remains visible |
 | [Negative gross-wage value](docs/testing/evidence/forms/negative-amount-invalid.png) | `rangeUnderflow: true` because `min="0"` |
 | [Document selector](docs/testing/evidence/forms/file-input-accept.png) | `multiple` is enabled and `accept=".pdf,.jpg,.jpeg,.png"` is present |
+| [Review confirmation modal](docs/testing/evidence/forms/review-success-modal.png) | The enabled Review action opens the labelled modal and its only action returns to `index.html` |
 
 ## Multilingual parity
 
@@ -196,7 +202,7 @@ scrollbar was produced.
 | Form labels | Every control has an explicit accessible label | Pass |
 | Image alternatives | Informative images have descriptive `alt` text; decorative images are ignored | Pass |
 | Carousel controls | Previous, next and indicators expose accessible names | Pass |
-| Disabled actions | Unavailable processing actions expose their disabled state | Pass |
+| Review modal | The modal exposes its title through `aria-labelledby` and provides a clear homepage action | Pass |
 | Automated audit | Lighthouse accessibility category reports 100 on tested pages/viewports | Pass |
 
 ## Browser compatibility
@@ -298,7 +304,7 @@ at 100 in every recorded run.
 
 - There is no connected form processing, calculation, storage or transmission.
 - Selecting a file only displays the browser's local selection; it is not uploaded.
-- Reset and review actions remain disabled.
+- The success modal is frontend feedback only; it does not represent server-side processing or data transmission.
 - Native validation messages and native controls vary by browser.
 - Fiscal terminology and translations still require the future professional review tracked in
   [Issue #13](https://github.com/leonardodeutsch23/SteuerNotta/issues/13).
