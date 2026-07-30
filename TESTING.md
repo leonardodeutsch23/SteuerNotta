@@ -35,7 +35,7 @@ The forms use native HTML constraints but do not save, upload or transmit data.
 
 The primary responsive reference widths were `375px`, `768px` and `1440px`. The page was also
 resized between those values to find breakpoint or overflow problems. The evidence in this document
-was refreshed on 29 July 2026.
+was assembled and refreshed through 30 July 2026.
 
 ## User story testing
 
@@ -103,6 +103,8 @@ Additional checks:
 - the enabled Reset action restores the initial control values;
 - the enabled Review action displays all invalid-control messages together, focuses the first invalid
   input or select and does not open the modal until all native constraints pass;
+- the three scope controls remain vertically aligned before and after validation at `768px` and
+  `1440px` on all three language routes;
 - optional amount fields display feedback and block the modal when a negative value is entered;
 - a valid Review action opens a labelled Bootstrap confirmation modal without reloading the page;
 - the modal contains one action that returns to `index.html`.
@@ -250,8 +252,8 @@ Both project stylesheets are checked with the official W3C CSS Validation Servic
 
 | File | Errors | Compatibility/static-analysis warnings | Result | Evidence |
 |---|---:|---:|---|---|
-| `assets/css/style.css` | 0 | 14 | Pass | [Screenshot](docs/testing/evidence/validation/css-style-w3c.png) |
-| `assets/css/styleform.css` | 0 | 8 | Pass | [Screenshot](docs/testing/evidence/validation/css-styleform-w3c.png) |
+| `assets/css/style.css` | 0 | 11 | Pass | [Screenshot](docs/testing/evidence/validation/css-style-w3c.png) |
+| `assets/css/styleform.css` | 0 | 7 | Pass | [Screenshot](docs/testing/evidence/validation/css-styleform-w3c.png) |
 
 The non-blocking warnings relate to custom properties and modern CSS values that the validator
 cannot resolve statically; they do not identify invalid declarations. They are recorded here rather
@@ -298,6 +300,7 @@ at 100 in every recorded run.
 | Active section could be incorrect | Scrollspy offset and section positions disagreed | Aligned navigation target/offset behaviour | Pass |
 | Tablet and desktop fields were uneven | Mixed content heights affected grid alignment | Applied shared grid and alignment rules | Pass |
 | Marital-status control sat below the tax-ID control | The helper note changed the available flex-column height | Scoped both controls to start directly below their labels | Pass |
+| Scope controls moved when validation messages appeared | Hidden feedback had no reserved vertical space | Reserved equal feedback space across the scope row at tablet and desktop widths | Pass |
 | Unpaired items stayed in the left column | Grid placement had no last-item exception | Centred unpaired tablet/desktop items | Pass |
 | Problem illustration cropped unpredictably | One image source was forced across dissimilar aspect ratios | Added viewport-specific picture sources | Pass |
 | Desktop navigation CTA extended too far right | Its responsive left margin was excessive | Reduced the responsive margin and remeasured | Pass |

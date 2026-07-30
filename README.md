@@ -40,7 +40,7 @@ and document structure. SteuerNotta aims to:
 - show users what basic information could be organised before a future guided process;
 - offer equivalent Spanish/German, English/German and German-only routes;
 - provide a consistent experience on mobile, tablet and desktop;
-- make the current technical limitations visible before a user reaches the form.
+- document the current technical limitations transparently without interrupting the form journey.
 
 ### Target users
 
@@ -85,7 +85,7 @@ preserved.
 | Must Have | explore the same form structure in each language | All three routes contain the same seven sections and twelve controls. |
 | Must Have | receive feedback after reviewing the form | Every form provides Reset and Review actions; Review displays translated inline validation feedback, focuses the first invalid control and opens an accessible confirmation modal only after the constraints pass. |
 | Must Have | use the site with keyboard or assistive technology | Semantic landmarks, associated labels, focus states and accessible names are implemented. |
-| Should Have | review a completed summary locally | Deferred until JavaScript processing is introduced. |
+| Should Have | review a completed summary locally | Deferred until local summary generation is implemented. |
 
 Detailed tests against these stories are recorded in [TESTING.md](TESTING.md#user-story-testing).
 
@@ -257,6 +257,9 @@ Implemented accessibility work includes:
 - [Bootstrap 5.3.8](https://getbootstrap.com/) for the responsive grid, navbar and carousel.
 - A short inline script adapted from a Code Institute activity to close the mobile homepage navbar
   after selecting an internal destination.
+- Route-specific inline scripts use the browser constraint-validation API to display translated
+  feedback, focus the first invalid control and open the Bootstrap confirmation modal only after
+  every required constraint passes.
 - Git and GitHub for version control, issues and project management.
 - GitHub Pages for deployment.
 - W3C Nu HTML Checker and W3C CSS Validation Service for code validation.
