@@ -47,7 +47,7 @@ was refreshed on 29 July 2026.
 | See the intended benefits | Open Benefits | Four benefit cards are visible and adapt to the viewport | Pass |
 | Choose a language | Select each language card | The corresponding internal form opens in the same tab | Pass |
 | Receive the same form structure in every language | Compare all three form routes | Section order, control IDs, names, types and option values match | Pass |
-| Receive feedback after reviewing the form | Activate the final Review action | A labelled confirmation modal appears with a link back to the homepage | Pass |
+| Receive feedback after reviewing the form | Activate Review with invalid controls, then complete the required controls and activate it again | Native validation blocks the modal while invalid; a labelled confirmation modal with a homepage link appears after all constraints pass | Pass |
 | Use the site with a keyboard | Tab through navigation, carousel and form controls | Interactive elements receive visible focus in a logical order | Pass |
 | Reset entered information | Enter local values and activate Reset | The form controls return to their initial values | Pass |
 
@@ -66,7 +66,7 @@ was refreshed on 29 July 2026.
 | German language CTA | Activate | Open `form-de-de.html` in the same tab | Pass |
 | Form navbar/footer links | Activate | Return to the requested homepage section in the same tab | Pass |
 | Form Reset action | Activate after entering local values | Restore the form controls to their initial values | Pass |
-| Form Review action | Activate | Open the translated success modal | Pass |
+| Form Review action | Activate with required controls incomplete, then complete them and activate again | Report native validation errors first; open the translated success modal only after the form is valid | Pass |
 | Modal homepage action | Activate | Return to `index.html` in the same tab | Pass |
 | Skip link | Focus and activate | Move focus to the main content | Pass |
 
@@ -101,7 +101,9 @@ Additional checks:
 - every ID is unique within its page;
 - the form has no connected submission target;
 - the enabled Reset action restores the initial control values;
-- the enabled Review action opens a labelled Bootstrap confirmation modal;
+- the enabled Review action reports invalid required controls and does not open the modal until all
+  native constraints pass;
+- a valid Review action opens a labelled Bootstrap confirmation modal without reloading the page;
 - the modal contains one action that returns to `index.html`.
 
 Native validation messages are intentionally browser-provided, so their exact wording can vary.
@@ -114,7 +116,7 @@ were also inspected during the test:
 | [Three-digit tax ID](docs/testing/evidence/forms/tax-id-pattern-invalid.png) | `patternMismatch: true`; the 11-digit helper remains visible |
 | [Negative gross-wage value](docs/testing/evidence/forms/negative-amount-invalid.png) | `rangeUnderflow: true` because `min="0"` |
 | [Document selector](docs/testing/evidence/forms/file-input-accept.png) | `multiple` is enabled and `accept=".pdf,.jpg,.jpeg,.png"` is present |
-| [Review confirmation modal](docs/testing/evidence/forms/review-success-modal.png) | The enabled Review action opens the labelled modal and its only action returns to `index.html` |
+| [Review confirmation modal](docs/testing/evidence/forms/review-success-modal.png) | After the required constraints pass, Review opens the labelled modal and its only action returns to `index.html` |
 
 ## Multilingual parity
 
