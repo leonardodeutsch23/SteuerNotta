@@ -119,6 +119,10 @@ clinical application.
 Headings use Georgia with Times New Roman as a fallback. Body text uses a system sans-serif stack so
 that the site does not depend on an external font request.
 
+Interactive buttons use the palette consistently across the homepage, forms and confirmation modal.
+Primary actions keep their cobalt background and gain an amber border on hover, while outlined
+actions change to an amber background with dark text.
+
 ### Mockups
 
 The complete homepage mockup established the intended content order, Nordic Ledger palette,
@@ -291,6 +295,7 @@ Current headline results:
 | Mobile navigation stayed open after selecting a section | The collapsed menu is closed by the adapted inline script. |
 | Form fields and unpaired cards were misaligned at tablet widths | Shared grid and centring rules were added. |
 | The marital-status select sat below the paired tax-ID field | A scoped rule aligns both controls directly below their labels while preserving the helper note. |
+| Validation messages caused controls in the same row to move vertically | Dedicated feedback space keeps controls aligned before, during and after validation. |
 | Carousel and Problem images cropped inconsistently | Purpose-specific responsive image sources were supplied. |
 | Desktop navbar action could extend beyond the viewport | The responsive action gap was reduced and rechecked at 1440px. |
 | Internal form links opened unnecessary new tabs | `target="_blank"` was removed from all three language cards. |
