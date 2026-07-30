@@ -13,6 +13,7 @@
     --color-primary-focus: rgba(0, 24, 168, 0.18);
     --color-primary-selection: rgba(0, 24, 168, 0.08);
     --color-accent: #b7791f;
+    --color-on-accent: #111111;
 
     /* Backgrounds and surfaces */
     --color-page-background: #f1eadc;
@@ -781,11 +782,25 @@ main {
     font-weight: 720;
 }
 
+#fallprufung-form .btn-primary:hover {
+    /* Adds the amber border used by the primary homepage button on hover. */
+    border-color: var(--color-accent);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
 #fallprufung-form .btn-outline-secondary {
     /* Uses the brand color for secondary actions. */
     border-color: var(--color-primary);
     color: var(--color-primary);
     font-weight: 700;
+}
+
+#fallprufung-form .btn-outline-secondary:hover {
+    /* Matches the amber hover appearance of the outlined homepage button. */
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
 }
 
 #fallprufung-form .btn:disabled {
@@ -818,6 +833,13 @@ main {
     background-color: var(--color-primary);
     color: var(--color-white);
     font-weight: 720;
+}
+
+#reviewSuccessModal .btn-primary:hover {
+    /* Adds the same amber hover border as the primary homepage button. */
+    border-color: var(--color-accent);
+    background-color: var(--color-primary);
+    color: var(--color-white);
 }
 
 
