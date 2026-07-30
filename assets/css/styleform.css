@@ -582,6 +582,7 @@ main {
     color: var(--color-error);
     font-size: 0.85rem;
     font-weight: 650;
+    line-height: 1.5;
 }
 
 #fallprufung-form.was-validated .field > input:not([type="checkbox"]):not([type="radio"]):invalid,
@@ -606,6 +607,26 @@ main {
 #fallprufung-form.was-validated .form-check-input:invalid ~ .invalid-feedback {
     /* Displays the message belonging to every invalid control. */
     display: block;
+}
+
+#fallprufung-form [data-field-group="FULL-SCOPE"] .invalid-feedback {
+    /* Reserves validation space so the scope controls remain aligned. */
+    display: block;
+    min-height: 1.275rem;
+    visibility: hidden;
+}
+
+#fallprufung-form [data-field-group="FULL-SCOPE"] .field:first-child::after {
+    /* Reserves the same space below the read-only fiscal year. */
+    content: "";
+    display: block;
+    min-height: 1.275rem;
+    margin-top: 0.3rem;
+}
+
+#fallprufung-form.was-validated [data-field-group="FULL-SCOPE"] select:invalid ~ .invalid-feedback {
+    /* Reveals the message without moving its select menu. */
+    visibility: visible;
 }
 
 #fallprufung-form [data-field-group="FULL-EMP"] .invalid-feedback {
