@@ -60,8 +60,9 @@ replacement for ELSTER, tax software or professional tax advice.
 | GitHub Pages deployment and documented QA | Connection to ELSTER or a tax authority |
 
 Only fictitious data should be used. The Reset action clears the local controls. The Review action
-first runs the native HTML validation and opens a frontend confirmation modal only when all required
-constraints pass; neither action saves or transmits information.
+checks the native HTML constraints, displays translated inline feedback for every invalid control and
+opens a frontend confirmation modal only when all constraints pass; neither action saves or
+transmits information.
 
 ## User experience
 
@@ -82,7 +83,7 @@ preserved.
 | Must Have | see the intended benefits before choosing a form | Four responsive Benefits cards describe the intended value of the product. |
 | Must Have | choose Spanish, English or German | Three equally prominent language cards open matching local routes. |
 | Must Have | explore the same form structure in each language | All three routes contain the same seven sections and twelve controls. |
-| Must Have | receive feedback after reviewing the form | Every form provides Reset and Review actions; Review displays native validation feedback when needed and opens an accessible confirmation modal only after the constraints pass. |
+| Must Have | receive feedback after reviewing the form | Every form provides Reset and Review actions; Review displays translated inline validation feedback, focuses the first invalid control and opens an accessible confirmation modal only after the constraints pass. |
 | Must Have | use the site with keyboard or assistive technology | Semantic landmarks, associated labels, focus states and accessible names are implemented. |
 | Should Have | review a completed summary locally | Deferred until JavaScript processing is introduced. |
 
@@ -277,7 +278,7 @@ Current headline results:
 | Lighthouse — EN form mobile/desktop | 97 / 100 performance; 100 for all other categories |
 | Lighthouse — DE form mobile/desktop | 96 / 100 performance; 100 for all other categories |
 | Internal links opening new tabs | None |
-| Form Review and Reset actions | Native validation gates the local modal; Reset restores initial values |
+| Form Review and Reset actions | Inline feedback identifies all invalid controls, native constraints gate the local modal and Reset restores initial values |
 
 ## Bugs and limitations
 
@@ -299,7 +300,7 @@ Current headline results:
 
 - Form processing is intentionally unavailable.
 - File inputs display only the browser's local file-selection interface.
-- Native browser validation messages may differ slightly between browsers.
+- Native number, select and file controls may look slightly different between browsers.
 - The homepage mobile Lighthouse performance score is affected mainly by large local illustrations
   and render-blocking CSS.
 - Fiscal wording and translations are development drafts and have not received professional
@@ -347,7 +348,7 @@ prepared the repository for assessment.
 
 ## Future development
 
-1. Add conditional questions and custom inline validation feedback if the form scope expands.
+1. Add conditional questions and more field-specific guidance if the form scope expands.
 2. Generate a local review summary without transmitting data.
 3. Replace the frontend-only confirmation modal with a connected review workflow only after the
    complete interaction is implemented and tested.

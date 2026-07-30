@@ -47,7 +47,7 @@ was refreshed on 29 July 2026.
 | See the intended benefits | Open Benefits | Four benefit cards are visible and adapt to the viewport | Pass |
 | Choose a language | Select each language card | The corresponding internal form opens in the same tab | Pass |
 | Receive the same form structure in every language | Compare all three form routes | Section order, control IDs, names, types and option values match | Pass |
-| Receive feedback after reviewing the form | Activate Review with invalid controls, then complete the required controls and activate it again | Native validation blocks the modal while invalid; a labelled confirmation modal with a homepage link appears after all constraints pass | Pass |
+| Receive feedback after reviewing the form | Activate Review with invalid controls, then complete the required controls and activate it again | Translated inline messages identify every invalid control and focus moves to the first one; the labelled confirmation modal appears only after all constraints pass | Pass |
 | Use the site with a keyboard | Tab through navigation, carousel and form controls | Interactive elements receive visible focus in a logical order | Pass |
 | Reset entered information | Enter local values and activate Reset | The form controls return to their initial values | Pass |
 
@@ -66,7 +66,7 @@ was refreshed on 29 July 2026.
 | German language CTA | Activate | Open `form-de-de.html` in the same tab | Pass |
 | Form navbar/footer links | Activate | Return to the requested homepage section in the same tab | Pass |
 | Form Reset action | Activate after entering local values | Restore the form controls to their initial values | Pass |
-| Form Review action | Activate with required controls incomplete, then complete them and activate again | Report native validation errors first; open the translated success modal only after the form is valid | Pass |
+| Form Review action | Activate with required controls incomplete, then complete them and activate again | Show translated inline validation messages first; open the translated success modal only after the form is valid | Pass |
 | Modal homepage action | Activate | Return to `index.html` in the same tab | Pass |
 | Skip link | Focus and activate | Move focus to the main content | Pass |
 
@@ -101,20 +101,21 @@ Additional checks:
 - every ID is unique within its page;
 - the form has no connected submission target;
 - the enabled Reset action restores the initial control values;
-- the enabled Review action reports invalid required controls and does not open the modal until all
-  native constraints pass;
+- the enabled Review action displays all invalid-control messages together, focuses the first invalid
+  input or select and does not open the modal until all native constraints pass;
+- optional amount fields display feedback and block the modal when a negative value is entered;
 - a valid Review action opens a labelled Bootstrap confirmation modal without reloading the page;
 - the modal contains one action that returns to `index.html`.
 
-Native validation messages are intentionally browser-provided, so their exact wording can vary.
-The following captures record representative states; the corresponding browser validity properties
-were also inspected during the test:
+The validation messages are supplied in the language of each form, while the underlying validity
+states continue to use the browser's constraint-validation API. The following captures record
+representative states; the corresponding browser validity properties were also inspected:
 
 | Evidence | Observed result |
 |---|---|
-| [Required selects left on their default option](docs/testing/evidence/forms/required-controls-empty.png) | Both controls reported `valueMissing: true` |
-| [Three-digit tax ID](docs/testing/evidence/forms/tax-id-pattern-invalid.png) | `patternMismatch: true`; the 11-digit helper remains visible |
-| [Negative gross-wage value](docs/testing/evidence/forms/negative-amount-invalid.png) | `rangeUnderflow: true` because `min="0"` |
+| [Required controls left empty](docs/testing/evidence/forms/required-controls-empty.png) | Seven translated messages appear together; required controls report `valueMissing: true` |
+| [Three-digit tax ID](docs/testing/evidence/forms/tax-id-pattern-invalid.png) | The inline message appears and `patternMismatch: true` is reported |
+| [Negative gross-wage value](docs/testing/evidence/forms/negative-amount-invalid.png) | The inline amount message appears and `rangeUnderflow: true` is reported because `min="0"` |
 | [Document selector](docs/testing/evidence/forms/file-input-accept.png) | `multiple` is enabled and `accept=".pdf,.jpg,.jpeg,.png"` is present |
 | [Review confirmation modal](docs/testing/evidence/forms/review-success-modal.png) | After the required constraints pass, Review opens the labelled modal and its only action returns to `index.html` |
 
@@ -307,7 +308,7 @@ at 100 in every recorded run.
 - There is no connected form processing, calculation, storage or transmission.
 - Selecting a file only displays the browser's local selection; it is not uploaded.
 - The success modal is frontend feedback only; it does not represent server-side processing or data transmission.
-- Native validation messages and native controls vary by browser.
+- Native number, select and file controls may vary visually by browser.
 - Fiscal terminology and translations still require the future professional review tracked in
   [Issue #13](https://github.com/leonardodeutsch23/SteuerNotta/issues/13).
 - Optimising the largest homepage illustrations is a future performance improvement.

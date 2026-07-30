@@ -57,7 +57,7 @@
     <main id="main-content">
         <h1 class="visually-hidden">Formulario SteuerNotta en alemán y español</h1>
 
-        <form id="fallprufung-form" autocomplete="off"
+        <form id="fallprufung-form" class="needs-validation" autocomplete="off" novalidate
             aria-label="Borrador simplificado del formulario SteuerNotta en alemán y español">
 
             <!-- =========================================================
@@ -86,12 +86,16 @@
                                 <span class="textde" lang="de">Wohnsitz in Deutschland</span><br>
                                 <span class="textes">Residencia en Alemania</span>
                             </label>
-                            <select id="full-scope-residence" name="full_scope_residence" required>
+                            <select id="full-scope-residence" name="full_scope_residence" required
+                                aria-describedby="full-scope-residence-error">
                                 <option value="">Seleccionar</option>
                                 <option value="yes">Ja / Sí</option>
                                 <option value="partial">Teilweise / Parte del año</option>
                                 <option value="no">Nein / No</option>
                             </select>
+                            <div id="full-scope-residence-error" class="invalid-feedback">
+                                Selecciona una opción para continuar.
+                            </div>
                         </div>
 
                         <div class="field col-12 col-md-6 col-lg-4 d-flex flex-column">
@@ -99,11 +103,15 @@
                                 <span class="textde" lang="de">Arbeitslohn mit deutschem Lohnsteuerabzug</span><br>
                                 <span class="textes">Salario con retención fiscal alemana</span>
                             </label>
-                            <select id="full-scope-german-wages" name="full_scope_german_wages" required>
+                            <select id="full-scope-german-wages" name="full_scope_german_wages" required
+                                aria-describedby="full-scope-german-wages-error">
                                 <option value="">Seleccionar</option>
                                 <option value="yes">Ja / Sí</option>
                                 <option value="no">Nein / No</option>
                             </select>
+                            <div id="full-scope-german-wages-error" class="invalid-feedback">
+                                Selecciona una opción para continuar.
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -129,7 +137,10 @@
                             </label>
                             <input id="full-main-tax-id" name="full_main_tax_id" type="text" inputmode="numeric"
                                 maxlength="11" pattern="[0-9]{11}" placeholder="12345678901" required
-                                aria-describedby="full-main-tax-id-help">
+                                aria-describedby="full-main-tax-id-help full-main-tax-id-error">
+                            <div id="full-main-tax-id-error" class="invalid-feedback">
+                                Introduce exactamente 11 cifras ficticias.
+                            </div>
                             <p id="full-main-tax-id-help" class="field-note">Introduce exactamente 11 cifras ficticias.
                             </p>
                         </div>
@@ -139,7 +150,8 @@
                                 <span class="textde" lang="de">Familienstand</span><br>
                                 <span class="textes">Estado civil</span>
                             </label>
-                            <select id="full-main-marital-status" name="full_main_marital_status" required>
+                            <select id="full-main-marital-status" name="full_main_marital_status" required
+                                aria-describedby="full-main-marital-status-error">
                                 <option value="">Seleccionar</option>
                                 <option value="single">Ledig / Soltero/a</option>
                                 <option value="married">Verheiratet / Casado/a</option>
@@ -148,6 +160,9 @@
                                 <option value="divorced">Geschieden / Divorciado/a</option>
                                 <option value="widowed">Verwitwet / Viudo/a</option>
                             </select>
+                            <div id="full-main-marital-status-error" class="invalid-feedback">
+                                Selecciona un estado civil para continuar.
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -171,7 +186,11 @@
                                 <span class="textde" lang="de">Arbeitgeber</span><br>
                                 <span class="textes">Empleador ficticio</span>
                             </label>
-                            <input id="full-emp-employer" name="full_emp_employer" type="text" maxlength="80" required>
+                            <input id="full-emp-employer" name="full_emp_employer" type="text" maxlength="80" required
+                                aria-describedby="full-emp-employer-error">
+                            <div id="full-emp-employer-error" class="invalid-feedback">
+                                Introduce un empleador ficticio.
+                            </div>
                         </div>
 
                         <div class="field col-12 col-md-6 d-flex flex-column">
@@ -180,7 +199,11 @@
                                 <span class="textes">Salario bruto en euros</span>
                             </label>
                             <input id="full-emp-gross-wages" name="full_emp_gross_wages" type="number" inputmode="decimal"
-                                min="0" step="0.01" placeholder="0,00" required>
+                                min="0" step="0.01" placeholder="0,00" required
+                                aria-describedby="full-emp-gross-wages-error">
+                            <div id="full-emp-gross-wages-error" class="invalid-feedback">
+                                Introduce un importe válido igual o superior a 0.
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -205,7 +228,11 @@
                                 <span class="textes">Total de gastos laborales en euros</span>
                             </label>
                             <input id="full-work-expenses" name="full_work_expenses" type="number" inputmode="decimal"
-                                min="0" step="0.01" placeholder="0,00">
+                                min="0" step="0.01" placeholder="0,00"
+                                aria-describedby="full-work-expenses-error">
+                            <div id="full-work-expenses-error" class="invalid-feedback">
+                                Introduce un importe válido igual o superior a 0.
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -230,7 +257,11 @@
                                 <span class="textes">Total de otros gastos en euros</span>
                             </label>
                             <input id="full-ded-special-expenses" name="full_ded_special_expenses" type="number"
-                                inputmode="decimal" min="0" step="0.01" placeholder="0,00">
+                                inputmode="decimal" min="0" step="0.01" placeholder="0,00"
+                                aria-describedby="full-ded-special-expenses-error">
+                            <div id="full-ded-special-expenses-error" class="invalid-feedback">
+                                Introduce un importe válido igual o superior a 0.
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -280,11 +311,14 @@
                     <div class="review-check border rounded p-3 mb-4">
                         <div class="form-check mb-0">
                             <input id="full-review-confirmed" class="form-check-input" name="full_review_confirmed"
-                                type="checkbox" value="1" required>
+                                type="checkbox" value="1" required aria-describedby="full-review-confirmed-error">
                             <label class="form-check-label" for="full-review-confirmed">
                                 <span class="textde" lang="de">Ich habe nur fiktive Daten verwendet</span><br>
                                 <span class="textes">Confirmo que solo he utilizado datos ficticios</span>
                             </label>
+                            <div id="full-review-confirmed-error" class="invalid-feedback">
+                                Confirma que solo has utilizado datos ficticios.
+                            </div>
                         </div>
                     </div>
 
@@ -314,8 +348,8 @@
     <!-- =========================================================
          Successful review modal
          ========================================================= -->
-    <div class="modal fade" id="reviewSuccessModal" tabindex="-1" aria-labelledby="reviewSuccessModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="reviewSuccessModal" tabindex="-1" role="dialog"
+        aria-labelledby="reviewSuccessModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -356,13 +390,28 @@
         const reviewForm = document.querySelector("#fallprufung-form");
         const reviewModalElement = document.querySelector("#reviewSuccessModal");
 
-        // This event runs only after the form passes the browser's native HTML validation.
+        // Validate every constrained field before opening the review modal.
         reviewForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            // Open the confirmation modal without reloading or submitting the page.
+            // Display feedback for every invalid field.
+            reviewForm.classList.add("was-validated");
+
+            if (!reviewForm.checkValidity()) {
+                // Move keyboard focus to the first invalid field.
+                const firstInvalidField = reviewForm.querySelector("input:invalid, select:invalid, textarea:invalid");
+                firstInvalidField.focus();
+                return;
+            }
+
+            // Open the confirmation modal only after validation succeeds.
             const reviewModal = bootstrap.Modal.getOrCreateInstance(reviewModalElement);
             reviewModal.show();
+        });
+
+        // Hide validation feedback when the form is reset.
+        reviewForm.addEventListener("reset", function () {
+            reviewForm.classList.remove("was-validated");
         });
     </script>
 </body>

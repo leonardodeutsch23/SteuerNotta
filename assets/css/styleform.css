@@ -29,6 +29,8 @@
     --color-heading: #302a21;
     --color-text-muted: #6b655b;
     --color-translation: #736b60;
+    --color-error: #b42318;
+    --color-error-focus: rgba(180, 35, 24, 0.15);
 
     /* Borders */
     --color-border: #d7cbb7;
@@ -564,6 +566,74 @@ main {
     border-color: var(--color-primary);
     outline: 3px solid transparent;
     box-shadow: 0 0 0 0.25rem var(--color-primary-focus);
+}
+
+
+/* =========================================================
+   FORM VALIDATION FEEDBACK
+   ========================================================= */
+
+#fallprufung-form .invalid-feedback {
+    /* Keeps validation messages hidden before the first review attempt. */
+    display: none;
+    width: 100%;
+    margin-top: 0.3rem;
+    color: var(--color-error);
+    font-size: 0.85rem;
+    font-weight: 650;
+}
+
+#fallprufung-form.was-validated .field > input:not([type="checkbox"]):not([type="radio"]):invalid,
+#fallprufung-form.was-validated .field > select:invalid,
+#fallprufung-form.was-validated .field > textarea:invalid,
+#fallprufung-form.was-validated .form-check-input:invalid {
+    /* Highlights every invalid control after validation begins. */
+    border-color: var(--color-error);
+}
+
+#fallprufung-form.was-validated .field > input:not([type="checkbox"]):not([type="radio"]):invalid:focus,
+#fallprufung-form.was-validated .field > select:invalid:focus,
+#fallprufung-form.was-validated .field > textarea:invalid:focus,
+#fallprufung-form.was-validated .form-check-input:invalid:focus {
+    /* Uses the error color for the focused invalid control. */
+    box-shadow: 0 0 0 0.25rem var(--color-error-focus);
+}
+
+#fallprufung-form.was-validated .field > input:invalid ~ .invalid-feedback,
+#fallprufung-form.was-validated .field > select:invalid ~ .invalid-feedback,
+#fallprufung-form.was-validated .field > textarea:invalid ~ .invalid-feedback,
+#fallprufung-form.was-validated .form-check-input:invalid ~ .invalid-feedback {
+    /* Displays the message belonging to every invalid control. */
+    display: block;
+}
+
+#fallprufung-form [data-field-group="FULL-EMP"] .invalid-feedback {
+    /* Reserves feedback space so the paired employment controls do not move. */
+    display: block;
+    visibility: hidden;
+}
+
+#fallprufung-form.was-validated [data-field-group="FULL-EMP"] input:invalid ~ .invalid-feedback {
+    /* Reveals each employment message without changing the control position. */
+    visibility: visible;
+}
+
+#fallprufung-form.was-validated .field > input:invalid ~ .field-note {
+    /* Replaces repeated helper text with the validation message while invalid. */
+    display: none;
+}
+
+#fallprufung-form.was-validated .form-control:valid {
+    /* Prevents Bootstrap's valid state from changing optional controls to green. */
+    padding-right: 0.85rem;
+    border-color: var(--color-border);
+    background-image: none;
+}
+
+#fallprufung-form.was-validated .form-check-input:valid:checked {
+    /* Keeps a valid checked confirmation inside the project palette. */
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
 }
 
 
