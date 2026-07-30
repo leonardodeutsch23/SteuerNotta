@@ -300,23 +300,35 @@
                 </fieldset>
 
                 <div class="form-actions mt-4">
-                    <div class="d-grid gap-3 d-sm-flex align-items-sm-center justify-content-sm-between">
-                        <p id="frontend-submit-help" class="field-note mb-0">
-                            Actions will become available when local processing is implemented. This version does not
-                            save or transmit information.
-                        </p>
-
-                        <div class="d-grid gap-2 d-sm-flex flex-shrink-0">
-                            <button id="full-review-reset" class="btn btn-outline-secondary" type="reset"
-                                disabled>Reset</button>
-                            <button id="full-review-submit" class="btn btn-primary" type="submit" disabled
-                                aria-describedby="frontend-submit-help">Review information</button>
-                        </div>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-end">
+                        <button id="full-review-reset" class="btn btn-outline-secondary" type="reset">Reset</button>
+                        <button id="full-review-submit" class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#reviewSuccessModal">Review information</button>
                     </div>
                 </div>
             </fieldset>
         </form>
     </main>
+
+    <!-- =========================================================
+         Successful review modal
+         ========================================================= -->
+    <div class="modal fade" id="reviewSuccessModal" tabindex="-1" aria-labelledby="reviewSuccessModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="reviewSuccessModalLabel">Information submitted successfully</h2>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Your information has been submitted successfully for review.</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="index.html">Return to the homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- =========================================================
          Footer

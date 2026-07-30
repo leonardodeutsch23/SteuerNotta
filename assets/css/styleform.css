@@ -725,6 +725,33 @@ main {
 
 
 /* =========================================================
+   REVIEW SUCCESS MODAL
+   ========================================================= */
+
+#reviewSuccessModal .modal-content {
+    /* Matches the modal surface and border with the form cards. */
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-section);
+    background-color: var(--color-surface);
+}
+
+#reviewSuccessModal .modal-title {
+    /* Uses the same heading style as the form sections. */
+    color: var(--color-primary-dark);
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+#reviewSuccessModal .btn-primary {
+    /* Applies the project palette to the homepage action. */
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 720;
+}
+
+
+/* =========================================================
    FOOTER
    ========================================================= */
 

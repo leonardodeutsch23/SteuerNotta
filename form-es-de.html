@@ -300,23 +300,36 @@
                 </fieldset>
 
                 <div class="form-actions mt-4">
-                    <div class="d-grid gap-3 d-sm-flex align-items-sm-center justify-content-sm-between">
-                        <p id="frontend-submit-help" class="field-note mb-0">
-                            Las acciones estarán disponibles cuando se implemente el procesamiento local. En esta
-                            versión no se guarda ni se transmite información.
-                        </p>
-
-                        <div class="d-grid gap-2 d-sm-flex flex-shrink-0">
-                            <button id="full-review-reset" class="btn btn-outline-secondary" type="reset"
-                                disabled>Restablecer</button>
-                            <button id="full-review-submit" class="btn btn-primary" type="submit" disabled
-                                aria-describedby="frontend-submit-help">Revisar información</button>
-                        </div>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-end">
+                        <button id="full-review-reset" class="btn btn-outline-secondary"
+                            type="reset">Restablecer</button>
+                        <button id="full-review-submit" class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#reviewSuccessModal">Revisar información</button>
                     </div>
                 </div>
             </fieldset>
         </form>
     </main>
+
+    <!-- =========================================================
+         Successful review modal
+         ========================================================= -->
+    <div class="modal fade" id="reviewSuccessModal" tabindex="-1" aria-labelledby="reviewSuccessModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="reviewSuccessModalLabel">Información enviada correctamente</h2>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">La información se ha enviado correctamente para su revisión.</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="index.html">Volver a la página principal</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- =========================================================
          Footer
