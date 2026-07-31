@@ -364,6 +364,8 @@ prepared the repository for assessment.
 5. Define privacy, consent, retention and document-handling requirements before real-data use.
 6. Freeze the fiscal scope and obtain the professional review tracked in Issue #13.
 7. Run a full accessibility and cross-browser regression after functional behaviour is introduced.
+8. Add a custom `404.html` page that preserves the SteuerNotta visual identity, explains that the
+   requested route was not found and provides a clear link back to the homepage.
 
 ## Credits and licences
 
